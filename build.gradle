@@ -33,7 +33,7 @@ tasks.withType(FindBugs) {
     }
 }
 
-// PMD Configuration
+// PMD configuration
 pmd {
     toolVersion = '5.7.0'
 }
