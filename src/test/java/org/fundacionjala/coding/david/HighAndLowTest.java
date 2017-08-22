@@ -1,12 +1,16 @@
 package org.fundacionjala.coding.david;
-
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 
 /**
  * Created by Administrator on 8/21/2017.
  */
-public class HighAndLow {
+public class HighAndLowTest {
 
+    /**
+    asdasd.
+     */
     @Test
     public void testHighAndLow() {
         HighAndLow highAndLow = new HighAndLow();
