@@ -1,4 +1,4 @@
-package org.fundacionjala.kata;
+package org.fundacionjala.coding.oscar;
 
 import java.util.Arrays;
 
@@ -6,13 +6,18 @@ import java.util.Arrays;
  * Created by Oz64 on 17/08/2017.
  */
 public class Kata1 {
+    /**
+     *  This function return the mayor and minus numbers in a string.
+     * @param stringNumbers
+     * is a string of numbers
+     * @return
+     * a string with the mayor and minor.
+     */
 
-    static public String HighAndLow(String stringNumbers) {
-        String[] stringNumsArray = stringNumbers.split(" ");
-        Arrays.sort(stringNumsArray);
-
-        String result  = stringNumsArray[stringNumsArray.length - 1] + " " + stringNumsArray[0];
-
+    public String highAndLow(String stringNumbers) {
+        String[] arrayNumbers = stringNumbers.split(" ");
+        Arrays.sort(arrayNumbers);
+        String result = arrayNumbers[arrayNumbers.length - 1] + " " + arrayNumbers[0];
         return result;
     }
 }
