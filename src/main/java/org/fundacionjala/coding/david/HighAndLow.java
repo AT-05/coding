@@ -16,7 +16,6 @@ public class HighAndLow {
     public String highAndLow(String numbers) {
         String[] arrayNumbers = numbers.split(" ");
         LinkedList<Integer> objList = new LinkedList<>();
-        LinkedList<Integer> objList2 =  new LinkedList<>();
 
         for (String number : arrayNumbers) {
             objList.add(Integer.parseInt(number));
