@@ -1,86 +1,102 @@
+package org.fundacionjala.coding.Abner;
+
 import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * This class maps the number.
  * Created by Samuel on 24/08/2017.
  */
 public class NumberMap {
 
-    private Map<String, Integer> map;
+    private static final int NUMBER_SIZE = 3;
+    private static final Map<String, Integer> MAP_NUMBER = new HashMap<>();
 
-    public NumberMap(){
-        map=new HashMap<>();
-        map.put(String.format("%s%s%s", "   " ,
-                                        "  |",
-                                        "  |"),1);
+    static {
 
-        map.put(String.format("%s%s%s", " _ ",
-                                        " _|",
-                                        "|_ "),2);
+        MAP_NUMBER.put(String.format("%s%s%s", "   ",
+                "  |",
+                "  |"), 1);
 
-        map.put(String.format("%s%s%s", " _ ",
-                                        " _|",
-                                        " _|"),3);
+        MAP_NUMBER.put(String.format("%s%s%s", " _ ",
+                " _|",
+                "|_ "), 2);
 
-        map.put(String.format("%s%s%s", "   ",
-                                        "|_|",
-                                        "  |"),4);
+        MAP_NUMBER.put(String.format("%s%s%s", " _ ",
+                " _|",
+                " _|"), 3);
 
-        map.put(String.format("%s%s%s", " _ ",
-                                        "|_ ",
-                                        " _|"),5);
+        MAP_NUMBER.put(String.format("%s%s%s", "   ",
+                "|_|",
+                "  |"), 4);
 
-        map.put(String.format("%s%s%s", " _ " ,
-                                        "|_ ",
-                                        "|_|"), 6);
+        MAP_NUMBER.put(String.format("%s%s%s", " _ ",
+                "|_ ",
+                " _|"), 5);
 
-        map.put(String.format("%s%s%s", " _ ",
-                                        "  |",
-                                        "  |"), 7);
+        MAP_NUMBER.put(String.format("%s%s%s", " _ ",
+                "|_ ",
+                "|_|"), 6);
 
-        map.put(String.format("%s%s%s", " _ " ,
-                                        "|_|",
-                                        "|_|"), 8);
+        MAP_NUMBER.put(String.format("%s%s%s", " _ ",
+                "  |",
+                "  |"), 7);
 
-        map.put(String.format("%s%s%s", " _ ",
-                                        "|_|",
-                                        " _|"), 9);
+        MAP_NUMBER.put(String.format("%s%s%s", " _ ",
+                "|_|",
+                "|_|"), 8);
 
-        map.put(String.format("%s%s%s", " _ ",
-                                        "| |",
-                                        "|_|"), 0);
+        MAP_NUMBER.put(String.format("%s%s%s", " _ ",
+                "|_|",
+                " _|"), 9);
 
+        MAP_NUMBER.put(String.format("%s%s%s", " _ ",
+                "| |",
+                "|_|"), 0);
     }
 
-    public String chek_value(String stringCodeOne, String stringCodeTwo, String stringCodeThree) {
-        StringBuffer number_maping=new StringBuffer("");
+    /**
+     * this function changed the value string to int.
+     *
+     * @param stringCodeOne   this is the first string.
+     * @param stringCodeTwo   this is the second string.
+     * @param stringCodeThree this is the third string.
+     * @return number im string.
+     */
+    public String checkValue(String stringCodeOne, String stringCodeTwo, String stringCodeThree) {
 
-        for(int i=0;i<stringCodeOne.length();i=i+3)
-        {
-            number_maping.append(map.get(String.format("%s%s%s",
-                    stringCodeOne.substring(i, i + 3),
-                    stringCodeTwo.substring(i, i + 3),
-                    stringCodeThree.substring(i, i + 3))).toString());
+        StringBuilder numberMaps = new StringBuilder("");
+
+        for (int i = 0; i < stringCodeOne.length(); i = i + NUMBER_SIZE) {
+            numberMaps.append(MAP_NUMBER.get(String.format("%s%s%s",
+                    stringCodeOne.substring(i, i + NUMBER_SIZE),
+                    stringCodeTwo.substring(i, i + NUMBER_SIZE),
+                    stringCodeThree.substring(i, i + NUMBER_SIZE))).toString());
 
         }
-        return number_maping.toString();
-
+        return numberMaps.toString();
     }
 
-    public int chek_one_value(String stringCodeOne, String stringCodeTwo, String stringCodeThree) {
-
-        //return map.get(stringCodeOne+""+stringCodeTwo+""+stringCodeThree);
-        return map.get(String.format("%s%s%s", stringCodeOne, stringCodeTwo, stringCodeThree));
-    }
-
-    public  int checksum_calculation(int number){
-        int sum=1;
-        int mod_number;
-        for(int i=1; i<=9; i++){
-            mod_number=number%10;
-            number=number/10;
-            sum=sum * mod_number+i+1;
+    /**
+     * This function check the number car.
+     *
+     * @param number this is number car.
+     * @return this return if number car or no.
+     */
+    public boolean checkSumCalculation(int number) {
+        int sum = 0;
+        int modNumber;
+        for (int i = 1; i <= 9; i++) {
+            modNumber = number % 10;
+            number = number / 10;
+            sum = sum + (modNumber * i);
         }
-        return sum%11;
+        /*if(sum % 11==0){
+            return true;
+        }
+        return false;
+*/
+        return (sum % 11 == 0) ? true : false;
     }
+
 }

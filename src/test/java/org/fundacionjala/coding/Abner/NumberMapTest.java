@@ -1,71 +1,94 @@
+package org.fundacionjala.coding.Abner;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+
 /**
+ * This class test the numbers.
  * Created by Samuel on 24/08/2017.
  */
 public class NumberMapTest {
-
+    /**
+     * This test check whit nine value.
+     */
     @Test
-    public void testMapNumber_chek_value(){
-        NumberMap mapin=new NumberMap();
-   /* String stringCode="    _  _     _  _  _  _  _ " +
-                        "  | _| _||_||_ |_   ||_||_|" +
-                        "  ||_  _|  | _||_|  ||_| _|";*/
+    public void testMapNumberCheckValue() {
+        NumberMap map = new NumberMap();
 
-        String stringCodeOne =   "    _  _     _  _  _  _  _ " ;
-        String stringCodeTwo =   "  | _| _||_||_ |_   ||_||_|" ;
+        String stringCodeOne = "    _  _     _  _  _  _  _ ";
+        String stringCodeTwo = "  | _| _||_||_ |_   ||_||_|";
         String stringCodeThree = "  ||_  _|  | _||_|  ||_| _|";
 
-        assertEquals("123456789",mapin.chek_value(stringCodeOne,stringCodeTwo,stringCodeThree));
+        assertEquals("123456789", map.checkValue(stringCodeOne, stringCodeTwo, stringCodeThree));
 
     }
 
-    @Test
-    public void test_chek_value_with_sevent(){
-        NumberMap maping=new NumberMap();
-   /* String stringCode="    _  _     _  _  _  _  _ " +
-                        "  | _| _||_||_ |_   ||_||_|" +
-                        "  ||_  _|  | _||_|  ||_| _|";*/
+    /**
+     * This test check whit seven value.
+     */
 
-        String stringCodeOne =   "    _  _     _  _  _ " ;
-        String stringCodeTwo =   "  | _| _||_||_ |_   |" ;
+    @Test
+    public void testMapNumberCheckValueWithSeven() {
+        NumberMap map = new NumberMap();
+
+        String stringCodeOne = "    _  _     _  _  _ ";
+        String stringCodeTwo = "  | _| _||_||_ |_   |";
         String stringCodeThree = "  ||_  _|  | _||_|  |";
 
-        assertEquals("1234567",maping.chek_value(stringCodeOne,stringCodeTwo,stringCodeThree));
+        assertEquals("1234567", map.checkValue(stringCodeOne, stringCodeTwo, stringCodeThree));
 
     }
 
+    /**
+     * This test check whit three.
+     */
     @Test
-    public void test_chek_value_with_three(){
-        NumberMap maping=new NumberMap();
-   /* String stringCode="    _  _     _  _  _  _  _ " +
-                        "  | _| _||_||_ |_   ||_||_|" +
-                        "  ||_  _|  | _||_|  ||_| _|";*/
+    public void testMapNumberWithThree() {
+        NumberMap map = new NumberMap();
 
-        String stringCodeOne =   " _  _  _  _  _  _  _  _  _ ";
-        String stringCodeTwo =   " _| _| _| _| _| _| _| _| _|";
-        String stringCodeThree = " _| _| _| _| _| _| _| _| _|";
+        String stringLine1 = " _  _  _  _  _  _  _  _  _ ";
+        String stringLine2 = " _| _| _| _| _| _| _| _| _|";
+        String stringLine3 = " _| _| _| _| _| _| _| _| _|";
 
-        assertEquals("333333333",maping.chek_value(stringCodeOne,stringCodeTwo,stringCodeThree));
+        assertEquals("333333333", map.checkValue(stringLine1, stringLine2, stringLine3));
 
     }
 
-
-
+    /**
+     * This test check whit one value.
+     */
     @Test
-    public void testMapNumber_chek_one_value(){
-        NumberMap mapin=new NumberMap();
-   /* String stringCode="    _  _     _  _  _  _  _ " +
-                        "  | _| _||_||_ |_   ||_||_|" +
-                        "  ||_  _|  | _||_|  ||_| _|";*/
+    public void testMapNumberWithOneValue() {
+        NumberMap map = new NumberMap();
 
-        String stringCodeOne =   "   " ;
-        String stringCodeTwo =   "  |" ;
+        String stringCodeOne = "   ";
+        String stringCodeTwo = "  |";
         String stringCodeThree = "  |";
 
-        assertEquals(1,mapin.chek_one_value(stringCodeOne,stringCodeTwo,stringCodeThree));
+        assertEquals("1", map.checkValue(stringCodeOne, stringCodeTwo, stringCodeThree));
 
+    }
+
+    /**
+     * This test check is credit car is valid.
+     */
+    @Test
+    public void testCheckSumCalculation() {
+        NumberMap map = new NumberMap();
+        assertEquals(true, map.checkSumCalculation(900000007));
+        assertEquals(true, map.checkSumCalculation(345882865));
+    }
+
+    /**
+     * This test check is credit car is not valid.
+     */
+    @Test
+    public void testCheckSumCalculationFalse() {
+        NumberMap map = new NumberMap();
+
+
+        assertEquals(false, map.checkSumCalculation(900000000));
     }
 }
