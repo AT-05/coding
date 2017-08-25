@@ -1,7 +1,9 @@
-import org.fundacionjala.kata.KataOCR;
+package org.fundacionjala.coding.oscar;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Oz64 on 24/08/2017.
@@ -12,27 +14,39 @@ public class KataOCRTest {
      */
     @Test
     //public void testWhenScanAccount123456789ShoulBeReturnStringNumber(){
-    public void testMapEntryToNumber(){
-        String account = "    _  _     _  _  _  _  _ " +
-                         "  | _| _||_||_ |_   ||_||_|" +
-                         "  ||_  _|  | _||_|  ||_| _|";
+    public void testMapEntryToNumberTheAccount123456789() {
+        String accountNumber = "    _  _     _  _  _  _  _ "
+                + "  | _| _||_||_ |_   ||_||_|"
+                + "  ||_  _|  | _||_|  ||_| _|";
 
         KataOCR ocr = new KataOCR();
-        String result = "123456789";
-        assertEquals(ocr.scanString(account),result);
+        String actualResult = "123456789";
+        String expectedResult = ocr.scanString(accountNumber);
+        assertEquals(expectedResult, actualResult);
     }
 
     /**
      * This test verifies the account 490067715.
      */
     @Test
-    public void testScanNumberToAccountReturnStringTheAccountNumber490067715(){
-        String account = "    _  _  _  _  _  _     _ " +
-                         "|_||_|| || ||_   |  |  ||_ " +
-                         "  | _||_||_||_|  |  |  | _|";
+    public void testMapEntryToNumberTheAccount490067715() {
+        String accountNumber = "    _  _  _  _  _  _     _ "
+                + "|_||_|| || ||_   |  |  ||_ "
+                + "  | _||_||_||_|  |  |  | _|";
 
         KataOCR ocr = new KataOCR();
-        String result = "490067715";
-        assertEquals(ocr.scanString(account),result);
+        String actualResult = "490067715";
+        String expectedResult = ocr.scanString(accountNumber);
+        assertEquals(expectedResult, actualResult);
+    }
+
+    /**
+     * This test verifies the checksum.
+     */
+    @Test
+    public void testChecksumValidated() {
+        KataOCR ocr = new KataOCR();
+        String stringAccount = "123456789";
+        assertTrue(ocr.isValidatedWithChecksum(stringAccount));
     }
 }
