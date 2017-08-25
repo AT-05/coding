@@ -1,81 +1,61 @@
 package org.fundacionjala.coding.david;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by Administrator on 8/25/2017.
+ * The AccounNumber class is utilice for Bank.
  */
-public class Bank_ocr {
+public class AccountNumber {
 
     private static final int NUMBER_SIZE = 3;
-    private static final List<String> listt = new ArrayList<>();
+    private static final List<String> NUMBER_LIST = new ArrayList<>();
 
     static {
 
-        listt.add(" _ " +
-                "| |" +
-                "|_|");
+        NUMBER_LIST.add(" _ ".concat("| |").concat("|_|"));
+        NUMBER_LIST.add("   ".concat("  |").concat("  |"));
+        NUMBER_LIST.add(" _ ".concat(" _|").concat("|_ "));
+        NUMBER_LIST.add(" _ ".concat(" _|").concat(" _|"));
+        NUMBER_LIST.add("   ".concat("|_|").concat("  |"));
+        NUMBER_LIST.add(" _ ".concat("|_ ").concat(" _|"));
+        NUMBER_LIST.add(" _ ".concat("|_ ").concat("|_|"));
+        NUMBER_LIST.add(" _ ".concat("  |").concat("  |"));
+        NUMBER_LIST.add(" _ ".concat("|_|").concat("|_|"));
+        NUMBER_LIST.add(" _ ".concat("|_|").concat(" _|"));
 
-        listt.add("   " +
-                "  |" +
-                "  |");
 
-        listt.add(" _ " +
-                " _|" +
-                "|_ ");
-
-        listt.add(" _ " +
-                " _|" +
-                " _|");
-
-        listt.add("   " +
-                "|_|" +
-                "  |");
-
-        listt.add(" _ " +
-                "|_ " +
-                " _|");
-
-        listt.add(" _ " +
-                "|_ " +
-                "|_|");
-
-        listt.add(" _ " +
-                "  |" +
-                "  |");
-
-        listt.add(" _ " +
-                "|_|" +
-                "|_|");
-
-        listt.add(" _ " +
-                "|_|" +
-                " _|");
     }
 
     /**
-     * @param cad1
-     * @return
+     * Test.
+     *
+     * @param listNumber test.
+     * @return test.
      */
-    public String mapToNumber(String cad1, String cad2, String cad3) {
+    public String mapToNumber(List<String> listNumber) {
         StringBuilder result = new StringBuilder();
 
-        for (int i = 0; i < cad1.length(); i += NUMBER_SIZE) {
-
-            String number = cad1.substring(i, i + NUMBER_SIZE)
-                    .concat(cad2.substring(i, i + NUMBER_SIZE)
-                            .concat(cad3.substring(i, i + NUMBER_SIZE)));
+        for (int i = 0; i < listNumber.get(0).length(); i += NUMBER_SIZE) {
+            String number = listNumber.get(0).substring(i, i + NUMBER_SIZE)
+                    .concat(listNumber.get(1).substring(i, i + NUMBER_SIZE)
+                            .concat(listNumber.get(2).substring(i, i + NUMBER_SIZE)));
             result.append(compare(number));
         }
         return result.toString();
     }
 
+    /**
+     * this methos realize compare with number one.
+     *
+     * @param numero string.
+     * @return one number comparative.
+     */
     public int compare(String numero) {
-        for (int i = 0; i < listt.size(); i++) {
-            if (listt.get(i).equals(numero))
+        for (int i = 0; i < NUMBER_LIST.size(); i++) {
+            if (NUMBER_LIST.get(i).equals(numero)) {
                 return i;
+            }
         }
         return -1;
     }
