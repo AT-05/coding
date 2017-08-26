@@ -1,9 +1,9 @@
 package org.fundacionjala.coding.german;
 
-import org.fundacionjala.coding.Library;
+
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by seus on 25/8/2017.
@@ -11,78 +11,117 @@ import static org.junit.Assert.*;
 public class DecodeStringTest {
 
     /**
-     * Verify some library method.
+     * Verify some divideString Method.
      */
     @Test
     public void testSomeDivideStringMethod() {
-        DecodeString decodeString = new DecodeString("AAA\n" +
-                "BBB\n" +
-                "CCC");
-        String result[] = decodeString.divideString();
+        DecodeString decodeString = new DecodeString(String.format("%s%s%s",
+                "AAA\n",
+                "BBB\n",
+                "CCC"));
+        String[] result = decodeString.divideString();
         assertEquals("AAA", result[0]);
         assertEquals("BBB", result[1]);
         assertEquals("CCC", result[2]);
     }
+
+    /**
+     * Verify some numero Method.
+     */
     @Test
     public void testnumeroMethod() {
         DecodeString decodeString = new DecodeString("");
-        int result = decodeString.numero(" _ " +
-                "|_|" +
-                "|_|");
+        int result = decodeString.numero(String.format("%s%s%s", " _ ",
+                "|_|",
+                "|_|"));
         assertEquals(8, result);
 
     }
-    @Test
-    public void testStoryOneMethod() {
-        DecodeString decodeString = new DecodeString(
-                "    _  _     _  _  _  _  _ \n" +
-                          "  | _| _||_||_ |_   ||_||_|\n" +
-                          "  ||_  _|  | _||_|  ||_| _|");
 
-        String result = decodeString.storyOne();
+    /**
+     * Verify parseAccount Method.
+     */
+    @Test
+    public void testParseAccountMethod() {
+        DecodeString decodeString = new DecodeString(String.format("%s%s%s",
+                "    _  _     _  _  _  _  _ \n",
+                "  | _| _||_||_ |_   ||_||_|\n",
+                "  ||_  _|  | _||_|  ||_| _|"));
+
+        String result = decodeString.parseAccount();
         assertEquals("123456789", result);
     }
-    @Test
-    public void testIsValidMethod() {
-        DecodeString decodeString = new DecodeString(
-                "    _  _     _  _  _  _  _ \n" +
-                          "  | _| _||_||_ |_   ||_||_|\n" +
-                          "  ||_  _|  | _||_|  ||_| _|");
 
-        boolean result = decodeString.isValid();
+    /**
+     * Verify  IsValidCheckSum Method return false.
+     */
+    @Test
+    public void testIsValidCheckSumMethodIsFalse() {
+        DecodeString decodeString = new DecodeString(String.format("%s%s%s",
+                "    _  _     _  _  _  _  _ \n",
+                "  | _| _||_||_ |_   ||_||_|\n",
+                "  ||_  _|  | _||_|  ||_| _|"));
+
+        boolean result = decodeString.isValidChekSum();
         assertEquals(false, result);
     }
-    @Test
-    public void testIsValidMethodIsTrue() {
-        DecodeString decodeString = new DecodeString(
-                " _  _  _  _  _  _  _  _  _ \n" +
-                          "|_|| || || || || || || |  |\n" +
-                          " _||_||_||_||_||_||_||_|  |");
-        decodeString.storyOne();
 
-        boolean result = decodeString.isValid();
+    /**
+     * Verify  IsValidCheckSum return true Method.
+     */
+    @Test
+    public void testIsValidCheckSumMethodIsTrue() {
+        DecodeString decodeString = new DecodeString(String.format("%s%s%s",
+                " _  _  _  _  _  _  _  _  _ \n",
+                "|_|| || || || || || || |  |\n",
+                " _||_||_||_||_||_||_||_|  |"));
+        decodeString.parseAccount();
+
+        boolean result = decodeString.isValidChekSum();
         assertEquals(true, result);
     }
+
+    /**
+     * Verify Status Method is OK.
+     */
     @Test
-    public void testStoryOneMethodIsModEleven() {
-        DecodeString decodeString = new DecodeString(
-                " _  _  _  _  _  _  _  _  _ \n" +
-                        "|_|| || || || || || || |  |\n" +
-                        " _||_||_||_||_||_||_||_|  |");
+    public void testStatusMethodIsOK() {
+        DecodeString decodeString = new DecodeString(String.format("%s%s%s",
+                " _  _  _  _  _  _  _  _  _ \n",
+                "|_|| || || || || || || |  |\n",
+                " _||_||_||_||_||_||_||_|  |"));
 
-
-        String result = decodeString.storyOne();
+        decodeString.parseAccount();
+        String result = decodeString.status();
         assertEquals("900000007", result);
     }
+      /**
+     * Verify Status Method is ERR.
+     */
     @Test
-    public void testStoryOneMethodIsErr() {
-        DecodeString decodeString = new DecodeString(
-                " _  _  _  _  _  _  _  _  _ \n" +
-                          "|_|  || || || || || || |  |\n" +
-                          " _||_||_||_||_||_||_||_|  |");
+    public void testStatusMethodIsERR() {
+        DecodeString decodeString = new DecodeString(String.format("%s%s%s",
+                " _     _  _  _  _  _  _  _ \n",
+                "|_|  || || || || || || |  |\n",
+                " _|  ||_||_||_||_||_||_|  |"));
 
+        decodeString.parseAccount();
+        String result = decodeString.status();
+        assertEquals("910000007 ERR", result);
+    }
+    /**
+     * Verify Status Method is ILL.
+     */
+    @Test
+    public void testStatusMethodIsILL() {
+        DecodeString decodeString = new DecodeString(String.format("%s%s%s",
+                " _  _  _  _  _  _  _  _  _ \n",
+                "|_|  || || || || || || |  |\n",
+                " _||_||_||_||_||_||_||_|  |"));
 
-        String result = decodeString.storyOne();
-        assertEquals("9?0000007", result);
+        decodeString.parseAccount();
+        String result = decodeString.status();
+        assertEquals("9?0000007 ILL", result);
     }
 }
+
