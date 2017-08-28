@@ -14,8 +14,8 @@ public class Kata1 {
      */
 
     public String highAndLow(String stringNumbers) {
-        String[] arrayNumbers = stringNumbers.split(" ");
-        Arrays.sort(arrayNumbers);
-        return String.format("%s %s", arrayNumbers[arrayNumbers.length - 1], arrayNumbers[0]);
+        int[] numbers = Arrays.stream(stringNumbers.split(" ")).mapToInt(Integer::parseInt).toArray();
+        Arrays.sort(numbers);
+        return String.format("%d %d", numbers[numbers.length - 1], numbers[0]);
     }
 }
