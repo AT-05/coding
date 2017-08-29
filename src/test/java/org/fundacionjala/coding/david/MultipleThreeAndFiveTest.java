@@ -3,12 +3,12 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 /**
- * Created by Administrator on 8/22/2017.
+ * This class is for test to class MultipleThreeAndFive.
  */
 public class MultipleThreeAndFiveTest {
 
     /**
-     * asdasd.
+     * This method realize test to method of class MultipleThreeAndFive.
      */
     @Test
     public void multipleThreeAndFive() {

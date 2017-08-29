@@ -1,14 +1,14 @@
 package org.fundacionjala.coding.david;
 
 /**
- *
+ * This class calculate number multiple of three and five.
  */
 public class MultipleThreeAndFive {
 
     /**
-     *Test.
-     * @param newNumero test.
-     * @return test.
+     * This method return values sum of multiple three and five.
+     * @param newNumero is a value numeric.
+     * @return value numeric.
      */
     public int multipleThreeAndFive(int newNumero) {
         int result = 0;

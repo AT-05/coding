@@ -4,12 +4,12 @@ import org.junit.Test;
 
 
 /**
- * Created by Administrator on 8/21/2017.
+ * This class is for test to class HighAndLow.
  */
 public class HighAndLowTest {
 
     /**
-    asdasd.
+       This method realize test to method of class HighAndLow.
      */
     @Test
     public void testHighAndLow() {

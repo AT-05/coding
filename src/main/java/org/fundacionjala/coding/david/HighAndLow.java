@@ -1,17 +1,16 @@
 package org.fundacionjala.coding.david;
-
 import java.util.Collections;
 import java.util.LinkedList;
 
 /**
- *
+ * This class calculate number High and Low.
  */
 public class HighAndLow {
 
     /**
-     * Test.
-     * @param numbers test.
-     * @return test.
+     * This Method return two values Hish and low.
+     * @param numbers are values string.
+     * @return value string.
      */
     public String highAndLow(String numbers) {
         String[] arrayNumbers = numbers.split(" ");
