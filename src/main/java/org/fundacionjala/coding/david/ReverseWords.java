@@ -28,7 +28,7 @@ public class AccountNumber {
     }
 
     /**
-     * This method map to number
+     * This method map to number.
      * @param listNumber test.
      * @return test.
      */
@@ -59,6 +59,7 @@ public class AccountNumber {
     }
 
     /**
+     * This method realize check number.
      * @param number string.
      * @return true or false.
      */
@@ -75,28 +76,33 @@ public class AccountNumber {
     }
 
     /**
-     * @param number
-     * @return
+     * This method realize Scann number.
+     * @param number is one number.
+     * @return one value.
      */
     public String scannNumber(String number) {
         String message = "";
         StringBuilder numberString = new StringBuilder();
         int status = 1;
-            int posInitial = 0;
-            int posEnd = 1;
-            for (int i = 1; i <= 9; i++, posInitial++, posEnd++) {
-                String numberAux = number.substring(posInitial, posEnd);
-                if (numberAux.matches("[+-]?\\d*(\\.\\d+)?") && numberAux.equals("") == false) {
-                    numberString.append(numberAux);
-                } else {
-                    status = 2;
-                    numberString.append("?");
-                }
+        int posInitial = 0;
+        int posEnd = 1;
+        for (int i = 1; i <= 9; i++, posInitial++, posEnd++) {
+            String numberAux = number.substring(posInitial, posEnd);
+            if (numberAux.matches("[+-]?\\d*(\\.\\d+)?") && numberAux.equals("") == false) {
+                numberString.append(numberAux);
+            } else {
+                status = 2;
+                numberString.append("?");
             }
+        }
 
-        message = (status == 1) ? (checkNumber(numberString.toString())? numberString.toString():numberString.toString().concat(" ERR")) : message;
+        message = (status == 1) ? (checkNumber(numberString.toString()) ?
+                numberString.toString() : numberString.toString().concat(" ERR")) : message;
         message = (status == 2) ? numberString.toString().concat(" ILL") : message;
-      
+
         return message;
     }
 }
+
+
+
