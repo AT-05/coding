@@ -1,52 +1,85 @@
 package org.fundacionjala.coding.oscar;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Oz64 on 24/08/2017.
  */
 public class KataOCRTest {
+    private KataOCR ocr;
+
+    /**
+     * This method execute before any test.
+     */
+    @Before
+    public void setup() {
+        ocr = new KataOCR();
+    }
+
+    //region User Story 1
+
     /**
      * This test verifies the account 123456789.
      */
     @Test
-    //public void testWhenScanAccount123456789ShoulBeReturnStringNumber(){
-    public void testMapEntryToNumberTheAccount123456789() {
+    public void testMapEntryAccountToNumber() {
         String accountNumber = "    _  _     _  _  _  _  _ "
                 + "  | _| _||_||_ |_   ||_||_|"
                 + "  ||_  _|  | _||_|  ||_| _|";
 
-        KataOCR ocr = new KataOCR();
-        String actualResult = "123456789";
-        String expectedResult = ocr.scanString(accountNumber);
-        assertEquals(expectedResult, actualResult);
+        assertEquals(ocr.scanString(accountNumber), "123456789");
     }
+    //endregion
+
+    //region User Story 2
 
     /**
-     * This test verifies the account 490067715.
-     */
-    @Test
-    public void testMapEntryToNumberTheAccount490067715() {
-        String accountNumber = "    _  _  _  _  _  _     _ "
-                + "|_||_|| || ||_   |  |  ||_ "
-                + "  | _||_||_||_|  |  |  | _|";
-
-        KataOCR ocr = new KataOCR();
-        String actualResult = "490067715";
-        String expectedResult = ocr.scanString(accountNumber);
-        assertEquals(expectedResult, actualResult);
-    }
-
-    /**
-     * This test verifies the checksum.
+     * This test verifies correct checksum.
      */
     @Test
     public void testChecksumValidated() {
-        KataOCR ocr = new KataOCR();
-        String stringAccount = "123456789";
-        assertTrue(ocr.isValidatedWithChecksum(stringAccount));
+        assertEquals(ocr.isValidatedWithChecksum("123456789"), "123456789");
     }
+
+    /**
+     * This test verifies incorrect checksum.
+     */
+    @Test
+    public void testChecksumInvalidated() {
+        assertEquals(ocr.isValidatedWithChecksum("664371495"), "664371495 ERR");
+    }
+    //endregion
+
+    //region User Story 3
+
+    /**
+     * This test verifies when in the account number one number is illegible.
+     */
+    @Test
+    public void testMapEntryOneIncorrectNumberInAccount() {
+        String accountNumber = "    _  _  _  _  _  _     _ "
+                + "|_||_|| || ||_   |  |  | _ "
+                + "  | _||_||_||_|  |  |  | _|";
+
+        assertEquals(ocr.scanString(accountNumber), "49006771? ILL");
+    }
+
+    /**
+     * This test verifies when in the account number two numbers is illegible.
+     */
+    @Test
+    public void testMapEntryTwoIncorrectNumbersInAccount() {
+        String accountNumber = "    _  _     _  _  _  _  _ "
+                + "  | _| _||_| _ |_   ||_||_|"
+                + "  ||_  _|  | _||_|  ||_| _ ";
+
+        assertEquals(ocr.scanString(accountNumber), "1234?678? ILL");
+    }
+    //endregion
+
+
 }
+

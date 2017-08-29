@@ -8,6 +8,7 @@ import java.util.Map;
  */
 public class KataOCR {
     private static final int NUMBER_SIZE = 3;
+    private static final int ACCOUNT_LENGTH = 27;
     private static final Map<String, Integer> NUMBER_MAP;
 
     static {
@@ -25,56 +26,56 @@ public class KataOCR {
     }
 
     /**
-     * This function return the number scan but in integer.
+     * This function return the number scan.
+     * If it is not possible to recognize the number, return "?"
      *
      * @param numberScan this is the string of the number scanned.
      * @return the number in integer.
      */
-    public int returnNumberOfStringMap(String numberScan) {
-        int number = -1;
+    public String returnNumberOfStringMap(String numberScan) {
+        String number = "?";
         for (Map.Entry<String, Integer> entry : NUMBER_MAP.entrySet()) {
             if (entry.getKey().equals(numberScan)) {
-                number = entry.getValue();
+                number = entry.getValue().toString();
             }
-
         }
         return number;
     }
 
     /**
-     * This function compare the number scanned with the key of the map.
-     * and return the account number
+     * This function compare the number scanned with the key of the map
+     * and return the account number.
+     * If the account is not readable, add the letters ILL
      *
      * @param account is the string of the account.
-     * @return the account number in integer.
+     * @return the account number.
      */
     public String scanString(String account) {
-        String numberString = "";
-        String numberInt = "";
-        for (int index = 0; index < 25; index += NUMBER_SIZE) {
-            numberString = numberString.concat(account.substring(index, index + NUMBER_SIZE))
-                    .concat(account.substring(index + 27, index + 27 + NUMBER_SIZE))
-                    .concat(account.substring(index + 54, index + 54 + NUMBER_SIZE));
-            numberInt = numberInt.concat(String.valueOf(returnNumberOfStringMap(numberString)));
-            numberString = "";
+        StringBuilder numberInt = new StringBuilder();
+        StringBuilder sb;
+        for (int index = 0; index <= ACCOUNT_LENGTH - 3; index += NUMBER_SIZE) {
+            sb = new StringBuilder();
+            sb.append(account.substring(index, index + NUMBER_SIZE))
+                    .append(account.substring(index + ACCOUNT_LENGTH, index + ACCOUNT_LENGTH + NUMBER_SIZE))
+                    .append(account.substring(index + ACCOUNT_LENGTH * 2, index + ACCOUNT_LENGTH * 2 + NUMBER_SIZE));
+            numberInt.append(returnNumberOfStringMap(sb.toString()));
         }
-        return numberInt;
+        return (numberInt.indexOf("?") == -1) ? numberInt.toString() : String.format("%s ILL", numberInt);
     }
 
     /**
-     * This function return true if the account number is valid.
+     * This function return the account number if checksum is valid
+     * and return account number + ERR if checksum is invalid.
      *
      * @param stringAccount is the number of the account.
-     * @return false or true
+     * @return account number
      */
-    public boolean isValidatedWithChecksum(String stringAccount) {
-        int result = 0;
-        int mult = 9;
+    public String isValidatedWithChecksum(String stringAccount) {
+        int result = 0, mult = 9;
         for (int index = 0; index < stringAccount.length(); index++) {
-            result += mult * (Integer.parseInt(stringAccount.substring(index, index + 1)));
+            result += mult * Integer.parseInt(stringAccount.substring(index, index + 1));
             mult--;
         }
-        return result % 11 == 0;
-
+        return (result % 11 == 0) ? stringAccount : String.format("%s ERR", stringAccount);
     }
 }
