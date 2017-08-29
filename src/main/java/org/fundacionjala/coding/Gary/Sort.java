@@ -11,9 +11,9 @@ public class Sort {
     private String space;
 
     /**
-     * test.
-     * @param chain test.
-     *              test.
+     * constructor for Sort.
+     * @param chain receives the string.
+     *
      */
     public Sort(String chain) {
         this.chain = chain;
@@ -22,8 +22,8 @@ public class Sort {
 
 
     /**
-     *test.
-     * @return test.
+     * highAndLow.
+     * @return numbers sorted.
      */
     public String highAndLow() {
         String[] chain1 = chain.split(space);
@@ -32,7 +32,8 @@ public class Sort {
             numbers[i] = Integer.parseInt(chain1[i]);
         }
         Arrays.sort(numbers);
-        return numbers[numbers.length - 1] + " " + numbers[0];
+        return String.format("%s %s", numbers[numbers.length - 1], numbers[0]);
+
 
     }
 }

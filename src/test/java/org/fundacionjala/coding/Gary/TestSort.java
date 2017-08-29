@@ -12,7 +12,7 @@ import org.junit.Test;
  */
 public class TestSort {
     /**
-     * test.
+     * test for the first case.
      */
     @Test
     public void testFirstCase() {
@@ -21,7 +21,7 @@ public class TestSort {
     }
 
     /**
-     * test.
+     * test for the second case.
      */
     @Test
     public void testSecondCase() {
@@ -30,7 +30,7 @@ public class TestSort {
     }
 
     /**
-     * test.
+     * test for the third case.
      */
     @Test
     public void testThirdCase() {
