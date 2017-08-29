@@ -35,4 +35,9 @@ public class HighAndLowTest {
         assertEquals(5, hi.getHigh());
         assertEquals(-3, hi.getLow());
     }
+
+    
+
+
+
 }

@@ -27,7 +27,6 @@ public class Multiples {
                 sum += i;
             }
         }
-
         return sum;
     }
 }
