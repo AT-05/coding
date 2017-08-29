@@ -91,12 +91,24 @@ public class NumberMap {
             number = number / 10;
             sum = sum + (modNumber * i);
         }
-        /*if(sum % 11==0){
-            return true;
-        }
-        return false;
-*/
+
         return (sum % 11 == 0) ? true : false;
     }
 
+    /**
+     * The function check tipe of number.
+     * @param number code number.
+     * @return if check true.
+     */
+    public String checkFile(String number) {
+        String question = "?";
+        int intIndex = number.indexOf(question);
+        if (intIndex == -1) {
+            if (checkSumCalculation(Integer.parseInt(number))) {
+                return number;
+            }
+            return String.format("%s ERR", number);
+        }
+        return String.format("%s ILL", number);
+    }
 }
