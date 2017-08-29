@@ -2,11 +2,12 @@ package org.fundacionjala.coding.Franco;
 
 import org.junit.Test;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Administrator on 8/25/2017.
@@ -18,17 +19,25 @@ public class AccountNumberTest {
      */
     @Test
     public void testMapEntryOCRToNumber() {
-        List<String> lines = new ArrayList<>();
-        lines.add("    _  _     _  _  _  _  _ ");
-        lines.add("  | _| _||_||_ |_   ||_||_|");
-        lines.add("  ||_  _|  | _||_|  ||_| _|");
+        AccountNumber accountNumber = new AccountNumber();
 
-        AccountNumber accountNumber1 = new AccountNumber();
+        List<String> lines1 = new ArrayList<>();
+        lines1.add("    _  _     _  _  _  _  _ ");
+        lines1.add("  | _| _||_||_ |_   ||_||_|");
+        lines1.add("  ||_  _|  | _||_|  ||_| _|");
 
-        final String actualResult = accountNumber1.mapEntryOCRToNumber(lines);
+        final String actualResult1 = accountNumber.mapEntryOCRToNumber(lines1);
+        final String expectedResult1 = "123456789";
+        assertEquals(expectedResult1, actualResult1);
 
-        final String expectedResult = "123456789";
-        assertEquals(expectedResult, actualResult);
+        List<String> lines2 = new ArrayList<>();
+        lines2.add("    _  _     _  _  _  _  _ ");
+        lines2.add("  | _| _||_||_  _    |_||_|");
+        lines2.add("  ||_  _|  | _||_|  ||_| _|");
+
+        final String actualResult2 = accountNumber.mapEntryOCRToNumber(lines2);
+        final String expectedResult2 = "12345-1-189";
+        assertEquals(expectedResult2, actualResult2);
     }
 
     /**
@@ -40,29 +49,45 @@ public class AccountNumberTest {
         String accountNumber2 = "664371495";
         AccountNumber accountNumber = new AccountNumber();
 
-        final boolean expectedResult1 = true;
-        final boolean actualResult1 = accountNumber.checkSumAccountNumberValidation(accountNumber1);
-        assertEquals(expectedResult1, actualResult1);
+        final boolean actualResult1 = accountNumber.checkSum(accountNumber1);
+        assertTrue(actualResult1);
 
-        final boolean expectedResult2 = false;
-        final boolean actualResult2 = accountNumber.checkSumAccountNumberValidation(accountNumber2);
-        assertEquals(expectedResult2, actualResult2);
+        final boolean actualResult2 = accountNumber.checkSum(accountNumber2);
+        assertFalse(actualResult2);
     }
 
     /**
-     * This method tests parsing of an account number in a file to a list
-     * and a string account number.
-     * @throws IOException in case of wrong reading of file.
+     *
      */
     @Test
-    public void testParsedAccountNumber() throws IOException {
-        String fileName = "C:\\Users\\Administrator\\Desktop\\AccountNumbers.txt";
-        ArrayList<String> lines = new ArrayList<String>();
+    public void testFinding() {
+        AccountNumber accountNumber = new AccountNumber();
 
-        AccountNumber accountNumber1 = new AccountNumber();
+        List<String> lines1 = new ArrayList<>();
+        lines1.add("    _  _     _  _  _  _  _ ");
+        lines1.add("  | _| _||_||_  _    |_||_|");
+        lines1.add("  ||_  _|  | _||_|  ||_| _|");
 
-        String result = accountNumber1.mapEntryOCRToNumber(accountNumber1.parseFile(fileName));
+        final String actualResult1 = accountNumber.finding(accountNumber.mapEntryOCRToNumber(lines1));
+        final String expectedResult1 = "12345??89 ILL";
+        assertEquals(expectedResult1, actualResult1);
 
-        assertEquals("490067715", result);
+        List<String> lines2 = new ArrayList<>();
+        lines2.add("    _  _     _  _  _  _  _ ");
+        lines2.add("  | _| _||_||_ |_   ||_||_|");
+        lines2.add("  ||_  _|  | _||_|  ||_| _|");
+
+        final String actualResult2 = accountNumber.finding(accountNumber.mapEntryOCRToNumber(lines2));
+        final String expectedResult2 = "123456789";
+        assertEquals(expectedResult2, actualResult2);
+
+        List<String> lines3 = new ArrayList<>();
+        lines3.add("    _  _     _  _     _  _ ");
+        lines3.add("  | _| _||_||_ |_   ||_||_|");
+        lines3.add("  ||_  _|  | _||_|  ||_| _|");
+
+        final String actualResult3 = accountNumber.finding(accountNumber.mapEntryOCRToNumber(lines3));
+        final String expectedResult3 = "123456189 ERR";
+        assertEquals(expectedResult3, actualResult3);
     }
 }

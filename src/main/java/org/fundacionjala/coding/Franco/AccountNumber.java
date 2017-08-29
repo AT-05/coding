@@ -1,8 +1,5 @@
 package org.fundacionjala.coding.Franco;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,30 +53,10 @@ public class AccountNumber {
     }
 
     /**
-     * @param fileName is a file with account numbers written in pipes and underscores.
-     * @return list of String contenting pipes and underscores.
-     * @throws IOException in case of invalid filename or file content.
-     */
-    public List<String> parseFile(String fileName) throws IOException {
-        BufferedReader fileBuffer = null;
-        FileReader fileReader = new FileReader(fileName);
-        fileBuffer = new BufferedReader(fileReader);
-        String line = null;
-        ArrayList<String> lines = new ArrayList<String>();
-
-        while ((line = fileBuffer.readLine()) != null) {
-            if (!line.equals("")) {
-                lines.add(line);
-            }
-        }
-        return lines;
-    }
-
-    /**
      * @param accountNumber is formed by 9 numbers.
      * @return whether the account number is valid or not.
      */
-    public boolean checkSumAccountNumberValidation(String accountNumber) {
+    public boolean checkSum(String accountNumber) {
         final String[] numberPosition = accountNumber.split("");
         int checksum = 0;
 
@@ -92,7 +69,33 @@ public class AccountNumber {
             j--;
         }
 
-        boolean result = (checksum % 11 == 0) ? true : false;
+        final boolean result = (checksum % 11 == 0) ? true : false;
         return result;
+    }
+
+    /**
+     * @param accountNumber to evaluate.
+     * @return whether the account number is valida, illegible or does not
+     * complies checksum.
+     */
+    public String finding(String accountNumber) {
+        StringBuilder result = new StringBuilder();
+        int counter = 0;
+
+        final String[] values = accountNumber.split("");
+
+        for (int i = 0; i < values.length; i++) {
+            if (values[i].equals("-")) {
+                result.append("?");
+                i += 1;
+                counter += 1;
+            } else {
+                result.append(values[i]);
+            }
+        }
+
+        final boolean isValid = (counter == 0);
+        result = (isValid) ? ((checkSum(accountNumber)) ? result : result.append(" ERR")) : result.append(" ILL");
+        return result.toString();
     }
 }
