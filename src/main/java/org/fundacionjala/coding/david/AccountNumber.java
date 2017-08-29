@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The AccounNumber class is utilice for Bank.
+ * The AccountNumber class is utilize for Bank.
  */
 public class AccountNumber {
 
