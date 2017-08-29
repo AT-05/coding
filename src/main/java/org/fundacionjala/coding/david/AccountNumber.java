@@ -28,8 +28,7 @@ public class AccountNumber {
     }
 
     /**
-     * Test.
-     *
+     * This method map to number
      * @param listNumber test.
      * @return test.
      */
@@ -64,7 +63,7 @@ public class AccountNumber {
      * @param number string.
      * @return true or false.
      */
-    public boolean validateNumber(String number) {
+    public boolean checkNumber(String number) {
         int numberPosition = 1;
         int sum = 0;
         int posInitial = 8;
@@ -76,7 +75,12 @@ public class AccountNumber {
         return sum % 11 == 0;
     }
 
-    public String verificateNumber(String number) {
+    /**
+     *
+     * @param number
+     * @return
+     */
+    public String scannNumber(String number) {
         String message = "";
         StringBuilder numberString = new StringBuilder();
         int status = 1;
@@ -92,7 +96,7 @@ public class AccountNumber {
                 }
             }
 
-        message = (status == 1) ? (validateNumber(numberString.toString())? numberString.toString():numberString.toString().concat(" ERR")) : message;
+        message = (status == 1) ? (checkNumber(numberString.toString())? numberString.toString():numberString.toString().concat(" ERR")) : message;
         message = (status == 2) ? numberString.toString().concat(" ILL") : message;
       
         return message;

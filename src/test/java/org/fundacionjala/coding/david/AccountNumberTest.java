@@ -33,7 +33,7 @@ public class AccountNumberTest {
     {
         AccountNumber accountNumber = new AccountNumber();
         String number = "457508000";
-       boolean actualResul= accountNumber.validateNumber(number);
+       boolean actualResul= accountNumber.checkNumber(number);
         boolean expectedResult=true;
         assertEquals(expectedResult, actualResul);
     }
@@ -42,7 +42,7 @@ public class AccountNumberTest {
     {
         AccountNumber accountNumber = new AccountNumber();
         String number = "664371495";
-        String actualResul= accountNumber.verificateNumber(number);
+        String actualResul= accountNumber.scannNumber(number);
         String expectedResult="664371495 ERR";
         assertEquals(expectedResult, actualResul);
     }
