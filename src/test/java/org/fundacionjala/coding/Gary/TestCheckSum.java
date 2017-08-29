@@ -3,6 +3,7 @@ package org.fundacionjala.coding.Gary; /**
  */
 
 
+import org.junit.Before;
 import org.junit.Test;
 
 
@@ -13,23 +14,44 @@ import static org.junit.Assert.assertFalse;
  * TestCheckSum.
  */
 public class TestCheckSum {
+
+    private CheckSum checkSum;
+
+    /**
+     * setup.
+     */
+    @Before
+    public void setup() {
+        checkSum = new CheckSum();
+    }
+
     /**
      * testCheckSum1.
      */
     @Test
     public void testCheckSumFirst() {
         String chain = "4003301018398";
-        CheckSum checkSum = new CheckSum();
         assertTrue(checkSum.checkSum1(chain));
 
     }
+
     /**
      * testCheckSumOtherCase.
      */
     @Test
     public void testCheckSumSecond() {
         String chain = "4003301018392";
-        CheckSum checkSum = new CheckSum();
+        assertFalse(checkSum.checkSum1(chain));
+
+    }
+
+
+    /**
+     * testCheckSumOtherCase.
+     */
+    @Test
+    public void testCheckSumThird() {
+        String chain = "400330101839";
         assertFalse(checkSum.checkSum1(chain));
 
     }
