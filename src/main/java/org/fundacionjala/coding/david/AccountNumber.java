@@ -46,7 +46,7 @@ public class AccountNumber {
     }
 
     /**
-     * this methos realize compare with number one.
+     * this method realize compare with number one.
      *
      * @param numero string.
      * @return one number comparative.
@@ -58,5 +58,43 @@ public class AccountNumber {
             }
         }
         return -1;
+    }
+
+    /**
+     * @param number string.
+     * @return true or false.
+     */
+    public boolean validateNumber(String number) {
+        int numberPosition = 1;
+        int sum = 0;
+        int posInitial = 8;
+        int posEnd = 9;
+        for (int i = 9; i > 0; i--, posInitial--, posEnd--, numberPosition++) {
+            int numberAux = Integer.parseInt(number.substring(posInitial, posEnd));
+            sum = sum + (numberAux * numberPosition);
+        }
+        return sum % 11 == 0;
+    }
+
+    public String verificateNumber(String number) {
+        String message = "";
+        StringBuilder numberString = new StringBuilder();
+        int status = 1;
+            int posInitial = 0;
+            int posEnd = 1;
+            for (int i = 1; i <= 9; i++, posInitial++, posEnd++) {
+                String numberAux = number.substring(posInitial, posEnd);
+                if (numberAux.matches("[+-]?\\d*(\\.\\d+)?") && numberAux.equals("") == false) {
+                    numberString.append(numberAux);
+                } else {
+                    status = 2;
+                    numberString.append("?");
+                }
+            }
+
+        message = (status == 1) ? (validateNumber(numberString.toString())? numberString.toString():numberString.toString().concat(" ERR")) : message;
+        message = (status == 2) ? numberString.toString().concat(" ILL") : message;
+      
+        return message;
     }
 }
