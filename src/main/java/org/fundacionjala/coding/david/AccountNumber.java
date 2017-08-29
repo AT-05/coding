@@ -46,7 +46,6 @@ public class AccountNumber {
 
     /**
      * this method realize compare with number one.
-     *
      * @param numero string.
      * @return one number comparative.
      */
@@ -76,7 +75,6 @@ public class AccountNumber {
     }
 
     /**
-     *
      * @param number
      * @return
      */

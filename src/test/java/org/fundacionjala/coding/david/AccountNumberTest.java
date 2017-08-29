@@ -28,6 +28,9 @@ public class AccountNumberTest {
         assertEquals(expectedResult, actualResul1);
     }
 
+    /**
+     * This method check number
+     */
     @Test
     public void validateNumberTest()
     {
