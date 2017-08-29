@@ -1,21 +1,38 @@
-/**
+package org.fundacionjala.coding.Gary; /**
  * Created by Gary on 29/8/2017.
  */
 
 
-
-
-import com.company.CheckSum;
 import org.junit.Test;
-import org.junit.Assert;
-public class testCheckSum {
 
+
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
+
+/**
+ * TestCheckSum.
+ */
+public class TestCheckSum {
+    /**
+     * testCheckSum1.
+     */
     @Test
-    public void testCheckSum()
-    {String chain="4003301018398";
-
-    Assert.assertTrue(CheckSum.checkSum1(chain));
+    public void testCheckSumFirst() {
+        String chain = "4003301018398";
+        CheckSum checkSum = new CheckSum();
+        assertTrue(checkSum.checkSum1(chain));
 
     }
+    /**
+     * testCheckSumOtherCase.
+     */
+    @Test
+    public void testCheckSumSecond() {
+        String chain = "4003301018392";
+        CheckSum checkSum = new CheckSum();
+        assertFalse(checkSum.checkSum1(chain));
+
+    }
+
 
 }

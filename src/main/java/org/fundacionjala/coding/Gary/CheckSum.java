@@ -1,4 +1,4 @@
-package com.company;
+package org.fundacionjala.coding.Gary;
 
 import java.util.stream.Stream;
 
@@ -6,26 +6,27 @@ import java.util.stream.Stream;
  * Created by Gary on 29/8/2017.
  */
 public class CheckSum {
-
-
-    public static boolean checkSum1(String chain1) {
-        int result1 = 0, result2 = 0;
-
-
+    private static final int NUMBER_SIZE = 1;
+    private static final int NUMBER_EVEN = 3;
+    private static final int NUMBER_MODULE = 10;
+    /**
+     * checkSum compare the numbers.
+     *
+     * @param chain1 chain.
+     * @return checkSum boolean.
+     */
+    public boolean checkSum1(String chain1) {
+        int result1 = 0;
         int[] numbers = Stream.of(chain1.split("")).mapToInt(Integer::parseInt).toArray();
-        int check = 0;
-        for (int i = 0; i < numbers.length - 1; i++) {
+        for (int position = 0; position < numbers.length - NUMBER_SIZE; position++) {
 
-            if (i + 1 % 2 == 0) {
-                result1 += numbers[i] * 3;
+            if (position + NUMBER_SIZE % 2 == 0) {
+                result1 += numbers[position] * NUMBER_EVEN;
             } else {
-                result1 += numbers[i] * 1;
+                result1 += numbers[position];
             }
         }
-
-
-        int checksum = (result1 % 10 == 0) ? 0 : 10 - (result1) % 10;
-
-        return checksum == numbers.length;
+        int checksum = (result1 % NUMBER_MODULE == 0) ? 0 : NUMBER_MODULE - (result1) % NUMBER_MODULE;
+        return checksum == numbers[numbers.length - NUMBER_SIZE];
     }
 }
