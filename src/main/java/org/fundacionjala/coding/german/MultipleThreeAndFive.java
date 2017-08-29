@@ -5,12 +5,7 @@ package org.fundacionjala.coding.german;
  */
 public class MultipleThreeAndFive {
 
-    /**
-     *
-     */
-    public MultipleThreeAndFive() {
 
-    }
 
     /**
      *

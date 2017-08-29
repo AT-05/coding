@@ -11,8 +11,8 @@ public class HighAndLow {
 
     /**
      *
-     *  @param numbers **this is id of table**
-     * @return <code>String</code>
+     *  @param numbers String
+     * @return String
      */
 
     public String highAndLow(String numbers) {
