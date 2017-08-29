@@ -12,8 +12,12 @@ import static org.junit.Assert.assertEquals;
  * Created by Administrator on 8/25/2017.
  */
 public class AccountNumberTest {
+    /**
+     * This method tests mapping of a number given
+     * in pipes and underscores to string of digits.
+     */
     @Test
-    public void testMapEntryOCRToNumber(){
+    public void testMapEntryOCRToNumber() {
         List<String> lines = new ArrayList<>();
         lines.add("    _  _     _  _  _  _  _ ");
         lines.add("  | _| _||_||_ |_   ||_||_|");
@@ -27,6 +31,29 @@ public class AccountNumberTest {
         assertEquals(expectedResult, actualResult);
     }
 
+    /**
+     * This method tests validation of account number.
+     */
+    @Test
+    public void testCheckSumAccountNumberValidation() {
+        String accountNumber1 = "345882865";
+        String accountNumber2 = "664371495";
+        AccountNumber accountNumber = new AccountNumber();
+
+        final boolean expectedResult1 = true;
+        final boolean actualResult1 = accountNumber.checkSumAccountNumberValidation(accountNumber1);
+        assertEquals(expectedResult1, actualResult1);
+
+        final boolean expectedResult2 = false;
+        final boolean actualResult2 = accountNumber.checkSumAccountNumberValidation(accountNumber2);
+        assertEquals(expectedResult2, actualResult2);
+    }
+
+    /**
+     * This method tests parsing of an account number in a file to a list
+     * and a string account number.
+     * @throws IOException in case of wrong reading of file.
+     */
     @Test
     public void testParsedAccountNumber() throws IOException {
         String fileName = "C:\\Users\\Administrator\\Desktop\\AccountNumbers.txt";
