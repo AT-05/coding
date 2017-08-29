@@ -86,14 +86,10 @@ public class Ocr {
 
         }
         check = check % 11;
-        if(check==0)
-        {
+        if (check == 0) {
             return true;
-        }else
-        {
-            return false;
         }
-
+        return false;
     }
 
 
