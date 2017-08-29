@@ -11,7 +11,7 @@ public class Ocr {
     private static final int NUMBER_SIZE_1 = 3;
     private static final int NUMBER_SIZE_2 = 9;
     private static final int NUMBER_SIZE_3 = 1;
-
+    private static final int NUMBER_SIZE_4 = 27;
 
     static {
         NUMBERS.add(" _ | ||_|");
@@ -46,7 +46,7 @@ public class Ocr {
     public String bankOcr(String line1, String line2, String line3) {
         StringBuilder result = new StringBuilder();
 
-        for (int position = 0; position < 27; position += NUMBER_SIZE_1) {
+        for (int position = 0; position < NUMBER_SIZE_4; position += NUMBER_SIZE_1) {
 
             String eachNumber = line1.substring(position, position + NUMBER_SIZE_1)
                     .concat(line2.substring(position, position + NUMBER_SIZE_1))
@@ -78,15 +78,22 @@ public class Ocr {
      * @param accountNumber string number.
      * @return check checks the account.
      */
-    public int checkSum(String accountNumber) {
+    public boolean checkSum(String accountNumber) {
         int check = 0;
         for (int i = 0; i < accountNumber.length(); i++) {
 
-            check += (NUMBER_SIZE_2 - i) * (Integer.parseInt(accountNumber.substring(i, i + NUMBER_SIZE_3)));
+            check += (NUMBER_SIZE_2 - i) * Integer.parseInt(accountNumber.substring(i, i + NUMBER_SIZE_3));
 
         }
         check = check % 11;
-        return check;
+        if(check==0)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
+
     }
 
 

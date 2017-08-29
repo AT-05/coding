@@ -7,6 +7,8 @@ package org.fundacionjala.coding; /**
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * test class of Ocr.
@@ -49,7 +51,7 @@ public class OcrTest {
      */
     @Test
     public void testcheckSum() {
-        int check;
+        boolean check;
         String result = "";
         String line1 = "    _  _     _  _  _  _  _ ";
         String line2 = "|_| _| _||_||_ |_ |_||_||_|";
@@ -58,7 +60,7 @@ public class OcrTest {
         Ocr numbers = new Ocr();
         result = numbers.bankOcr(line1, line2, line3);
         check = numbers.checkSum(result);
-        assertEquals(8, check);
+        assertFalse(check);
 
     }
     /**
@@ -66,7 +68,7 @@ public class OcrTest {
      */
     @Test
     public void testcheckSumCase2() {
-        int check;
+        boolean check;
         String result = "";
         String line1 = " _     _  _  _  _  _  _  _ ";
         String line2 = " _||_||_ |_||_| _||_||_ |_ ";
@@ -75,7 +77,7 @@ public class OcrTest {
         Ocr numbers = new Ocr();
         result = numbers.bankOcr(line1, line2, line3);
         check = numbers.checkSum(result);
-        assertEquals(0, check);
+        assertTrue(check);
 
     }
 
