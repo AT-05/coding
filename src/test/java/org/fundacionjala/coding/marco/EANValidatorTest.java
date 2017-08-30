@@ -11,15 +11,23 @@ import static org.junit.Assert.assertTrue;
  */
 public class EANValidatorTest {
     /**
-     * Test.
+     * Test answer false true.
      */
     @Test
-    public void testEAN() {
+    public void testEANTrue() {
         EANValidator validator = new EANValidator();
-        assertTrue(validator.validator("4003301018398")); // True
-        assertFalse(validator.validator("4003301018392")); // False
-
+        String valor = "4003301018398";
+        assertTrue(validator.validator(valor)); // True
     }
 
+    /**
+     * Test answer false.
+     */
+    @Test
+    public void testEANFalse() {
+        EANValidator validator = new EANValidator();
+        String valor = "4003301018392";
+        assertFalse(validator.validator(valor)); // False
+    }
 
 }
