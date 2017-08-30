@@ -69,7 +69,7 @@ public class Ocr {
             }
         }
 
-        return 0;
+        return -1;
     }
 
     /**
@@ -85,11 +85,8 @@ public class Ocr {
             check += (NUMBER_SIZE_2 - i) * Integer.parseInt(accountNumber.substring(i, i + NUMBER_SIZE_3));
 
         }
-        check = check % 11;
-        if (check == 0) {
-            return true;
-        }
-        return false;
+
+        return check % 11 == 0;
     }
 
 
