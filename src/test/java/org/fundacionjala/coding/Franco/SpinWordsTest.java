@@ -2,12 +2,15 @@ package org.fundacionjala.coding.Franco;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Administrator on 8/29/2017.
  */
 public class SpinWordsTest {
+    /**
+     * This method tests results of spinWord method results.
+     */
     @Test
     public void testSpinWord() {
         SpinWords spinWords1 = new SpinWords();
@@ -24,5 +27,4 @@ public class SpinWordsTest {
         final String actualResult3 = spinWords1.fillString(spinWords1.spinWord("This is another test"));
         assertEquals(expectedResult3, actualResult3);
     }
-
 }
