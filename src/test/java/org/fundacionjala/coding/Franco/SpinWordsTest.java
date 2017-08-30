@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class SpinWordsTest {
     /**
-     * This method tests results of spinWord method results.
+     * This method tests results of spinWord method.
      */
     @Test
     public void testSpinWord() {

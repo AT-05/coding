@@ -7,7 +7,7 @@ public class SpinWords {
     private static final int MAX_LETTERS = 5;
 
     /**
-     * This method reverses words from a sentence that larger than 5 letters.
+     * This method reverses words from a sentence which are larger than 5 letters.
      *
      * @param stringOfWords is a sentence.
      * @return sentence with larger than 5 letter words reversed.
