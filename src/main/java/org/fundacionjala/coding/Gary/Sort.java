@@ -8,7 +8,7 @@ import java.util.Arrays;
  */
 public class Sort {
     private String chain;
-    private String space;
+    private static final String SPACE = "[ ]+";
     private static final int MULTI_5 = 5;
     private static final int MULTI_3 = 3;
 
@@ -19,7 +19,7 @@ public class Sort {
      */
     public Sort(String chain) {
         this.chain = chain;
-        space = "[ ]+";
+
     }
 
 
@@ -29,7 +29,7 @@ public class Sort {
      * @return numbers sorted.
      */
     public String highAndLow() {
-        String[] chain1 = chain.split(space);
+        String[] chain1 = chain.split(SPACE);
         int[] numbers = new int[chain1.length];
         for (int i = 0; i < chain1.length; i++) {
             numbers[i] = Integer.parseInt(chain1[i]);
