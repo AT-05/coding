@@ -87,31 +87,33 @@ public class AccountNumber {
      */
     public String scannNumber(String number) {
         String message = "";
+        String[] listNumber = number.split("");
+        StringBuilder numberError = new StringBuilder();
         StringBuilder numberString = new StringBuilder();
         int status = 1;
-        int posInitial = 0;
-        int posEnd = 1;
-        String numberAux = "";
-        for (int i = 1; i <= number.length(); i++, posInitial++, posEnd++) {
-            if (number.substring(posInitial, posEnd) != "-") {
-                numberAux = number.substring(posInitial, posEnd);
-                numberString.append(numberAux);
-            } else {
-                posInitial++;
-                posEnd++;
+        for (int i = 0; i < listNumber.length; i++) {
+            //  String numberAux = number.substring(posInitial, posEnd).toString();
+            if (listNumber[i].toString().equals("-")) {
+                i++;
                 status = 2;
                 numberString.append("?");
+            } else {
+                numberString.append(listNumber[i].toString());
             }
+            numberError.append(listNumber[i]);
         }
-        if (checkNumber(numberString.toString())==false) {
+        boolean checkNumber = checkNumber(numberError.toString());
+        if (checkNumber || status == 2) {
+            if (status == 2) {
+                message = numberString.toString().concat(" ILL");
+            } else if (status == 1) {
+                message = numberString.toString();
+            }
+        } else {
             message = numberString.toString().concat(" ERR");
-
-        } else if (status == 1) {
-            message = numberString.toString();
-        } else if (status == 2) {
-            message = numberString.toString().concat(" ILL");
         }
 
         return message;
     }
+
 }
