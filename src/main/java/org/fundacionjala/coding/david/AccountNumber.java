@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The AccounNumber class is utilice for Bank.
+ * The AccountNumber class is utilize for Bank.
  */
+
 public class AccountNumber {
 
     private static final int NUMBER_SIZE = 3;
@@ -28,7 +29,8 @@ public class AccountNumber {
     }
 
     /**
-     * This method map to number
+     * This method map to number.
+     *
      * @param listNumber test.
      * @return test.
      */
@@ -46,6 +48,7 @@ public class AccountNumber {
 
     /**
      * this method realize compare with number one.
+     *
      * @param numero string.
      * @return one number comparative.
      */
@@ -59,6 +62,8 @@ public class AccountNumber {
     }
 
     /**
+     * This method realize check number.
+     *
      * @param number string.
      * @return true or false.
      */
@@ -75,28 +80,38 @@ public class AccountNumber {
     }
 
     /**
-     * @param number
-     * @return
+     * This method realize Scann number.
+     *
+     * @param number is one number.
+     * @return one value.
      */
     public String scannNumber(String number) {
         String message = "";
         StringBuilder numberString = new StringBuilder();
         int status = 1;
-            int posInitial = 0;
-            int posEnd = 1;
-            for (int i = 1; i <= 9; i++, posInitial++, posEnd++) {
-                String numberAux = number.substring(posInitial, posEnd);
-                if (numberAux.matches("[+-]?\\d*(\\.\\d+)?") && numberAux.equals("") == false) {
-                    numberString.append(numberAux);
-                } else {
-                    status = 2;
-                    numberString.append("?");
-                }
+        int posInitial = 0;
+        int posEnd = 1;
+        String numberAux = "";
+        for (int i = 1; i <= number.length(); i++, posInitial++, posEnd++) {
+            if (number.substring(posInitial, posEnd) != "-") {
+                numberAux = number.substring(posInitial, posEnd);
+                numberString.append(numberAux);
+            } else {
+                posInitial++;
+                posEnd++;
+                status = 2;
+                numberString.append("?");
             }
+        }
+        if (checkNumber(numberString.toString())==false) {
+            message = numberString.toString().concat(" ERR");
 
-        message = (status == 1) ? (checkNumber(numberString.toString())? numberString.toString():numberString.toString().concat(" ERR")) : message;
-        message = (status == 2) ? numberString.toString().concat(" ILL") : message;
-      
+        } else if (status == 1) {
+            message = numberString.toString();
+        } else if (status == 2) {
+            message = numberString.toString().concat(" ILL");
+        }
+
         return message;
     }
 }
