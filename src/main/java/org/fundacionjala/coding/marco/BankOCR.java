@@ -15,6 +15,11 @@ public class BankOCR {
     public static final int ENTRY_SIZE = 27;
 
     public static final int NUMBER_SIZE = 3;
+    public static final int EIGHT = 8;
+    public static final int ELEVEN = 11;
+    public static final int ZERO = 0;
+    public static final int ONE = 1;
+    public static final int TWO = 2;
 
     static {
         NUMBER_MAP.put("     |  |", 1);
@@ -58,5 +63,19 @@ public class BankOCR {
 
         }
         return result.toString();
+    }
+
+    /**
+     * This is the story 2 of bank OCR.
+     *
+     * @param number test.
+     * @return test.
+     */
+    public boolean storyTwo(String number) {
+        int pos = EIGHT, result = Integer.parseInt(number.substring(pos, pos + ONE)) * ONE;
+        for (int i = TWO; i < number.length() + ONE; i++, pos--) {
+            result = result + Integer.parseInt(number.substring(pos, pos + ONE)) * i;
+        }
+        return result % ELEVEN == ZERO;
     }
 }
