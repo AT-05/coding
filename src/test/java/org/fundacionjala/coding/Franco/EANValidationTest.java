@@ -1,6 +1,8 @@
 package org.fundacionjala.coding.Franco;
 
+import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -8,17 +10,34 @@ import static org.junit.Assert.assertTrue;
  * Created by Administrator on 8/29/2017.
  */
 public class EANValidationTest {
+
+    private EANValidation eanValidation;
+
     /**
-     * This method test outputs of checksumValidation method.
+     * This method tests creation ob Object eanValidation.
+     */
+    @Before
+    public void setUp() {
+        eanValidation = new EANValidation();
+    }
+
+    /**
+     * This method tests for invalid EAN checksum.
      */
     @Test
-    public void testChecksumValidation() {
-        EANValidation eanValidation = new EANValidation();
+    public void testChecksumValidationIsFalse() {
 
-        final boolean actualResult1 = eanValidation.checksumValidation("4003301018392");
-        assertFalse(actualResult1);
+        final boolean actualResult = eanValidation.checksumValidation("4003301018392");
+        assertFalse(actualResult);
+    }
 
-        final boolean actualResult2 = eanValidation.checksumValidation("4003301018398");
-        assertTrue(actualResult2);
+    /**
+     * This method tests for valid EAN checksum.
+     */
+    @Test
+    public void testChecksumValidationIsTrue() {
+
+        final boolean actualResult = eanValidation.checksumValidation("4003301018398");
+        assertTrue(actualResult);
     }
 }
