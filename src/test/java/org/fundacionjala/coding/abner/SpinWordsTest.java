@@ -1,5 +1,4 @@
 package org.fundacionjala.coding.abner;
-
 import static junit.framework.TestCase.assertEquals;
 import org.junit.Test;
 
