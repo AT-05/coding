@@ -24,10 +24,10 @@ public class EANValidator {
         int[] vector = Stream.of(valor.split("")).mapToInt(Integer::parseInt).toArray();
         int sum = ZERO;
         for (int i = ZERO; i < vector.length - ONE; i++) {
-            sum += i + ONE % TWO == ZERO ? vector[i] * THREE : vector[i];
+            sum += (i + ONE) % TWO == ZERO ? vector[i] * THREE : vector[i];
         }
         int checkSum = sum % TEN == ZERO ? ZERO : TEN - sum % TEN;
-        return (checkSum == vector[vector.length - ONE]);
+        return checkSum == vector[vector.length - ONE];
     }
 
 }
