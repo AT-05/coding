@@ -24,8 +24,9 @@ public class SpinWordsTest {
      */
     @Test
     public void testSpinTwoWords() {
-        String expectResult = kata4.spindWord("Hey fellow warriors");
-        assertEquals("Hey wollef sroirraw", expectResult);
+        final String actualResult = kata4.spinWord("Hey fellow warriors");
+        final String expectedResult = "Hey wollef sroirraw";
+        assertEquals(expectedResult, actualResult);
     }
 
     /**
@@ -33,8 +34,9 @@ public class SpinWordsTest {
      */
     @Test
     public void testSpinOneWord() {
-        String expectResult = kata4.spindWord("This is another test");
-        assertEquals("This is rehtona test", expectResult);
+        final String actualResult = kata4.spinWord("This is another test");
+        final String expectedResult = "This is rehtona test";
+        assertEquals(expectedResult, actualResult);
     }
 
     /**
@@ -42,7 +44,8 @@ public class SpinWordsTest {
      */
     @Test
     public void testSpinNoneWord() {
-        String expectResult = kata4.spindWord("This is a test");
-        assertEquals("This is a test", expectResult);
+        final String actualResult = kata4.spinWord("This is a test");
+        final String expectedResult = "This is a test";
+        assertEquals(expectedResult, actualResult);
     }
 }
