@@ -1,13 +1,12 @@
 package org.fundacionjala.coding.david;
 
 /**
- ** The class scanner word and reversed.
+ * * The class scanner word and reversed.
  */
 public class ReverseWords {
 
     /**
      * This method realize reverse of words.
-     *
      * @param words String.
      * @return One word reverse.
      */
