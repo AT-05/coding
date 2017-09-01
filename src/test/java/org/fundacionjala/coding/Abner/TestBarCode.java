@@ -28,6 +28,7 @@ public class TestBarCode {
      */
     @Test
     public void testChecksumTrue() {
+
         assertEquals(true, barCode.checkCodeBar("4003301018398"));
     }
 
@@ -36,7 +37,19 @@ public class TestBarCode {
      */
 
     @Test
+    public void testChecksumFalse() {
+
+        assertEquals(false, barCode.checkCodeBar("4003301018392"));
+    }
+
+
+    /**
+     * The function testing the number  4003301018390.
+     */
+
+    @Test
     public void testChecksumFalseWitZero() {
+
         assertEquals(false, barCode.checkCodeBar("4003301018390"));
     }
 
