@@ -7,11 +7,11 @@ import java.util.stream.Stream;
  */
 public class EANValidation {
 
-    public static final int CONST_TEN = 10;
-    public static final int CONST_ONE = 1;
-    public static final int COMPARATOR = 2;
-    public static final int CONST_THREE = 3;
-    public static final int CONST_ZERO = 0;
+    private static final int CONST_TEN = 10;
+    private static final int CONST_ONE = 1;
+    private static final int COMPARATOR = 2;
+    private static final int CONST_THREE = 3;
+    private static final int CONST_ZERO = 0;
 
     /**
      * @param chainOfNumbers is an European Article Number.
@@ -19,7 +19,9 @@ public class EANValidation {
      * is the same as its last digit.
      */
     public boolean checksumValidation(String chainOfNumbers) {
-        final int[] numbers = Stream.of(chainOfNumbers.split("")).mapToInt(Integer::parseInt).toArray();
+        final int[] numbers = Stream.of(chainOfNumbers.split(""))
+                .mapToInt(Integer::parseInt)
+                .toArray();
         int totalSum = 0;
         for (int i = 0; i < numbers.length - 1; i++) {
             totalSum += (i + CONST_ONE) % COMPARATOR == CONST_ZERO ? numbers[i] * CONST_THREE : numbers[i];

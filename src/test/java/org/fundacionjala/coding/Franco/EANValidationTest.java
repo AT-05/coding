@@ -40,4 +40,14 @@ public class EANValidationTest {
         final boolean actualResult = eanValidation.checksumValidation("4003301018398");
         assertTrue(actualResult);
     }
+
+    /**
+     * This method tests for valid EAN checksum equals Zero.
+     */
+    @Test
+    public void testChecksumValidationIsTrueOnZeroChecksumValue() {
+
+        final boolean actualResult = eanValidation.checksumValidation("9783827317100");
+        assertTrue(actualResult);
+    }
 }
