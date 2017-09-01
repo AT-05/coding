@@ -1,7 +1,6 @@
 package org.fundacionjala.coding.Marco;
 
 import java.util.Arrays;
-import java.util.Queue;
 
 /**
  * This kata was made by marco mendez august 29, 2017.
