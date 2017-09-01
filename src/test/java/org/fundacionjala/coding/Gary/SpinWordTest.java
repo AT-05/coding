@@ -9,26 +9,26 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by Gary on 29/8/2017.
  */
-public class TestSpin {
-    private Spin spin;
+public class SpinWordTest {
+
+    private SpinWord spinWord;
 
     /**
      * setup.
      */
     @Before
     public void setup() {
-        spin = new Spin();
+        spinWord = new SpinWord();
     }
-
 
     /**
      * test first case.
      */
     @Test
-    public void testSpindWordsCaseOne() {
+    public void testSpinWordsCaseOne() {
 
-        String expectedResult = "Hey wollef sroirraw";
-        String actualResult = spin.spinWords("Hey fellow warriors");
+        final String expectedResult = "Hey wollef sroirraw";
+        final String actualResult = spinWord.spinWords("Hey fellow warriors");
         assertEquals(expectedResult, actualResult);
     }
 
@@ -36,10 +36,10 @@ public class TestSpin {
      * test second case.
      */
     @Test
-    public void testSpindWordsSecondCase() {
+    public void testSpinWordsSecondCase() {
 
-        String expectedResult = "This is a test";
-        String actualResult = spin.spinWords("This is a test");
+        final String expectedResult = "This is a test";
+        final String actualResult = spinWord.spinWords("This is a test");
         assertEquals(expectedResult, actualResult);
     }
 
@@ -47,15 +47,11 @@ public class TestSpin {
      * test third case.
      */
     @Test
-    public void testSpindWordsThirdCase() {
+    public void testSpinWordsThirdCase() {
 
-        String expectedResult = "This is rehtona test";
-        String actualResult = spin.spinWords("This is another test");
+        final String expectedResult = "This is rehtona test";
+        final String actualResult = spinWord.spinWords("This is another test");
         assertEquals(expectedResult, actualResult);
     }
 
-
 }
-
-
-
