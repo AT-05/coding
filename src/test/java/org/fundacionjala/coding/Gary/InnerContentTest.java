@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by Gary on 30/8/2017.
  */
-public class TestInnerContent {
+public class InnerContentTest {
     private InnerContent spin;
 
     /**
@@ -19,15 +19,14 @@ public class TestInnerContent {
         spin = new InnerContent();
     }
 
-
     /**
      * test first case.
      */
     @Test
     public void testInnerContentCaseOne() {
 
-        String expectedResult = "srot the inner ctonnet in dsnnieedcg oredr";
-        String actualResult = spin.innerSort("sort the inner content in descending order");
+        final String expectedResult = "srot the inner ctonnet in dsnnieedcg oredr";
+        final String actualResult = spin.innerSort("sort the inner content in descending order");
         assertEquals(expectedResult, actualResult);
     }
 
@@ -37,8 +36,8 @@ public class TestInnerContent {
     @Test
     public void testInnerContentSecondCase() {
 
-        String expectedResult = "wiat for me";
-        String actualResult = spin.innerSort("wait for me");
+        final String expectedResult = "wiat for me";
+        final String actualResult = spin.innerSort("wait for me");
         assertEquals(expectedResult, actualResult);
     }
 
@@ -48,8 +47,8 @@ public class TestInnerContent {
     @Test
     public void testInnerContentThirdCase() {
 
-        String expectedResult = "tihs ktaa is esay";
-        String actualResult = spin.innerSort("this kata is easy");
+        final String expectedResult = "tihs ktaa is esay";
+        final String actualResult = spin.innerSort("this kata is easy");
         assertEquals(expectedResult, actualResult);
     }
 
@@ -59,8 +58,8 @@ public class TestInnerContent {
     @Test
     public void testInnerContentFourthCase() {
 
-        String expectedResult = "I am";
-        String actualResult = spin.innerSort("I am");
+        final String expectedResult = "I am";
+        final String actualResult = spin.innerSort("I am");
         assertEquals(expectedResult, actualResult);
     }
 

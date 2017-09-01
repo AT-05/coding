@@ -5,7 +5,6 @@ package org.fundacionjala.coding.Gary;
  */
 public class InnerContent {
     private static final String DELIMITER = " ";
-    private String[] separateWords;
 
     /**
      * the method that converts.
@@ -14,8 +13,7 @@ public class InnerContent {
      * @return converted chain.
      */
     public String innerSort(String chain) {
-        separateWords = new String[]{};
-        separateWords = chain.split(DELIMITER);
+        String[] separateWords = chain.split(DELIMITER);
         for (int position = 0; position < separateWords.length; position++) {
 
             if (separateWords[position].length() >= 3) {
