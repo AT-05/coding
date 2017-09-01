@@ -1,6 +1,7 @@
 package org.fundacionjala.coding.Marco;
 
 import java.util.Arrays;
+import java.util.Queue;
 
 /**
  * This kata was made by marco mendez august 29, 2017.
@@ -9,6 +10,8 @@ public class SortInnerContent {
 
     public static final int ZERO = 0;
     public static final int ONE = 1;
+    public static final String QUOTE_SPACE = " ";
+    public static final String REGEX = "";
 
     /**
      * This method do the convect of a string.
@@ -17,7 +20,7 @@ public class SortInnerContent {
      * @return test.
      */
     public String sortInnerContent(String string) {
-        String[] world = string.split(" ");
+        String[] world = string.split(QUOTE_SPACE);
         StringBuilder result = new StringBuilder();
         for (String value : world) {
             if (value.length() == ONE) {
@@ -25,11 +28,11 @@ public class SortInnerContent {
                 result.append(" ");
             } else {
                 result.append(value.substring(ZERO, ONE));
-                String[] aux = value.substring(1, value.length() - ONE).split("");
+                String[] aux = value.substring(1, value.length() - ONE).split(REGEX);
                 Arrays.sort(aux);
-                result.append((new StringBuffer(string.join("", aux)).reverse().toString()));
+                result.append((new StringBuffer(string.join(REGEX, aux)).reverse().toString()));
                 result.append(value.substring(value.length() - ONE, value.length()));
-                result.append(" ");
+                result.append(QUOTE_SPACE);
             }
 
         }
