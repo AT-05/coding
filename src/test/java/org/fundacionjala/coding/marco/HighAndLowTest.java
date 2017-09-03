@@ -1,4 +1,4 @@
-package org.fundacionjala.coding.Marco_Kata1and2;
+package org.fundacionjala.coding.marco;
 
 import org.junit.Before;
 import org.junit.Test;
