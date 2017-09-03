@@ -16,7 +16,7 @@ public class Kata6Test {
      * This method execute before any test.
      */
     @Before
-    public void setup() {
+    public void setUp() {
         eanValidator = new Kata6();
     }
 
@@ -25,7 +25,7 @@ public class Kata6Test {
      */
     @Test
     public void testValidateEAN() {
-        boolean expectResult = eanValidator.validate("4003301018398");
+        final boolean expectResult = eanValidator.validate("4003301018398");
         assertTrue(expectResult);
     }
 
@@ -34,7 +34,7 @@ public class Kata6Test {
      */
     @Test
     public void testInvalidateEAN() {
-        boolean expectResult = eanValidator.validate("4003301018392");
+        final boolean expectResult = eanValidator.validate("4003301018392");
         assertFalse(expectResult);
     }
 
@@ -43,7 +43,7 @@ public class Kata6Test {
      */
     @Test
     public void testWithTwelveNumbersInvalidateEAN() {
-        boolean expectResult = eanValidator.validate("400330101839");
+        final boolean expectResult = eanValidator.validate("400330101839");
         assertFalse(expectResult);
     }
 }
