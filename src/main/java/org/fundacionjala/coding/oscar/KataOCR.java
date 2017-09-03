@@ -30,52 +30,54 @@ public class KataOCR {
      * If it is not possible to recognize the number, return "?"
      *
      * @param numberScan this is the string of the number scanned.
-     * @return the number in integer.
+     * @return the number or ?.
      */
     public String returnNumberOfStringMap(String numberScan) {
-        String number = "?";
-        for (Map.Entry<String, Integer> entry : NUMBER_MAP.entrySet()) {
-            if (entry.getKey().equals(numberScan)) {
-                number = entry.getValue().toString();
-            }
-        }
-        return number;
+        return NUMBER_MAP.containsKey(numberScan) ? NUMBER_MAP.get(numberScan).toString() : "?";
     }
 
     /**
      * This function compare the number scanned with the key of the map
      * and return the account number.
-     * If the account is not readable, add the letters ILL
      *
      * @param account is the string of the account.
      * @return the account number.
      */
     public String scanString(String account) {
         StringBuilder numberInt = new StringBuilder();
-        StringBuilder sb;
         for (int index = 0; index <= ACCOUNT_LENGTH - 3; index += NUMBER_SIZE) {
-            sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.append(account.substring(index, index + NUMBER_SIZE))
                     .append(account.substring(index + ACCOUNT_LENGTH, index + ACCOUNT_LENGTH + NUMBER_SIZE))
                     .append(account.substring(index + ACCOUNT_LENGTH * 2, index + ACCOUNT_LENGTH * 2 + NUMBER_SIZE));
             numberInt.append(returnNumberOfStringMap(sb.toString()));
         }
-        return (numberInt.indexOf("?") == -1) ? numberInt.toString() : String.format("%s ILL", numberInt);
+        return numberInt.toString();
     }
 
     /**
      * This function return the account number if checksum is valid
-     * and return account number + ERR if checksum is invalid.
+     * otherwise call the function validateAccount.
      *
      * @param stringAccount is the number of the account.
      * @return account number
      */
-    public String isValidatedWithChecksum(String stringAccount) {
+    public String checksum(String stringAccount) {
         int result = 0, mult = 9;
         for (int index = 0; index < stringAccount.length(); index++) {
             result += mult * Integer.parseInt(stringAccount.substring(index, index + 1));
             mult--;
         }
-        return (result % 11 == 0) ? stringAccount : String.format("%s ERR", stringAccount);
+        return (result % 11 == 0) ? stringAccount : accountIsInvalidOrIllegible(stringAccount);
+    }
+
+    /**
+     * This function is for identify when an account has a invalid checksum or is illegible.
+     *
+     * @param account is the number of the account.
+     * @return the account number with ILL or ERR to end.
+     */
+    public String accountIsInvalidOrIllegible(String account) {
+        return (account.indexOf("?") == -1) ? String.format("%s ERR", account) : String.format("%s ILL", account);
     }
 }

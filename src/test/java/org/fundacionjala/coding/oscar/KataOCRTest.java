@@ -29,8 +29,9 @@ public class KataOCRTest {
         String accountNumber = "    _  _     _  _  _  _  _ "
                 + "  | _| _||_||_ |_   ||_||_|"
                 + "  ||_  _|  | _||_|  ||_| _|";
-
-        assertEquals(ocr.scanString(accountNumber), "123456789");
+        String actualResult = ocr.scanString(accountNumber);
+        String expectResult = "123456789";
+        assertEquals(expectResult, actualResult);
     }
     //endregion
 
@@ -41,7 +42,9 @@ public class KataOCRTest {
      */
     @Test
     public void testChecksumValidated() {
-        assertEquals(ocr.isValidatedWithChecksum("123456789"), "123456789");
+        String actualResult = ocr.checksum("123456789");
+        String expectResult = "123456789";
+        assertEquals(actualResult, expectResult);
     }
 
     /**
@@ -49,7 +52,9 @@ public class KataOCRTest {
      */
     @Test
     public void testChecksumInvalidated() {
-        assertEquals(ocr.isValidatedWithChecksum("664371495"), "664371495 ERR");
+        String actualResult = ocr.checksum("664371495");
+        String expectResult = "664371495 ERR";
+        assertEquals(actualResult, expectResult);
     }
     //endregion
 
@@ -63,8 +68,10 @@ public class KataOCRTest {
         String accountNumber = "    _  _  _  _  _  _     _ "
                 + "|_||_|| || ||_   |  |  | _ "
                 + "  | _||_||_||_|  |  |  | _|";
+        String actualResult = ocr.scanString(accountNumber);
+        String expectResult = "49006771? ILL";
 
-        assertEquals(ocr.scanString(accountNumber), "49006771? ILL");
+        assertEquals(ocr.accountIsInvalidOrIllegible(actualResult), expectResult);
     }
 
     /**
@@ -75,8 +82,9 @@ public class KataOCRTest {
         String accountNumber = "    _  _     _  _  _  _  _ "
                 + "  | _| _||_| _ |_   ||_||_|"
                 + "  ||_  _|  | _||_|  ||_| _ ";
-
-        assertEquals(ocr.scanString(accountNumber), "1234?678? ILL");
+        String actualResult = ocr.scanString(accountNumber);
+        String expectResult = "1234?678? ILL";
+        assertEquals(ocr.accountIsInvalidOrIllegible(actualResult), expectResult);
     }
     //endregion
 
