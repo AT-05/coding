@@ -15,11 +15,8 @@ public class Kata6 {
     public boolean validate(String stringNumber) {
         int sum = 0;
         for (int index = 0; index < stringNumber.length() - 1; index++) {
-            if (index % 2 == 0) {
-                sum += Integer.parseInt(stringNumber.substring(index, index + 1));
-            } else {
-                sum += MULT * Integer.parseInt(stringNumber.substring(index, index + 1));
-            }
+            int number = Integer.parseInt(stringNumber.substring(index, index + 1));
+            sum += index % 2 == 0 ? number : number * MULT;
         }
         return (stringNumber.substring(stringNumber.length() - 1, stringNumber.length()).equals(validateChecksum(sum)));
     }
