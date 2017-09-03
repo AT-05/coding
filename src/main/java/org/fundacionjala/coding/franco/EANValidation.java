@@ -1,4 +1,4 @@
-package org.fundacionjala.coding.Franco;
+package org.fundacionjala.coding.franco;
 
 import java.util.stream.Stream;
 

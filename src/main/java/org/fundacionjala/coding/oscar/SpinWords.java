@@ -1,4 +1,4 @@
-package org.fundacionjala.coding.Oscar;
+package org.fundacionjala.coding.oscar;
 
 /**
  * Created by Oz64 on 29/08/2017.

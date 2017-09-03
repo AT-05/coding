@@ -1,4 +1,4 @@
-package org.fundacionjala.coding.Gary;
+package org.fundacionjala.coding.gary;
 
 
 import org.junit.Test;

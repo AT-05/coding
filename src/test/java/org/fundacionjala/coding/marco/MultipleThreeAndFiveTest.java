@@ -1,4 +1,4 @@
-package org.fundacionjala.coding.MarcoM;
+package org.fundacionjala.coding.marco;
 
 import org.junit.Test;
 
