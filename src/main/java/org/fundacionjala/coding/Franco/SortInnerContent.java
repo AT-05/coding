@@ -1,28 +1,20 @@
 package org.fundacionjala.coding.Franco;
 
 import java.util.Arrays;
+import java.util.StringJoiner;
 
 /**
  * Created by Administrator on 8/30/2017.
  */
 public class SortInnerContent {
 
-    public static final int CONSTANT = 2;
-    public static final int BEGIN_INDEX = 0;
-    public static final int END_INDEX = 1;
+    public static final int CONS_ZERO = 0;
+    public static final int CONS_ONE = 1;
+    public static final int CONS_TWO = 2;
 
     /**
-     * This method validates of a word has more than two letters.
-     *
-     * @param word to validate.
-     * @return true if the word length is greater than two.
-     */
-    public boolean validateWord(String word) {
-        return word.length() > CONSTANT;
-    }
-
-    /**
-     * This method sorts the inner content of a word in descending order.
+     * This method sorts the inner content of a word
+     * or set of words in descending order.
      *
      * @param word which inner content will be sort.
      * @return the first letter, inner letters sorted in descending order
@@ -31,22 +23,19 @@ public class SortInnerContent {
     public String sortInnerContent(String word) {
         StringBuilder result = new StringBuilder();
 
-        if (validateWord(word)) {
+        if (word.length() > CONS_TWO) {
             StringBuilder innerLettersReversed = new StringBuilder();
 
-            String innerLetters = word.substring(1, word.length() - 1);
-            char[] lettersToSort = innerLetters.toCharArray();
+            final String innerLetters = word.substring(CONS_ONE, word.length() - CONS_ONE);
+            final char[] lettersToSort = innerLetters.toCharArray();
+
             Arrays.sort(lettersToSort);
-
-            for (int i = 0; i < lettersToSort.length; i++) {
-                innerLettersReversed.append(lettersToSort[i]);
-            }
-
+            innerLettersReversed.append(new String(lettersToSort));
             innerLettersReversed.reverse();
 
-            result = result.append(word.substring(BEGIN_INDEX, END_INDEX))
+            result = result.append(word.substring(CONS_ZERO, CONS_ONE))
                     .append(innerLettersReversed.toString())
-                    .append(word.substring(word.length() - 1, word.length()));
+                    .append(word.substring(word.length() - CONS_ONE, word.length()));
         } else {
             result = result.append(word);
         }
@@ -60,12 +49,11 @@ public class SortInnerContent {
      * @return the sentence with its words inner content sorted in descending order.
      */
     public String sortWordsInnerContent(String sentence) {
-        StringBuilder result = new StringBuilder();
+        final StringJoiner result = new StringJoiner(" ");
 
-        String[] words = sentence.split(" ");
-        for (int i = 0; i < words.length; i++) {
-            String wordWorked = sortInnerContent(words[i]);
-            result = (i < words.length - 1) ? result.append(wordWorked).append(" ") : result.append(wordWorked);
+        final String[] words = sentence.split(" ");
+        for (int i = CONS_ZERO; i < words.length; i++) {
+            result.add(sortInnerContent(words[i]));
         }
         return result.toString();
     }

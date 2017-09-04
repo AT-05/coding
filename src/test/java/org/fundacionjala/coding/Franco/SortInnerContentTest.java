@@ -1,5 +1,6 @@
 package org.fundacionjala.coding.Franco;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -8,29 +9,43 @@ import static org.junit.Assert.assertEquals;
  * Created by Administrator on 8/30/2017.
  */
 public class SortInnerContentTest {
+    private SortInnerContent sortInnerContent;
 
     /**
-     * This method tests sorting of the inner content of words
+     * This method tests instancing of Class SortInnerContent.
+     */
+    @Before
+    public void setUp() {
+        sortInnerContent = new SortInnerContent();
+    }
+
+    /**
+     * This method tests sorting of the inner content of a single word
      * in descending order.
      */
     @Test
-    public void testSortWordInnerContent() {
-        SortInnerContent sortInnerContent1 = new SortInnerContent();
-
-        final String expectedResult1 = "srot";
-        final String actualResult1 = sortInnerContent1.sortWordsInnerContent("sort");
-        assertEquals(expectedResult1, actualResult1);
+    public void testSortInnerContentOfOneWord() {
+        final String expectedResult = "srot";
+        final String actualResult = sortInnerContent.sortWordsInnerContent("sort");
+        assertEquals(expectedResult, actualResult);
 
         final String expectedResult2 = "mronnig";
-        final String actualResult2 = sortInnerContent1.sortWordsInnerContent("morning");
+        final String actualResult2 = sortInnerContent.sortWordsInnerContent("morning");
         assertEquals(expectedResult2, actualResult2);
+    }
 
-        final String expectedResult3 = "wiat for me";
-        final String actualResult3 = sortInnerContent1.sortWordsInnerContent("wait for me");
-        assertEquals(expectedResult3, actualResult3);
+    /**
+     * This method tests sorting of the inner content of several
+     * words in descending order.
+     */
+    @Test
+    public void testSortInnerContentOfMoreThanOneWords() {
+        final String expectedResult = "wiat for me";
+        final String actualResult = sortInnerContent.sortWordsInnerContent("wait for me");
+        assertEquals(expectedResult, actualResult);
 
-        final String expectedResult4 = "tihs ktaa is esay";
-        final String actualResult4 = sortInnerContent1.sortWordsInnerContent("this kata is easy");
-        assertEquals(expectedResult4, actualResult4);
+        final String expectedResult2 = "tihs ktaa is esay";
+        final String actualResult2 = sortInnerContent.sortWordsInnerContent("this kata is easy");
+        assertEquals(expectedResult2, actualResult2);
     }
 }
