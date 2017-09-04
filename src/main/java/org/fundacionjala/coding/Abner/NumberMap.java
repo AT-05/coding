@@ -65,13 +65,13 @@ public class NumberMap {
      */
     public String checkValue(String stringCodeOne, String stringCodeTwo, String stringCodeThree) {
 
-        StringBuilder numberMaps = new StringBuilder("");
+        StringBuilder numberMaps = new StringBuilder();
 
         for (int i = 0; i < stringCodeOne.length(); i = i + NUMBER_SIZE) {
             numberMaps.append(MAP_NUMBER.get(String.format("%s%s%s",
                     stringCodeOne.substring(i, i + NUMBER_SIZE),
                     stringCodeTwo.substring(i, i + NUMBER_SIZE),
-                    stringCodeThree.substring(i, i + NUMBER_SIZE))).toString());
+                    stringCodeThree.substring(i, i + NUMBER_SIZE))));
 
         }
         return numberMaps.toString();
@@ -92,11 +92,12 @@ public class NumberMap {
             sum = sum + (modNumber * i);
         }
 
-        return (sum % 11 == 0) ? true : false;
+        return sum % 11 == 0;
     }
 
     /**
      * The function check tipe of number.
+     *
      * @param number code number.
      * @return if check true.
      */
