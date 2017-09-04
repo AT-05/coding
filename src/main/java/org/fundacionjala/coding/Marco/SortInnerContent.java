@@ -1,6 +1,7 @@
 package org.fundacionjala.coding.Marco;
 
 import java.util.Arrays;
+import java.util.StringJoiner;
 
 /**
  * This kata was made by marco mendez august 29, 2017.
@@ -19,22 +20,21 @@ public class SortInnerContent {
      * @return test.
      */
     public String sortInnerContent(String string) {
-        String[] world = string.split(QUOTE_SPACE);
-        StringBuilder result = new StringBuilder();
-        for (String value : world) {
-            if (value.length() == ONE) {
-                result.append(value);
-                result.append(" ");
-            } else {
-                result.append(value.substring(ZERO, ONE));
+        String[] words = string.split(QUOTE_SPACE);
+        StringJoiner result = new StringJoiner(QUOTE_SPACE);
+        for (String value : words) {
+            if (value.length() >= 3) {
                 String[] aux = value.substring(1, value.length() - ONE).split(REGEX);
                 Arrays.sort(aux);
-                result.append((new StringBuffer(string.join(REGEX, aux)).reverse().toString()));
-                result.append(value.substring(value.length() - ONE, value.length()));
-                result.append(QUOTE_SPACE);
-            }
+                String word = value.substring(ZERO, ONE)
+                        .concat(new StringBuilder(String.join(REGEX, aux)).reverse().toString())
+                        .concat(value.substring(value.length() - ONE, value.length()));
+                result.add(word);
 
+            } else {
+                result.add(value);
+            }
         }
-        return result.toString().trim();
+        return result.toString();
     }
 }
