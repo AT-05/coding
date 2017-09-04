@@ -8,11 +8,11 @@ import java.util.stream.Stream;
 public class EANValidator {
 
 
-    public static final int ZERO = 0;
-    public static final int THREE = 3;
-    public static final int TEN = 10;
-    public static final int ONE = 1;
-    public static final int TWO = 2;
+    private static final int ZERO = 0;
+    private static final int THREE = 3;
+    private static final int TEN = 10;
+    private static final int ONE = 1;
+    private static final int TWO = 2;
 
     /**
      * This method return checkSum validated.
