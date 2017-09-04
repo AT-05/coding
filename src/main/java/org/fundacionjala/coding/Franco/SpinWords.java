@@ -4,15 +4,19 @@ package org.fundacionjala.coding.Franco;
  * Created by Administrator on 8/29/2017.
  */
 public class SpinWords {
+    private StringBuilder result;
     private static final int MAX_LETTERS = 5;
+    private static final int CONS_ONE = 1;
+    public static final int CONS_ZERO = 0;
 
     /**
-     * This method reverses words from a sentence which are larger than 5 letters.
+     * This method reverses words of a sentence which are larger than 5 letters.
      *
      * @param stringOfWords is a sentence.
      * @return sentence with larger than 5 letter words reversed.
      */
-    public String[] spinWord(String stringOfWords) {
+    public String spinWord(String stringOfWords) {
+        result = new StringBuilder();
         final String[] words = stringOfWords.split(" ");
 
         for (int i = 0; i < words.length; i++) {
@@ -23,20 +27,10 @@ public class SpinWords {
                 words[i] = reverseWord.toString();
             }
         }
-        return words;
-    }
 
-    /**
-     * This method fills the result sentence.
-     *
-     * @param arrayOfWords is an array of words.
-     * @return a sentence containing all words separated by spaces.
-     */
-    public String fillString(String[] arrayOfWords) {
-        final int maxValue = arrayOfWords.length - 1;
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < arrayOfWords.length; i++) {
-            result = (i < maxValue) ? result.append(arrayOfWords[i]).append(" ") : result.append(arrayOfWords[i]);
+        final int maxValue = words.length - CONS_ONE;
+        for (int i = CONS_ZERO; i < words.length; i++) {
+            result = (i < maxValue) ? result.append(words[i]).append(" ") : result.append(words[i]);
         }
         return result.toString();
     }
