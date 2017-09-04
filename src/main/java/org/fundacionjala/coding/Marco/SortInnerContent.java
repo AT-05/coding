@@ -8,10 +8,10 @@ import java.util.StringJoiner;
  */
 public class SortInnerContent {
 
-    public static final int ZERO = 0;
-    public static final int ONE = 1;
-    public static final String QUOTE_SPACE = " ";
-    public static final String REGEX = "";
+    private static final int ZERO = 0;
+    private static final int ONE = 1;
+    private static final String QUOTE_SPACE = " ";
+    private static final String REGEX = "";
 
     /**
      * This method do the convect of a string.
