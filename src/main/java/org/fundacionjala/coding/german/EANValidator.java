@@ -1,54 +1,35 @@
 package org.fundacionjala.coding.german;
 
 /**
- * Created by Administrator on 8/29/2017.
+ * Created by German on 8/29/2017.
  */
 public class EANValidator {
+    private static final int NUM_MOD = 10;
+
     /**
      * @param number String
      * @return boolean
      */
     public boolean validate(String number) {
-        boolean res = false;
-        int sumPar = sumPar(number);
-        int sumImpar = sumImpar(number);
-        int checkSum = sumImpar + sumPar;
-        if ((checkSum) % 10 == 0) {
-            if (number.charAt(12) == '0') {
-                res = true;
-            }
+        int checkSum = sumEO(number, 0, 1) + sumEO(number, 1, 3);
+        int numericValue = Character.getNumericValue(number.charAt(12));
 
-        } else {
-            if ((10 - (checkSum % 10) == ((int) number.charAt(12) - 48))) {
-                res = true;
-            } else {
-                res = false;
-            }
-        }
-        return res;
+        return numericValue == 0 && (checkSum) % NUM_MOD == 0
+                || numericValue == (NUM_MOD - (checkSum % NUM_MOD));
     }
 
     /**
      * @param number String
+     * @param eo     int 0 for even , 1 por odd
+     * @param mult   int for multiplier numeric value of char
      * @return int
      */
-    private int sumImpar(String number) {
+    private int sumEO(String number, int eo, int mult) {
         int res = 0;
-        for (int i = 0; i < number.length() - 1; i += 2) {
-            res = res + ((int) number.charAt(i) - 48);
+        for (int i = eo; i < number.length() - 1; i += 2) {
+            res = res + Character.getNumericValue(number.charAt(i)) * mult;
         }
         return res;
     }
 
-    /**
-     * @param number String
-     * @return int
-     */
-    private int sumPar(String number) {
-        int res = 0;
-        for (int i = 1; i < number.length() - 1; i += 2) {
-            res = res + ((int) number.charAt(i) - 48) * 3;
-        }
-        return res;
-    }
 }
