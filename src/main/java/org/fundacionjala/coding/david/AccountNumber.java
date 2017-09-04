@@ -86,13 +86,13 @@ public class AccountNumber {
      * @return one value.
      */
     public String scannNumber(String number) {
-        String message = "";
+
         String[] listNumber = number.split("");
         StringBuilder numberError = new StringBuilder();
         StringBuilder numberString = new StringBuilder();
         int status = 1;
         for (int i = 0; i < listNumber.length; i++) {
-            //  String numberAux = number.substring(posInitial, posEnd).toString();
+
             if (listNumber[i].toString().equals("-")) {
                 i++;
                 status = 2;
@@ -102,18 +102,15 @@ public class AccountNumber {
             }
             numberError.append(listNumber[i]);
         }
-        boolean checkNumber = checkNumber(numberError.toString());
-        if (checkNumber || status == 2) {
-            if (status == 2) {
-                message = numberString.toString().concat(" ILL");
-            } else if (status == 1) {
-                message = numberString.toString();
-            }
-        } else {
-            message = numberString.toString().concat(" ERR");
-        }
 
-        return message;
+        boolean checkNumber = checkNumber(numberError.toString());
+
+        if (status == 1 && checkNumber) {
+            return numberString.toString();
+        } else if (status == 2) {
+            return numberString.toString().concat(" ILL");
+        }
+        return numberString.toString().concat(" ERR");
     }
 
 }

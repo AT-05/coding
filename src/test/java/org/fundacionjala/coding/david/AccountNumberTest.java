@@ -1,7 +1,6 @@
 package org.fundacionjala.coding.david;
-
+import org.junit.Before;
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +11,14 @@ import static org.junit.Assert.assertEquals;
  */
 public class AccountNumberTest {
 
+    private  AccountNumber accountNumber;
+    /**
+     * This method initialize.
+     */
+    @Before
+    public void setUp() {
+        accountNumber = new AccountNumber();
+    }
     /**
      * Realice test for number bank.
      */
@@ -21,8 +28,6 @@ public class AccountNumberTest {
         listLine.add("    _  _     _  _  _  _  _ ");
         listLine.add("  | _| _||_||_ |_   ||_||_|");
         listLine.add("  ||_  _|  | _||_|  ||_| _|");
-
-        AccountNumber accountNumber = new AccountNumber();
         final String actualResul1 = accountNumber.mapToNumber(listLine);
         String expectedResult = "123456789";
         assertEquals(expectedResult, actualResul1);
@@ -37,9 +42,8 @@ public class AccountNumberTest {
         listLine.add("    _  _  _  _  _  _  _  _ ");
         listLine.add("|_||_   ||_ | ||_|| || || |");
         listLine.add("  | _|  | _||_||_||_||_||_|");
-        AccountNumber accountNumber = new AccountNumber();
+
         final String numberConverter = accountNumber.mapToNumber(listLine);
-        //String number = "457508000";
         boolean actualResul = accountNumber.checkNumber(numberConverter);
         boolean expectedResult = true;
         assertEquals(expectedResult, actualResul);
@@ -54,7 +58,6 @@ public class AccountNumberTest {
         listLine.add("    _  _  _  _  _  _  _  _ ");
         listLine.add("|_||_   ||_ | ||_|| || || |");
         listLine.add("  | _|  | _||_||_||_||_||_|");
-        AccountNumber accountNumber = new AccountNumber();
         final String numberConverter = accountNumber.mapToNumber(listLine);
         String actualResul = accountNumber.scannNumber(numberConverter);
         String expectedResult = "457508000";
@@ -70,7 +73,6 @@ public class AccountNumberTest {
         listLine.add(" _  _     _  _        _  _ ");
         listLine.add("|_ |_ |_| _|  |  ||_||_||_ ");
         listLine.add("|_||_|  | _|  |  |  | _| _|");
-        AccountNumber accountNumber = new AccountNumber();
         final String numberConverter = accountNumber.mapToNumber(listLine);
         String actualResul = accountNumber.scannNumber(numberConverter);
         String expectedResult = "664371495 ERR";
@@ -86,7 +88,6 @@ public class AccountNumberTest {
         listLine.add(" _  _        _  _     _  _ ");
         listLine.add("|_||_   |  || |    _| _||_ ");
         listLine.add("|_||_|  |  ||_|  |  | _||_|");
-        AccountNumber accountNumber = new AccountNumber();
         final String numberConverter = accountNumber.mapToNumber(listLine);
         String actualResul = accountNumber.scannNumber(numberConverter);
         String expectedResult = "86110??36 ILL";
