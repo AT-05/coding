@@ -1,27 +1,26 @@
 package org.fundacionjala.coding.german;
 
 import java.util.Arrays;
+import java.util.StringJoiner;
 
 
 /**
  * Created by German on 8/29/2017.
  */
 public class SortInnerContent {
+    private static final String DELIMITER = " ";
+
     /**
      * @param words String
      * @return String  words in descending order and only inner
      */
     public String sortInnerConntent(String words) {
-        String delimiter = " ";
-        String[] temp = words.split(delimiter);
-        StringBuilder temBuilder = new StringBuilder();
+        String[] temp = words.split(DELIMITER);
+        StringJoiner stringJoiner = new StringJoiner(DELIMITER);
         for (String s : temp) {
-            temBuilder.append(descendingOrderInner(s));
-            temBuilder.append(" ");
-
+            stringJoiner.add(descendingOrderInner(s));
         }
-        temBuilder.deleteCharAt(temBuilder.length() - 1);
-        return temBuilder.toString();
+        return stringJoiner.toString();
     }
 
     /**
@@ -30,19 +29,16 @@ public class SortInnerContent {
      */
     private String descendingOrderInner(String word) {
 
-        if (word.length() < 4) {
-            return word;
-        } else {
-            String subString = word.substring(1, word.length() - 1);
-            char[] temp = subString.toCharArray();
-            Arrays.sort(temp);
-            String temps = new String(temp);
-            StringBuilder temBuilder = new StringBuilder(temps);
+        if (word.length() >= 3) {
+            char[] innerConten = word.substring(1, word.length() - 1).toCharArray();
+            Arrays.sort(innerConten);
+            StringBuilder temBuilder = new StringBuilder(new String(innerConten));
             temBuilder.reverse();
             temBuilder.insert(0, word.charAt(0));
             temBuilder.append(word.charAt(word.length() - 1));
             return temBuilder.toString();
         }
+        return word;
 
     }
 
