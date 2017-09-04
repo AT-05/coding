@@ -12,22 +12,21 @@ public class SpinWord {
 
     /**
      * This function spin words.
+     *
      * @param word string to spin.
      * @return string turned.
      */
     public String spinWords(String word) {
-
-        String[] arr = word.split(" ");
+        String delimiter = " ";
+        String[] arr = word.split(delimiter);
         for (int i = 0; i < arr.length; i++) {
             if (arr[i].length() > 4) {
-                String[] listString = arr[i].split("");
-                List<String> list = Arrays.asList(listString);
-                Collections.reverse(list);
-                String[] arraa = list.toArray(new String[]{});
-                arr[i] = String.join("", arraa);
+                List<String> wordAsList = Arrays.asList(arr[i].split(""));
+                Collections.reverse(wordAsList);
+                arr[i] = String.join("", wordAsList.toArray(new String[]{}));
             }
         }
-        return String.join(" ", arr);
+        return String.join(delimiter, arr);
     }
 
 }
