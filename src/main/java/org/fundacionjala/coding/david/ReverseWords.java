@@ -1,5 +1,7 @@
 package org.fundacionjala.coding.david;
 
+import java.util.StringJoiner;
+
 /**
  * * The class scanner word and reversed.
  */
@@ -12,16 +14,11 @@ public class ReverseWords {
      */
     public String reverseToStartInFivePosition(String words) {
 
-        String[] listWord = words.split(" ");
-        StringBuilder listReverseWord = new StringBuilder();
-        listReverseWord.append(listWord[0]);
-        for (int c = 1; c < listWord.length; c++) {
-            listReverseWord.append(" ");
-            if (listWord[c].length() > 4) {
-                listReverseWord.append(new StringBuilder(listWord[c]).reverse());
-            } else {
-                listReverseWord.append(listWord[c]);
-            }
+        String delimiter = " ";
+        String[] listWord = words.split(delimiter);
+        StringJoiner listReverseWord = new StringJoiner(delimiter);
+        for (int c = 0; c < listWord.length; c++) {
+            listReverseWord.add(listWord[c].length() > 4 ? new StringBuilder(listWord[c]).reverse() : listWord[c]);
         }
         return listReverseWord.toString();
     }
