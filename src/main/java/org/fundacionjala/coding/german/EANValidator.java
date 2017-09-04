@@ -11,11 +11,10 @@ public class EANValidator {
      * @return boolean
      */
     public boolean validate(String number) {
-        int checkSum = sumEO(number, 0, 1) + sumEO(number, 1, 3);
+        int sum = sumEO(number, 0, 1) + sumEO(number, 1, 3);
         int numericValue = Character.getNumericValue(number.charAt(12));
-
-        return numericValue == 0 && (checkSum) % NUM_MOD == 0
-                || numericValue == (NUM_MOD - (checkSum % NUM_MOD));
+        int checkSum = sum % NUM_MOD == 0 ? 0 : NUM_MOD - sum % NUM_MOD;
+        return numericValue == checkSum;
     }
 
     /**
