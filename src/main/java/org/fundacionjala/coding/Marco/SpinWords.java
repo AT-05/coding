@@ -18,7 +18,7 @@ public class SpinWords {
         String[] world = string.split(" ");
         for (int i = ZERO; i < world.length; i++) {
             if (world[i].length() > FOUR) {
-                world[i] = new StringBuffer(world[i]).reverse().toString();
+                world[i] = new StringBuilder(world[i]).reverse().toString();
             }
         }
         return string.join(" ", world);
