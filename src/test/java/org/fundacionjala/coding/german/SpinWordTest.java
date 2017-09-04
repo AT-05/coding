@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 
 /**
- * Created by Administrator on 8/29/2017.
+ * Created by German on 8/29/2017.
  */
 public class SpinWordTest {
     /**

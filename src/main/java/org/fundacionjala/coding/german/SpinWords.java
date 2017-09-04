@@ -1,29 +1,24 @@
 package org.fundacionjala.coding.german;
 
+import java.util.StringJoiner;
+
 /**
- * Created by Administrator on 8/29/2017.
+ * Created by German on 8/29/2017.
  */
 public class SpinWords {
+    private static final String DELIMITER = " ";
+
     /**
      * @param words String
      * @return String
      */
     public String spinWords(String words) {
-        String delimiter = " ";
-        String[] temp = words.split(delimiter);
-        StringBuilder temBuilder = new StringBuilder();
+        String[] temp = words.split(DELIMITER);
+        StringJoiner stringJoiner = new StringJoiner(DELIMITER);
         for (String s : temp) {
-            if (s.length() >= 5) {
-                temBuilder.append(new StringBuilder(s).reverse().toString());
-
-            } else {
-                temBuilder.append(s);
-            }
-            temBuilder.append(" ");
-
+            stringJoiner.add(s.length() >= 5 ? new StringBuilder(s).reverse().toString() : s);
         }
-        temBuilder.deleteCharAt(temBuilder.length() - 1);
-        return temBuilder.toString();
+        return stringJoiner.toString();
     }
 
 }
