@@ -5,11 +5,12 @@ package org.fundacionjala.coding.Marco;
  */
 public class SpinWords {
 
-    public static final int ZERO = 0;
-    public static final int FOUR = 4;
+    private static final int ZERO = 0;
+    private static final int FOUR = 4;
 
     /**
      * This method return a string.
+     *
      * @param string test.
      * @return test.
      */
