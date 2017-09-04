@@ -7,7 +7,12 @@ import java.util.List;
  * Created by Administrator on 8/25/2017.
  */
 public class AccountNumber {
-    private static final int NUMBER_SIZE = 3;
+    private static final int CONS_ZERO = 0;
+    private static final int CONS_ONE = 1;
+    private static final int CONS_TWO = 2;
+    private static final int CONS_THREE = 3;
+    private static final int CONS_NINE = 9;
+    private static final int CONS_ELEVEN = 11;
     private static final List<String> ACCOUNT_NUMBERS = new ArrayList<>();
 
     static {
@@ -28,15 +33,15 @@ public class AccountNumber {
      * pipes and underscores.
      *
      * @param number is formed by pipes and underscores.
-     * @return int value of the given form, if not a digit returns -1.
+     * @return value of the given form, if not a digit returns symbol "?".
      */
-    public int getDigit(String number) {
-        for (int i = 0; i < ACCOUNT_NUMBERS.size(); i++) {
+    public String getDigit(String number) {
+        for (int i = CONS_ZERO; i < ACCOUNT_NUMBERS.size(); i++) {
             if (ACCOUNT_NUMBERS.get(i).equals(number)) {
-                return i;
+                return String.valueOf(i);
             }
         }
-        return -1;
+        return "?";
     }
 
     /**
@@ -49,10 +54,10 @@ public class AccountNumber {
     public String mapEntryOCRToNumber(List<String> lines) {
         StringBuilder result = new StringBuilder();
 
-        for (int i = 0; i < lines.get(0).length(); i += NUMBER_SIZE) {
-            String number = lines.get(0).substring(i, i + NUMBER_SIZE)
-                    .concat(lines.get(1).substring(i, i + NUMBER_SIZE))
-                    .concat(lines.get(2).substring(i, i + NUMBER_SIZE));
+        for (int i = CONS_ZERO; i < lines.get(CONS_ZERO).length(); i += CONS_THREE) {
+            String number = lines.get(CONS_ZERO).substring(i, i + CONS_THREE)
+                    .concat(lines.get(CONS_ONE).substring(i, i + CONS_THREE))
+                    .concat(lines.get(CONS_TWO).substring(i, i + CONS_THREE));
             result.append(getDigit(number));
         }
         return result.toString();
@@ -66,44 +71,35 @@ public class AccountNumber {
      */
     public boolean checkSum(String accountNumber) {
         final String[] numberPosition = accountNumber.split("");
-        int checksum = 0;
-
-        int i = 0, j = 9;
+        int checksum = CONS_ZERO;
+        int i = CONS_ZERO, j = CONS_NINE;
         final int numberPositionLength = numberPosition.length;
 
-        while (i < numberPositionLength && j > 0) {
+        while (i < numberPositionLength && j > CONS_ZERO) {
             checksum += Integer.parseInt(numberPosition[i]) * j;
             i++;
             j--;
         }
-        return checksum % 11 == 0;
+        return checksum % CONS_ELEVEN == CONS_ZERO;
     }
 
     /**
      * This method evaluates entry of an account number.
      *
-     * @param accountNumber to evaluate.
-     * @return whether the account number is valida, illegible or does not
+     * @param actNum to evaluate.
+     * @return whether the account number is valid, illegible or does not
      * complies checksum.
      */
-    public String finding(String accountNumber) {
-        StringBuilder result = new StringBuilder();
-        int counter = 0;
+    public String finding(String actNum) {
+        StringBuilder result = new StringBuilder(actNum);
+        int notNumber = CONS_ZERO;
+        final String[] values = actNum.split("");
 
-        final String[] values = accountNumber.split("");
-
-        for (int i = 0; i < values.length; i++) {
-            if (values[i].equals("-")) {
-                result.append("?");
-                i += 1;
-                counter += 1;
-            } else {
-                result.append(values[i]);
-            }
+        for (int i = CONS_ZERO; i < values.length; i++) {
+            notNumber = values[i].equals("?") ? notNumber + CONS_ONE : notNumber;
         }
 
-        final boolean isValid = (counter == 0);
-        result = (isValid) ? ((checkSum(accountNumber)) ? result : result.append(" ERR")) : result.append(" ILL");
+        result = notNumber != CONS_ZERO ? result.append(" ILL") : (checkSum(actNum) ? result : result.append(" ERR"));
         return result.toString();
     }
 }

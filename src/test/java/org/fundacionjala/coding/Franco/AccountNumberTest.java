@@ -72,7 +72,7 @@ public class AccountNumberTest {
         lines.add("  | _| _||_||_ |_   ||_||_|");
         lines.add("  ||_  _|  | _||_|  ||_| _|");
 
-        final String actualResult = accountNumber.finding(accountNumber.mapEntryOCRToNumber(lines));
+        final String actualResult = accountNumber.mapEntryOCRToNumber(lines);
         final String expectedResult = "123456789";
         assertEquals(expectedResult, actualResult);
     }
