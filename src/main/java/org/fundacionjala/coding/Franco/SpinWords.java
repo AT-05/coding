@@ -30,7 +30,7 @@ public class SpinWords {
 
         final int maxValue = words.length - CONS_ONE;
         for (int i = CONS_ZERO; i < words.length; i++) {
-            result = (i < maxValue) ? result.append(words[i]).append(" ") : result.append(words[i]);
+            result = i < maxValue ? result.append(words[i]).append(" ") : result.append(words[i]);
         }
         return result.toString();
     }
