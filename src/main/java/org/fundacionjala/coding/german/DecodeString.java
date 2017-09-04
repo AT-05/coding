@@ -4,13 +4,60 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by seus on 25/8/2017.
+ * Created by German on 25/8/2017.
  */
 public class DecodeString {
     private String stringOCR;
-    private String stringOCROut;
-    private List<String> listt;
+    private StringBuilder stringOCROut;
     private List<Integer> listOCR;
+    private static final String QUESTION_MARK = "?";
+    private static final List<String> STRING_LIST = new ArrayList<>();
+
+    static {
+
+        STRING_LIST.add(String.format("%s%s%s", " _ ",
+                "| |",
+                "|_|"));
+
+
+        STRING_LIST.add(String.format("%s%s%s", "   ",
+                "  |",
+                "  |"));
+
+        STRING_LIST.add(String.format("%s%s%s", " _ ",
+                " _|",
+                "|_ "));
+
+        STRING_LIST.add(String.format("%s%s%s", " _ ",
+                " _|",
+                " _|"));
+
+        STRING_LIST.add(String.format("%s%s%s", "   ",
+                "|_|",
+                "  |"));
+
+        STRING_LIST.add(String.format("%s%s%s", " _ ",
+                "|_ ",
+                " _|"));
+
+        STRING_LIST.add(String.format("%s%s%s", " _ ",
+                "|_ ",
+                "|_|"));
+
+        STRING_LIST.add(String.format("%s%s%s", " _ ",
+                "  |",
+                "  |"));
+
+        STRING_LIST.add(String.format("%s%s%s", " _ ",
+                "|_|",
+                "|_|"));
+
+        STRING_LIST.add(String.format("%s%s%s", " _ ",
+                "|_|",
+                " _|"));
+
+    }
+
 
     /**
      * this is comment of function.
@@ -19,70 +66,18 @@ public class DecodeString {
      */
     public DecodeString(String stringOCR) {
         this.stringOCR = stringOCR;
-        listt = new ArrayList<>();
         listOCR = new ArrayList<>();
-        listt.add(String.format("%s%s%s", " _ ",
-                "| |",
-                "|_|"));
-
-
-        listt.add(String.format("%s%s%s", "   ",
-                "  |",
-                "  |"));
-
-        listt.add(String.format("%s%s%s", " _ ",
-                " _|",
-                "|_ "));
-
-        listt.add(String.format("%s%s%s", " _ ",
-                " _|",
-                " _|"));
-
-        listt.add(String.format("%s%s%s", "   ",
-                "|_|",
-                "  |"));
-
-        listt.add(String.format("%s%s%s", " _ ",
-                "|_ ",
-                " _|"));
-
-        listt.add(String.format("%s%s%s", " _ ",
-                "|_ ",
-                "|_|"));
-
-        listt.add(String.format("%s%s%s", " _ ",
-                "  |",
-                "  |"));
-
-        listt.add(String.format("%s%s%s", " _ ",
-                "|_|",
-                "|_|"));
-
-        listt.add(String.format("%s%s%s", " _ ",
-                "|_|",
-                " _|"));
-
     }
 
     /**
-     * this is comment of function.
-     *
-     * @return <code>String[]</code>
-     */
-    public String[] divideString() {
-        String[] res = stringOCR.split("\n");
-        return res;
-    }
-
-    /**
-     * this is comment of function.
+     * this method return a String to number.
      *
      * @param number **this is string for decode**
-     * @return <code>int</code>
+     * @return int number
      */
-    public int numero(String number) {
-        for (int i = 0; i < listt.size(); i++) {
-            if (listt.get(i).equals(number)) {
+    public int number(String number) {
+        for (int i = 0; i < STRING_LIST.size(); i++) {
+            if (STRING_LIST.get(i).equals(number)) {
                 return i;
             }
 
@@ -91,40 +86,40 @@ public class DecodeString {
     }
 
     /**
-     * Some library method.
+     * parseAccount method.
      *
-     * @return <code>String</code>
+     * @return String
      */
     public String parseAccount() {
-        StringBuilder buf = new StringBuilder();
-        String[] divede = divideString();
+        this.stringOCROut = new StringBuilder();
+        String[] divede = stringOCR.split("\n");
         int decode;
         for (int i = 0; i < divede[0].length(); i += 3) {
-            decode = numero(String.format("%s%s%s", divede[0].substring(i, i + 3),
+            decode = number(String.format("%s%s%s", divede[0].substring(i, i + 3),
                     divede[1].substring(i, i + 3),
                     divede[2].substring(i, i + 3)));
             listOCR.add(decode);
             if (decode >= 0) {
-                buf.append(decode);
+                stringOCROut.append(decode);
 
             } else {
-                buf.append("?");
+                stringOCROut.append(QUESTION_MARK);
             }
 
 
         }
-        stringOCROut = buf.toString();
-        return stringOCROut;
+        return stringOCROut.toString();
     }
 
 
     /**
-     * Some library method.
+     * isValidCheckSum method.
+     * Verity Check sum is correct
      *
-     * @return <code>true</code>
+     * @return boolean
      */
 
-    public boolean isValidChekSum() {
+    public boolean isValidCheckSum() {
         boolean res = false;
         int mod11 = 0;
         if (!listOCR.isEmpty() && listOCR.size() == 9) {
@@ -139,39 +134,32 @@ public class DecodeString {
         }
         return res;
     }
+
     /**
-     * isILL method.
+     * is ILL method.
      *
-     * @return <code>boolean</code>
+     * @return boolean
      */
     private boolean isIll() {
-        boolean res = false;
-        if (!stringOCROut.isEmpty()) {
-            for (int i = 0; i < stringOCROut.length(); i++) {
-                if (stringOCROut.charAt(i) == '?') {
-                    res = true;
-                    break;
-                }
-            }
 
-        }
-        return res;
+        return stringOCROut.indexOf(QUESTION_MARK) >= 0;
+
     }
 
     /**
      * status method.
      *
-     * @return <code>String</code>
+     * @return String
      */
     public String status() {
-        StringBuilder res = new StringBuilder(stringOCROut);
-        if (!this.isValidChekSum()) {
+
+        if (!this.isValidCheckSum()) {
             if (this.isIll()) {
-                res.append(" ILL");
+                stringOCROut.append(" ILL");
             } else {
-                res.append(" ERR");
+                stringOCROut.append(" ERR");
             }
         }
-        return res.toString();
+        return stringOCROut.toString();
     }
 }

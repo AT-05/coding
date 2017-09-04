@@ -11,27 +11,13 @@ import static org.junit.Assert.assertEquals;
 public class DecodeStringTest {
 
     /**
-     * Verify some divideString Method.
+     * Verify  number Method.
      */
     @Test
-    public void testSomeDivideStringMethod() {
-        DecodeString decodeString = new DecodeString(String.format("%s%s%s",
-                "AAA\n",
-                "BBB\n",
-                "CCC"));
-        String[] result = decodeString.divideString();
-        assertEquals("AAA", result[0]);
-        assertEquals("BBB", result[1]);
-        assertEquals("CCC", result[2]);
-    }
-
-    /**
-     * Verify some numero Method.
-     */
-    @Test
-    public void testnumeroMethod() {
+    public void testNumberMethod() {
         DecodeString decodeString = new DecodeString("");
-        int result = decodeString.numero(String.format("%s%s%s", " _ ",
+        int result = decodeString.number(String.format("%s%s%s",
+                " _ ",
                 "|_|",
                 "|_|"));
         assertEquals(8, result);
@@ -62,7 +48,7 @@ public class DecodeStringTest {
                 "  | _| _||_||_ |_   ||_||_|\n",
                 "  ||_  _|  | _||_|  ||_| _|"));
 
-        boolean result = decodeString.isValidChekSum();
+        boolean result = decodeString.isValidCheckSum();
         assertEquals(false, result);
     }
 
@@ -77,7 +63,7 @@ public class DecodeStringTest {
                 " _||_||_||_||_||_||_||_|  |"));
         decodeString.parseAccount();
 
-        boolean result = decodeString.isValidChekSum();
+        boolean result = decodeString.isValidCheckSum();
         assertEquals(true, result);
     }
 
@@ -95,7 +81,8 @@ public class DecodeStringTest {
         String result = decodeString.status();
         assertEquals("900000007", result);
     }
-      /**
+
+    /**
      * Verify Status Method is ERR.
      */
     @Test
@@ -109,6 +96,7 @@ public class DecodeStringTest {
         String result = decodeString.status();
         assertEquals("910000007 ERR", result);
     }
+
     /**
      * Verify Status Method is ILL.
      */
