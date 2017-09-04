@@ -24,8 +24,11 @@ public class AccountNumber {
     }
 
     /**
+     * This method outputs equivalent number of an account number given in
+     * pipes and underscores.
+     *
      * @param number is formed by pipes and underscores.
-     * @return int value of the given digit.
+     * @return int value of the given form, if not a digit returns -1.
      */
     public int getDigit(String number) {
         for (int i = 0; i < ACCOUNT_NUMBERS.size(); i++) {
@@ -37,6 +40,9 @@ public class AccountNumber {
     }
 
     /**
+     * This method maps a pipes and underscores given in a String
+     * to its actual number representation.
+     *
      * @param lines is a list of String pipes and underscores.
      * @return account number.
      */
@@ -53,6 +59,8 @@ public class AccountNumber {
     }
 
     /**
+     * This method calculates checksum of an account number.
+     *
      * @param accountNumber is formed by 9 numbers.
      * @return whether the account number is valid or not.
      */
@@ -68,12 +76,12 @@ public class AccountNumber {
             i++;
             j--;
         }
-
-        final boolean result = (checksum % 11 == 0) ? true : false;
-        return result;
+        return checksum % 11 == 0;
     }
 
     /**
+     * This method evaluates entry of an account number.
+     *
      * @param accountNumber to evaluate.
      * @return whether the account number is valida, illegible or does not
      * complies checksum.

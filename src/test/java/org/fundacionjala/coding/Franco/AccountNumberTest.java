@@ -1,5 +1,6 @@
 package org.fundacionjala.coding.Franco;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -13,81 +14,96 @@ import static org.junit.Assert.assertTrue;
  * Created by Administrator on 8/25/2017.
  */
 public class AccountNumberTest {
+    private AccountNumber accountNumber;
+
     /**
-     * This method tests mapping of a number given
+     * This method test instancing of Class AccountNumber.
+     */
+    @Before
+    public void setUp() {
+        accountNumber = new AccountNumber();
+    }
+
+    /**
+     * This method tests mapping of an account number given
      * in pipes and underscores to string of digits.
      */
     @Test
     public void testMapEntryOCRToNumber() {
-        AccountNumber accountNumber = new AccountNumber();
+        List<String> lines = new ArrayList<>();
+        lines.add("    _  _     _  _  _  _  _ ");
+        lines.add("  | _| _||_||_ |_   ||_||_|");
+        lines.add("  ||_  _|  | _||_|  ||_| _|");
 
-        List<String> lines1 = new ArrayList<>();
-        lines1.add("    _  _     _  _  _  _  _ ");
-        lines1.add("  | _| _||_||_ |_   ||_||_|");
-        lines1.add("  ||_  _|  | _||_|  ||_| _|");
-
-        final String actualResult1 = accountNumber.mapEntryOCRToNumber(lines1);
-        final String expectedResult1 = "123456789";
-        assertEquals(expectedResult1, actualResult1);
-
-        List<String> lines2 = new ArrayList<>();
-        lines2.add("    _  _     _  _  _  _  _ ");
-        lines2.add("  | _| _||_||_  _    |_||_|");
-        lines2.add("  ||_  _|  | _||_|  ||_| _|");
-
-        final String actualResult2 = accountNumber.mapEntryOCRToNumber(lines2);
-        final String expectedResult2 = "12345-1-189";
-        assertEquals(expectedResult2, actualResult2);
+        final String actualResult = accountNumber.mapEntryOCRToNumber(lines);
+        final String expectedResult = "123456789";
+        assertEquals(expectedResult, actualResult);
     }
 
     /**
-     * This method tests validation of account number.
+     * This method tests when checksum validation of account number is True.
      */
     @Test
-    public void testCheckSumAccountNumberValidation() {
-        String accountNumber1 = "345882865";
-        String accountNumber2 = "664371495";
-        AccountNumber accountNumber = new AccountNumber();
+    public void testCheckSumAccountNumberIsTrue() {
+        String accountNumber = "345882865";
 
-        final boolean actualResult1 = accountNumber.checkSum(accountNumber1);
-        assertTrue(actualResult1);
-
-        final boolean actualResult2 = accountNumber.checkSum(accountNumber2);
-        assertFalse(actualResult2);
+        final boolean actualResult = this.accountNumber.checkSum(accountNumber);
+        assertTrue(actualResult);
     }
 
     /**
-     *
+     * TThis method tests when checksum validation of account number is False.
      */
     @Test
-    public void testFinding() {
-        AccountNumber accountNumber = new AccountNumber();
+    public void testCheckSumAccountNumberIsFalse() {
+        String accountNumber = "664371495";
 
-        List<String> lines1 = new ArrayList<>();
-        lines1.add("    _  _     _  _  _  _  _ ");
-        lines1.add("  | _| _||_||_  _    |_||_|");
-        lines1.add("  ||_  _|  | _||_|  ||_| _|");
+        final boolean actualResult = this.accountNumber.checkSum(accountNumber);
+        assertFalse(actualResult);
+    }
 
-        final String actualResult1 = accountNumber.finding(accountNumber.mapEntryOCRToNumber(lines1));
-        final String expectedResult1 = "12345??89 ILL";
-        assertEquals(expectedResult1, actualResult1);
+    /**
+     * This method test Finding result of a Legible account number.
+     */
+    @Test
+    public void testFindingLegibleAccountNumber() {
+        List<String> lines = new ArrayList<>();
+        lines.add("    _  _     _  _  _  _  _ ");
+        lines.add("  | _| _||_||_ |_   ||_||_|");
+        lines.add("  ||_  _|  | _||_|  ||_| _|");
 
-        List<String> lines2 = new ArrayList<>();
-        lines2.add("    _  _     _  _  _  _  _ ");
-        lines2.add("  | _| _||_||_ |_   ||_||_|");
-        lines2.add("  ||_  _|  | _||_|  ||_| _|");
+        final String actualResult = accountNumber.finding(accountNumber.mapEntryOCRToNumber(lines));
+        final String expectedResult = "123456789";
+        assertEquals(expectedResult, actualResult);
+    }
 
-        final String actualResult2 = accountNumber.finding(accountNumber.mapEntryOCRToNumber(lines2));
-        final String expectedResult2 = "123456789";
-        assertEquals(expectedResult2, actualResult2);
+    /**
+     * This method test Finding result of an false checksum account number.
+     */
+    @Test
+    public void testFindingChecksumErrorAccountNumber() {
+        List<String> lines = new ArrayList<>();
+        lines.add("    _  _     _  _     _  _ ");
+        lines.add("  | _| _||_||_ |_   ||_||_|");
+        lines.add("  ||_  _|  | _||_|  ||_| _|");
 
-        List<String> lines3 = new ArrayList<>();
-        lines3.add("    _  _     _  _     _  _ ");
-        lines3.add("  | _| _||_||_ |_   ||_||_|");
-        lines3.add("  ||_  _|  | _||_|  ||_| _|");
+        final String actualResult = accountNumber.finding(accountNumber.mapEntryOCRToNumber(lines));
+        final String expectedResult = "123456189 ERR";
+        assertEquals(expectedResult, actualResult);
+    }
 
-        final String actualResult3 = accountNumber.finding(accountNumber.mapEntryOCRToNumber(lines3));
-        final String expectedResult3 = "123456189 ERR";
-        assertEquals(expectedResult3, actualResult3);
+    /**
+     * This method test Finding result of an Illegible account number.
+     */
+    @Test
+    public void testFindingIllegibleAccountNumber() {
+        List<String> lines = new ArrayList<>();
+        lines.add("    _  _     _  _  _  _  _ ");
+        lines.add("  | _| _||_||_  _    |_||_|");
+        lines.add("  ||_  _|  | _||_|  ||_| _|");
+
+        final String actualResult = accountNumber.finding(accountNumber.mapEntryOCRToNumber(lines));
+        final String expectedResult = "12345??89 ILL";
+        assertEquals(expectedResult, actualResult);
     }
 }
