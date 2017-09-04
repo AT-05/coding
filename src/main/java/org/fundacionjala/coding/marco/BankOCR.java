@@ -2,6 +2,7 @@ package org.fundacionjala.coding.marco;
 
 import java.util.HashMap;
 import java.util.Map;
+
 /**
  * Created by Administrator on 8/22/2017.
  */
@@ -94,13 +95,10 @@ public class BankOCR {
         if (!contains(code)) {
             if (!storyTwo(code)) {
                 return code.concat(" ERR");
-            } else {
-                return code;
             }
-        } else {
-            return code.concat(" ILL");
+            return code;
         }
-
+        return code.concat(" ILL");
     }
 
     /**
