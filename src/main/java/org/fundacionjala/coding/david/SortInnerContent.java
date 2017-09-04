@@ -9,17 +9,17 @@ public class SortInnerContent {
 
     /**
      * This method word reverse only content of Word.
-     *
      * @param words is value number.
      * @return a value word reverse.
      */
     public String sortInnerReverse(String words) {
 
-        String[] listWord = words.split(" ");
+        String delimiter = " ";
+        String[] listWord = words.split(delimiter);
         StringBuilder listReverseWord = new StringBuilder();
         String wordFirs, wordLast, wordContent;
         int posStart, posEnd;
-        for (int c = 0; c < listWord.length; c++, listReverseWord.append(" ")) {
+        for (int c = 0; c < listWord.length; c++, listReverseWord.append(delimiter)) {
 
             if (listWord[c].length() > 1) {
                 wordFirs = listWord[c].substring(0, 1);

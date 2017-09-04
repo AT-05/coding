@@ -1,5 +1,6 @@
 package org.fundacionjala.coding.david;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -8,27 +9,53 @@ import static org.junit.Assert.assertEquals;
  * This class realize test word reverse.
  */
 public class SortInnerContentTest {
+    private SortInnerContent sortInnerContent;
+
+    /**
+     * This method initialize softInnserContent.
+     */
+    @Before
+    public void setUp() {
+        sortInnerContent = new SortInnerContent();
+    }
 
     /**
      * This method word reserve.
      */
     @Test
-    public void reverseToStartInFivePosition() {
-        SortInnerContent sortInnerContent = new SortInnerContent();
+    public void testReverseToStartInFivePositionCaseOne() {
 
         final String actualResult = sortInnerContent.sortInnerReverse("sort the inner content in descending order");
-        final String actualResul2 = sortInnerContent.sortInnerReverse("wait for me");
-        final String actualResul3 = sortInnerContent.sortInnerReverse("I am");
-
-        final String expectResult = sortInnerContent.sortInnerReverse("srot the inner ctonnet in dsnnieedcg oredr");
-        final String expectResult2 = sortInnerContent.sortInnerReverse("wiat for me");
-        final String expectResult3 = sortInnerContent.sortInnerReverse("I am");
-
+        final String expectResult = "srot the inner ctonnet in dsnnieedcg oredr";
         assertEquals(expectResult, actualResult);
-        assertEquals(expectResult2, sortInnerContent.sortInnerReverse(actualResul2));
-        assertEquals(expectResult3, sortInnerContent.sortInnerReverse(actualResul3));
 
     }
+
+    /**
+     * This method word reserve.
+     */
+    @Test
+    public void testReverseToStartInFivePositionCaseTwo() {
+
+        final String actualResult = sortInnerContent.sortInnerReverse("wiat for me");
+        final String expectResult = "wiat for me";
+        assertEquals(expectResult, actualResult);
+
+    }
+
+    /**
+     * This method word reserve.
+     */
+    @Test
+    public void testReverseToStartInFivePositionCaseThree() {
+
+        final String actualResult = sortInnerContent.sortInnerReverse("I am");
+        final String expectResult = "I am";
+
+        assertEquals(expectResult, actualResult);
+
+    }
+
 
 
 }
