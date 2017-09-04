@@ -24,8 +24,9 @@ public class SortInnerContentTest {
      */
     @Test
     public void testSortInnerContentOfFiveWords() {
-        String expectResult = kata5.sortInnerContent("sort the inner content in descending order");
-        assertEquals("srot the inner ctonnet in dsnnieedcg oredr", expectResult);
+        String actualResult = kata5.sortInnerContent("sort the inner content in descending order");
+        String expectedResult = "srot the inner ctonnet in dsnnieedcg oredr";
+        assertEquals(expectedResult, actualResult);
     }
 
     /**
@@ -33,8 +34,9 @@ public class SortInnerContentTest {
      */
     @Test
     public void testSortInnerContentOfOneWord() {
-        String expectResult = kata5.sortInnerContent("wait for me");
-        assertEquals("wiat for me", expectResult);
+        String actualResult = kata5.sortInnerContent("wait for me");
+        String expectedResult = "wiat for me";
+        assertEquals(expectedResult, actualResult);
     }
 
     /**
@@ -42,8 +44,9 @@ public class SortInnerContentTest {
      */
     @Test
     public void testSortInnerContentOfThreeWords() {
-        String expectResult = kata5.sortInnerContent("this kata is easy");
-        assertEquals("tihs ktaa is esay", expectResult);
+        String actualResult = kata5.sortInnerContent("this kata is easy");
+        String expectResult = "tihs ktaa is esay";
+        assertEquals(expectResult, actualResult);
     }
 
     /**
@@ -51,7 +54,8 @@ public class SortInnerContentTest {
      */
     @Test
     public void testSortInnerContentOfNoneWords() {
-        String expectResult = kata5.sortInnerContent("I am");
-        assertEquals("I am", expectResult);
+        String actualResult = kata5.sortInnerContent("I am");
+        String expedtedResult = "I am";
+        assertEquals(expedtedResult, actualResult);
     }
 }
