@@ -2,7 +2,6 @@ package org.fundacionjala.coding.marco;
 
 import java.util.HashMap;
 import java.util.Map;
-
 /**
  * Created by Administrator on 8/22/2017.
  */
@@ -12,14 +11,13 @@ public class BankOCR {
      * value map.
      */
     private static final Map<String, Integer> NUMBER_MAP = new HashMap<>();
-    public static final int ENTRY_SIZE = 27;
-
-    public static final int NUMBER_SIZE = 3;
-    public static final int EIGHT = 8;
-    public static final int ELEVEN = 11;
-    public static final int ZERO = 0;
-    public static final int ONE = 1;
-    public static final int TWO = 2;
+    private static final int ENTRY_SIZE = 27;
+    private static final int NUMBER_SIZE = 3;
+    private static final int EIGHT = 8;
+    private static final int ELEVEN = 11;
+    private static final int ZERO = 0;
+    private static final int ONE = 1;
+    private static final int TWO = 2;
 
     static {
         NUMBER_MAP.put("     |  |", 1);
@@ -48,19 +46,22 @@ public class BankOCR {
      * test.
      *
      * @param stringCodeOne   test.
-     * @param valueOne        test.
+     * @param stringCodeTwo   test.
      * @param stringCodeThree test.
      * @return test.
      */
-    public String storyOne(String stringCodeOne, String valueOne, String stringCodeThree) {
+    public String storyOne(String stringCodeOne, String stringCodeTwo, String stringCodeThree) {
 
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < ENTRY_SIZE; i = i + NUMBER_SIZE) {
-            result.append(NUMBER_MAP.get(
-                    stringCodeOne.substring(i, i + NUMBER_SIZE).
-                            concat(valueOne.substring(i, i + NUMBER_SIZE)).
-                            concat(stringCodeThree.substring(i, i + NUMBER_SIZE))));
-
+            String aux = stringCodeOne.substring(i, i + NUMBER_SIZE)
+                    .concat(stringCodeTwo.substring(i, i + NUMBER_SIZE))
+                    .concat(stringCodeThree.substring(i, i + NUMBER_SIZE));
+            if (NUMBER_MAP.containsKey(aux)) {
+                result.append(NUMBER_MAP.get(aux));
+            } else {
+                result.append("?");
+            }
         }
         return result.toString();
     }
@@ -77,5 +78,44 @@ public class BankOCR {
             result = result + Integer.parseInt(number.substring(pos, pos + ONE)) * i;
         }
         return result % ELEVEN == ZERO;
+    }
+
+    /**
+     * This is the story 3 of bank OCR.
+     *
+     * @param stringCodeOne   test.
+     * @param stringCodeTwo   test.
+     * @param stringCodeThree test.
+     * @return test.
+     */
+    public String storyThree(String stringCodeOne, String stringCodeTwo, String stringCodeThree) {
+
+        String code = storyOne(stringCodeOne, stringCodeTwo, stringCodeThree);
+        if (!contains(code)) {
+            if (!storyTwo(code)) {
+                return code.concat(" ERR");
+            } else {
+                return code;
+            }
+        } else {
+            return code.concat(" ILL");
+        }
+
+    }
+
+    /**
+     * This method help to identify if contains a ?.
+     *
+     * @param stringCode test.
+     * @return test.
+     */
+    private boolean contains(String stringCode) {
+        String[] codes = stringCode.split("");
+        for (String words : codes) {
+            if (words.equals("?")) {
+                return true;
+            }
+        }
+        return false;
     }
 }
