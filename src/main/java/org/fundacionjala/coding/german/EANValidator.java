@@ -26,7 +26,7 @@ public class EANValidator {
     private int sumEO(String number, int eo, int mult) {
         int res = 0;
         for (int i = eo; i < number.length() - 1; i += 2) {
-            res = res + Character.getNumericValue(number.charAt(i)) * mult;
+            res += Character.getNumericValue(number.charAt(i)) * mult;
         }
         return res;
     }

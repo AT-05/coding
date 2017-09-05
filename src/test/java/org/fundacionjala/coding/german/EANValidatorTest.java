@@ -8,7 +8,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Created by Administrator on 8/29/2017.
+ * Created by German on 8/29/2017.
  */
 public class EANValidatorTest {
     private EANValidator eanValidatorTest;
@@ -47,7 +47,6 @@ public class EANValidatorTest {
     @Test
     public void testValidateMethodIsCheckSumZero() {
         assertTrue(eanValidatorTest.validate("9783827317100"));
-        assertFalse("validate Method should return 'true'", result);
     }
 
 }
