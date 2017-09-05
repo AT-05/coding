@@ -8,6 +8,10 @@ import java.util.Arrays;
  */
 
 public class SortInnerContent {
+
+    private static final int LIMIT = 3;
+    private static final String DELIMITER = " ";
+
     /**
      * This method order the inner content of the words of the string descendent.
      *
@@ -15,11 +19,11 @@ public class SortInnerContent {
      * @return change the content of the string words.
      */
     public String sortInnerContent(String content) {
-        String[] arrayString = content.split(" ");
+        String[] arrayString = content.split(DELIMITER);
         for (int index = 0; index < arrayString.length; index++) {
-            arrayString[index] = arrayString[index].length() > 3 ? sort(arrayString[index]) : arrayString[index];
+            arrayString[index] = arrayString[index].length() > LIMIT ? sort(arrayString[index]) : arrayString[index];
         }
-        return String.join(" ", arrayString);
+        return String.join(DELIMITER, arrayString);
     }
 
     /**
@@ -31,8 +35,8 @@ public class SortInnerContent {
     public String sort(String word) {
         char[] letters = word.toCharArray();
         Arrays.sort(letters, 1, letters.length - 1);
-        StringBuilder sb = new StringBuilder(String.valueOf(letters, 1, letters.length - 2));
-        sb.reverse();
+        StringBuilder sb = new StringBuilder(String.valueOf(letters, 1, letters.length - 2))
+                .reverse();
         return String.format("%c%s%c", letters[0], sb.toString(), letters[letters.length - 1]);
     }
 }
