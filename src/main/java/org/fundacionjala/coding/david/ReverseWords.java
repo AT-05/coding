@@ -8,8 +8,10 @@ import java.util.StringJoiner;
 public class ReverseWords {
 
     private static final int NUMBER_FOUR = 4;
+
     /**
      * This method realize reverse of words.
+     *
      * @param words String.
      * @return One word reverse.
      */
@@ -18,10 +20,11 @@ public class ReverseWords {
         String delimiter = " ";
         String[] listWord = words.split(delimiter);
         StringJoiner listReverseWord = new StringJoiner(delimiter);
-        for (int c = 0; c < listWord.length; c++) {
-            listReverseWord.add(listWord[c].length() > NUMBER_FOUR ? new StringBuilder(listWord[c]).reverse()
-                    : listWord[c]);
+        for (String itemWord : listWord) {
+            listReverseWord.add(itemWord.length() > NUMBER_FOUR ? new StringBuilder(itemWord).reverse()
+                    : itemWord);
         }
+
         return listReverseWord.toString();
     }
 }
