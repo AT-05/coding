@@ -11,6 +11,7 @@ public class AccountNumber {
 
     private static final int NUMBER_SIZE = 3;
     private static final List<String> NUMBER_LIST = new ArrayList<>();
+    private static final int NUMBER_ELEVEN = 11;
 
     static {
 
@@ -52,13 +53,14 @@ public class AccountNumber {
      * @param numero string.
      * @return one number comparative.
      */
-    public int compare(String numero) {
+    public String compare(String numero) {
+        StringBuilder variable = new StringBuilder();
         for (int i = 0; i < NUMBER_LIST.size(); i++) {
             if (NUMBER_LIST.get(i).equals(numero)) {
-                return i;
+                return variable.append(i).toString();
             }
         }
-        return -1;
+        return "?";
     }
 
     /**
@@ -76,7 +78,7 @@ public class AccountNumber {
             int numberAux = Integer.parseInt(number.substring(posInitial, posEnd));
             sum = sum + (numberAux * numberPosition);
         }
-        return sum % 11 == 0;
+        return sum % NUMBER_ELEVEN == 0;
     }
 
     /**
@@ -86,31 +88,8 @@ public class AccountNumber {
      * @return one value.
      */
     public String scannNumber(String number) {
+        return number.contains("?") ? number.concat(" ILL") : !checkNumber(number) ? number.concat(" ERR") : number;
 
-        String[] listNumber = number.split("");
-        StringBuilder numberError = new StringBuilder();
-        StringBuilder numberString = new StringBuilder();
-        int status = 1;
-        for (int i = 0; i < listNumber.length; i++) {
-
-            if (listNumber[i].toString().equals("-")) {
-                i++;
-                status = 2;
-                numberString.append("?");
-            } else {
-                numberString.append(listNumber[i].toString());
-            }
-            numberError.append(listNumber[i]);
-        }
-
-        boolean checkNumber = checkNumber(numberError.toString());
-
-        if (status == 1 && checkNumber) {
-            return numberString.toString();
-        } else if (status == 2) {
-            return numberString.toString().concat(" ILL");
-        }
-        return numberString.toString().concat(" ERR");
     }
 
 }
