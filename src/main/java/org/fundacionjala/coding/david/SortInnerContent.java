@@ -1,14 +1,19 @@
 package org.fundacionjala.coding.david;
 
 import java.util.Arrays;
+import java.util.StringJoiner;
 
 /**
  * This Class Word Reverse.
  */
 public class SortInnerContent {
 
+    public static final int NUMBER_ONE = 1;
+    public static final int NUMBER_ZERO = 0;
+
     /**
      * This method word reverse only content of Word.
+     *
      * @param words is value number.
      * @return a value word reverse.
      */
@@ -16,28 +21,24 @@ public class SortInnerContent {
 
         String delimiter = " ";
         String[] listWord = words.split(delimiter);
-        StringBuilder listReverseWord = new StringBuilder();
-        String wordFirs, wordLast, wordContent;
-        int posStart, posEnd;
-        for (int c = 0; c < listWord.length; c++, listReverseWord.append(delimiter)) {
-
-            if (listWord[c].length() > 1) {
-                wordFirs = listWord[c].substring(0, 1);
-                posEnd = listWord[c].length();
-                posStart = posEnd - 1;
-                wordLast = listWord[c].substring(posStart, posEnd);
-                wordContent = listWord[c].substring(1, listWord[c].length() - 1);
-                listReverseWord.append(wordFirs);
-                String[] listOrder = wordContent.split("");
-                Arrays.sort(listOrder);
-                listReverseWord.append(new StringBuilder(String.join("", listOrder)).reverse().toString());
-                listReverseWord.append(wordLast);
-            } else {
-                listReverseWord.append(listWord[c]);
-            }
+        StringJoiner listReverse = new StringJoiner(delimiter);
+        for (String word : listWord) {
+            listReverse.add((word.length() > NUMBER_ONE) ? getReverserWord(word) : word);
         }
+        return listReverse.toString();
+    }
 
-        return listReverseWord.toString().trim();
+    /**This Method  realize reverse word.
+     * @param word is word.
+     * @return word reverse.
+     */
+    public String getReverserWord(String word) {
+        String[] listOrder = word.substring(NUMBER_ONE, word.length() - NUMBER_ONE).split("");
+        Arrays.sort(listOrder);
+
+        return String.format("%s%s%s", word.substring(NUMBER_ZERO, NUMBER_ONE), new StringBuilder(String.join("",
+                listOrder)).reverse().toString(), word.substring(word.length() - NUMBER_ONE, word.length()));
+
     }
 }
 
