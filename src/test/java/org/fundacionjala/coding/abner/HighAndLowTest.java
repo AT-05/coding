@@ -6,7 +6,7 @@ import org.junit.Test;
 import static junit.framework.TestCase.assertEquals;
 
 /**
- * Created by Samuel on 18/08/2017.
+ * Created by Abner on 18/08/2017.
  */
 public class HighAndLowTest {
 
@@ -17,6 +17,7 @@ public class HighAndLowTest {
      */
     @Before
     public void setUp() {
+
         highAndLow = new HighAndLow();
     }
 

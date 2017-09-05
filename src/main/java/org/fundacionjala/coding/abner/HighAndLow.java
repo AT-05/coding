@@ -1,10 +1,14 @@
 package org.fundacionjala.coding.abner;
 
+import java.util.Arrays;
+import java.util.stream.Stream;
+
 /**
+ * This class search.
  * Created by Abner on 17/08/2017.
  */
 public class HighAndLow {
-    private int high, low;
+    // private int high, low;
 
 
     /**
@@ -13,23 +17,12 @@ public class HighAndLow {
      * @param cad cad Chain entry de string.
      * @return values the high and low
      */
+
     public String highAndLowGet(String cad) {
-        String[] arr = cad.split(" ");
-
-        if (arr.length > 0) {
-            high = Integer.parseInt(arr[0]);
-            low = Integer.parseInt(arr[0]);
-        }
-        for (int i = 1; i < arr.length; i++) {
-            if (Integer.parseInt(arr[i]) > high) {
-                high = Integer.parseInt(arr[i]);
-            }
-
-            if (Integer.parseInt(arr[i]) < low) {
-                low = Integer.parseInt(arr[i]);
-            }
-        }
-        return String.format("%d %d", high, low);
+        int[] arrayCad = Stream.of(cad.split(" ")).mapToInt(Integer::parseInt).toArray();
+        Arrays.sort(arrayCad);
+        return String.format("%d %d", arrayCad[arrayCad.length - 1], arrayCad[0]);
     }
+
 
 }

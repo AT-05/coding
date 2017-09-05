@@ -5,7 +5,8 @@ import org.junit.Test;
 import static junit.framework.TestCase.assertEquals;
 
 /**
- * Created by Samuel on 18/08/2017.
+ * This class multiples Sum.
+ * Created by Abner on 18/08/2017.
  */
 public class MultiplesTest {
     /**
