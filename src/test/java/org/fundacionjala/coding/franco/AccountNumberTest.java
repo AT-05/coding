@@ -1,10 +1,10 @@
-package org.fundacionjala.coding.Franco;
-
-import org.junit.Before;
-import org.junit.Test;
+package org.fundacionjala.coding.franco;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.junit.Before;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

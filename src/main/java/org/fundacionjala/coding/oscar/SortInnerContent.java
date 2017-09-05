@@ -1,4 +1,4 @@
-package org.fundacionjala.coding.Oscar;
+package org.fundacionjala.coding.oscar;
 
 import java.util.Arrays;
 
