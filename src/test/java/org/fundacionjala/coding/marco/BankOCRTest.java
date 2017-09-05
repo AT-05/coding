@@ -29,7 +29,7 @@ public class BankOCRTest {
         final String entryLineCode1 = "    _  _     _  _  _  _  _ ";
         final String entryLineCode2 = "  | _| _||_||_ |_   ||_||_|";
         final String entryLineCode3 = "  ||_  _|  | _||_|  ||_| _|";
-        final String actualResult = story.storyOne(entryLineCode1, entryLineCode2, entryLineCode3);
+        final String actualResult = story.mapStringToNumbers(entryLineCode1, entryLineCode2, entryLineCode3);
         final String expectedResult = "123456789";
         assertEquals(expectedResult, actualResult);
     }
@@ -40,7 +40,7 @@ public class BankOCRTest {
     @Test
     public void testStoryTwoExampleTrue() {
         final String number = "123456789";
-        assertTrue(story.storyTwo(number));
+        assertTrue(story.checkSum(number));
     }
 
     /**
@@ -49,7 +49,7 @@ public class BankOCRTest {
     @Test
     public void testStoryTwoExampleFalse() {
         final String number = "345882865";
-        assertFalse(story.storyTwo(number));
+        assertFalse(story.checkSum(number));
     }
 
     /**
@@ -60,7 +60,7 @@ public class BankOCRTest {
         final String entryLineCode1 = "    _  _     _  _  _  _  _ ";
         final String entryLineCode2 = "  | _| _||_||_ |_   ||_||_|";
         final String entryLineCode3 = "  ||_  _|  | _||_|  ||_| _|";
-        final String actualResult = story.storyThree(entryLineCode1, entryLineCode2, entryLineCode3);
+        final String actualResult = story.finding(entryLineCode1, entryLineCode2, entryLineCode3);
         final String expectedResult = "123456789";
         assertEquals(expectedResult, actualResult);
     }
@@ -73,7 +73,7 @@ public class BankOCRTest {
         final String entryLineCode1 = "    _  _     _  _  _  _  _ ";
         final String entryLineCode2 = "  | _|  | _||_ |_   ||_||_|";
         final String entryLineCode3 = "  ||_  _|  | _||_|  ||_| _|";
-        final String actualResult = story.storyThree(entryLineCode1, entryLineCode2, entryLineCode3);
+        final String actualResult = story.finding(entryLineCode1, entryLineCode2, entryLineCode3);
         final String expectedResult = "12??56789 ILL";
         assertEquals(expectedResult, actualResult);
     }
@@ -86,7 +86,7 @@ public class BankOCRTest {
         final String entryLineCode1 = " _     _  _  _  _  _  _  _ ";
         final String entryLineCode2 = " _||_||_ |_||_| _||_||_ |_ ";
         final String entryLineCode3 = " _|  | _||_||_||_ |_||_| _|";
-        final String actualResult = story.storyThree(entryLineCode1, entryLineCode2, entryLineCode3);
+        final String actualResult = story.finding(entryLineCode1, entryLineCode2, entryLineCode3);
         final String expectedResult = "345882865 ERR";
         assertEquals(expectedResult, actualResult);
     }

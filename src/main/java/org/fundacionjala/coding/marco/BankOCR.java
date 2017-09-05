@@ -51,7 +51,7 @@ public class BankOCR {
      * @param stringCodeThree test.
      * @return test.
      */
-    public String storyOne(String stringCodeOne, String stringCodeTwo, String stringCodeThree) {
+    public String mapStringToNumbers(String stringCodeOne, String stringCodeTwo, String stringCodeThree) {
 
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < ENTRY_SIZE; i = i + NUMBER_SIZE) {
@@ -73,7 +73,7 @@ public class BankOCR {
      * @param number test.
      * @return test.
      */
-    public boolean storyTwo(String number) {
+    public boolean checkSum(String number) {
         int pos = EIGHT, result = Integer.parseInt(number.substring(pos, pos + ONE)) * ONE;
         for (int i = TWO; i < number.length() + ONE; i++, pos--) {
             result = result + Integer.parseInt(number.substring(pos, pos + ONE)) * i;
@@ -89,31 +89,16 @@ public class BankOCR {
      * @param stringCodeThree test.
      * @return test.
      */
-    public String storyThree(String stringCodeOne, String stringCodeTwo, String stringCodeThree) {
-
-        String code = storyOne(stringCodeOne, stringCodeTwo, stringCodeThree);
-        if (!contains(code)) {
-            if (!storyTwo(code)) {
+    public String finding(String stringCodeOne, String stringCodeTwo, String stringCodeThree) {
+        String code = mapStringToNumbers(stringCodeOne, stringCodeTwo, stringCodeThree);
+        if (!code.contains("?")) {
+            if (!checkSum(code)) {
                 return code.concat(" ERR");
             }
             return code;
         }
         return code.concat(" ILL");
+
     }
 
-    /**
-     * This method help to identify if contains a ?.
-     *
-     * @param stringCode test.
-     * @return test.
-     */
-    private boolean contains(String stringCode) {
-        String[] codes = stringCode.split("");
-        for (String words : codes) {
-            if (words.equals("?")) {
-                return true;
-            }
-        }
-        return false;
-    }
 }
