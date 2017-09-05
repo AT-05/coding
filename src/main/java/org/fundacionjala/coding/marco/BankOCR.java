@@ -91,14 +91,7 @@ public class BankOCR {
      */
     public String finding(String stringCodeOne, String stringCodeTwo, String stringCodeThree) {
         String code = mapStringToNumbers(stringCodeOne, stringCodeTwo, stringCodeThree);
-        if (!code.contains("?")) {
-            if (!checkSum(code)) {
-                return code.concat(" ERR");
-            }
-            return code;
-        }
-        return code.concat(" ILL");
-
+        return !code.contains("?") ? (!checkSum(code)) ? code.concat(" ERR") : code : code.concat(" ILL");
     }
 
 }
