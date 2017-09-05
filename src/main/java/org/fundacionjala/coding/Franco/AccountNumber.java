@@ -14,6 +14,7 @@ public class AccountNumber {
     private static final int CONS_NINE = 9;
     private static final int CONS_ELEVEN = 11;
     private static final List<String> ACCOUNT_NUMBERS = new ArrayList<>();
+    private static final String NOT_EXIST_CHAR = "?";
 
     static {
         ACCOUNT_NUMBERS.add(" _ " + "| |" + "|_|");
@@ -41,7 +42,7 @@ public class AccountNumber {
                 return String.valueOf(i);
             }
         }
-        return "?";
+        return NOT_EXIST_CHAR;
     }
 
     /**
@@ -91,15 +92,7 @@ public class AccountNumber {
      * complies checksum.
      */
     public String finding(String actNum) {
-        StringBuilder result = new StringBuilder(actNum);
-        int notNumber = CONS_ZERO;
-        final String[] values = actNum.split("");
-
-        for (int i = CONS_ZERO; i < values.length; i++) {
-            notNumber = values[i].equals("?") ? notNumber + CONS_ONE : notNumber;
-        }
-
-        result = notNumber != CONS_ZERO ? result.append(" ILL") : (checkSum(actNum) ? result : result.append(" ERR"));
-        return result.toString();
+        return actNum.contains(NOT_EXIST_CHAR) ? String.format("%s ILL", actNum)
+                : !checkSum(actNum) ? String.format("%s ERR", actNum) : actNum;
     }
 }
