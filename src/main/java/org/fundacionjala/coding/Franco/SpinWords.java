@@ -15,12 +15,9 @@ public class SpinWords {
      * @return sentence with larger than 5 letter words reversed.
      */
     public String spinWord(String stringOfWords) {
-        //StringBuilder result = new StringBuilder();
-        String result = "";
         final String[] words = stringOfWords.split(" ");
 
         for (int i = 0; i < words.length; i++) {
-
             if (words[i].length() > MAX_LETTERS) {
                 StringBuilder reverseWord = new StringBuilder(words[i]);
                 reverseWord.reverse();
