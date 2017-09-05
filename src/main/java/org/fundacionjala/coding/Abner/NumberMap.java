@@ -89,7 +89,7 @@ public class NumberMap {
         for (int i = 1; i <= 9; i++) {
             modNumber = number % 10;
             number = number / 10;
-            sum = sum + (modNumber * i);
+            sum += modNumber * i;
         }
 
         return sum % 11 == 0;
