@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Administrator on 8/29/2017.
@@ -37,7 +39,7 @@ public class AccountNumberTest {
      * This method check number.
      */
     @Test
-    public void checkNumber() {
+    public void checkNumberCaseOne() {
         List<String> listLine = new ArrayList<>();
         listLine.add("    _  _  _  _  _  _  _  _ ");
         listLine.add("|_||_   ||_ | ||_|| || || |");
@@ -45,10 +47,22 @@ public class AccountNumberTest {
 
         final String numberConverter = accountNumber.mapToNumber(listLine);
         boolean actualResul = accountNumber.checkNumber(numberConverter);
-        boolean expectedResult = true;
-        assertEquals(expectedResult, actualResul);
+        assertTrue(actualResul);
     }
+    /**
+     * This method check number.
+     */
+    @Test
+    public void checkNumberCaseTwo() {
+        List<String> listLine = new ArrayList<>();
+        listLine.add("    _  _  _  _  _  _  _    ");
+        listLine.add("|_||_   ||_ | ||_|| || |  |");
+        listLine.add("  | _|  | _||_||_||_||_|  |");
 
+        final String numberConverter = accountNumber.mapToNumber(listLine);
+        boolean actualResul = accountNumber.checkNumber(numberConverter);
+        assertFalse(actualResul);
+    }
     /**
      * This method check number 457508000.
      */
