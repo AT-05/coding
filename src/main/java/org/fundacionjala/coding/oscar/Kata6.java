@@ -28,6 +28,6 @@ public class Kata6 {
      * @return zero if is correct otherwise follow the formula.
      */
     public String validateChecksum(int sum) {
-        return (sum % 10 == 0) ? "0" : Integer.toString((10 - (sum % 10)));
+        return (sum % 10 == 0) ? "0" : Integer.toString(10 - (sum % 10));
     }
 }

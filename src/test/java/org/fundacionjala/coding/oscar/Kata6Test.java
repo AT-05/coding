@@ -46,4 +46,13 @@ public class Kata6Test {
         final boolean expectResult = eanValidator.validate("400330101839");
         assertFalse(expectResult);
     }
+
+    /**
+     * This test when the checksum is zero.
+     */
+    @Test
+    public void testWithChecksumZero() {
+        final boolean expectResult = eanValidator.validate("9783827317100");
+        assertTrue(expectResult);
+    }
 }
