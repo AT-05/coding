@@ -1,26 +1,26 @@
-package org.fundacionjala.coding.Abner;
+package org.fundacionjala.coding.abner;
 
-import org.fundacionjala.coding.BarCode;
 import org.junit.Before;
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Abner on 8/29/2017.
  */
-public class TestBarCode {
+public class EANValidationTest {
     /**
      * The var to all class.
      */
-    private BarCode barCode;
+    private EANValidation eanValidation;
 
     /**
      * Setup de var for all class.
      */
     @Before
     public void setup() {
-        barCode = new BarCode();
+        eanValidation = new EANValidation();
     }
 
     /**
@@ -29,7 +29,7 @@ public class TestBarCode {
     @Test
     public void testChecksumTrue() {
 
-        assertEquals(true, barCode.checkCodeBar("4003301018398"));
+        assertTrue(eanValidation.checkCodeBar("4003301018398"));
     }
 
     /**
@@ -39,7 +39,7 @@ public class TestBarCode {
     @Test
     public void testChecksumFalse() {
 
-        assertEquals(false, barCode.checkCodeBar("4003301018392"));
+        assertFalse(eanValidation.checkCodeBar("4003301018392"));
     }
 
 
@@ -50,7 +50,7 @@ public class TestBarCode {
     @Test
     public void testChecksumFalseWitZero() {
 
-        assertEquals(false, barCode.checkCodeBar("4003301018390"));
+        assertFalse(eanValidation.checkCodeBar("4003301018390"));
     }
 
 }

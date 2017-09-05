@@ -1,10 +1,10 @@
-package org.fundacionjala.coding;
+package org.fundacionjala.coding.abner;
 
 /**
  * this class check de code bar.
  * Created by Administrator on 8/29/2017.
  */
-public class BarCode {
+public class EANValidation {
 
     /**
      * This function check is the code bar is true.

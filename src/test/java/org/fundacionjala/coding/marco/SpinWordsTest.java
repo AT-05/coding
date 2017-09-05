@@ -25,9 +25,8 @@ public class SpinWordsTest {
      */
     @Test
     public void testSpinWorld1() {
-
-        String expectResult = "Hey wollef sroirraw";
-        String actualResult = "Hey fellow warriors";
+        final String expectResult = "Hey wollef sroirraw";
+        final String actualResult = "Hey fellow warriors";
         assertEquals(expectResult, story.spinWords(actualResult));
 
     }
@@ -37,9 +36,8 @@ public class SpinWordsTest {
      */
     @Test
     public void testSpinWorld2() {
-
-        String expectResult = "This is a test";
-        String actualResult = "This is a test";
+        final String expectResult = "This is a test";
+        final String actualResult = "This is a test";
         assertEquals(expectResult, story.spinWords(actualResult));
 
     }
@@ -49,9 +47,8 @@ public class SpinWordsTest {
      */
     @Test
     public void testSpinWorld3() {
-
-        String expectResult = "This is rehtona test";
-        String actualResult = "This is another test";
+        final String expectResult = "This is rehtona test";
+        final String actualResult = "This is another test";
         assertEquals(expectResult, story.spinWords(actualResult));
 
     }

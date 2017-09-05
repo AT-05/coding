@@ -1,4 +1,4 @@
-package org.fundacionjala.coding.Franco;
+package org.fundacionjala.coding.franco;
 
 import org.junit.Before;
 import org.junit.Test;
