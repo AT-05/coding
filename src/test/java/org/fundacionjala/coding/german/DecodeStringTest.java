@@ -1,6 +1,6 @@
 package org.fundacionjala.coding.german;
 
-
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -9,19 +9,14 @@ import static org.junit.Assert.assertEquals;
  * Created by seus on 25/8/2017.
  */
 public class DecodeStringTest {
+    private DecodeString decodeString;
 
     /**
-     * Verify  number Method.
+     * This method execute before any test.
      */
-    @Test
-    public void testNumberMethod() {
-        DecodeString decodeString = new DecodeString("");
-        int result = decodeString.number(String.format("%s%s%s",
-                " _ ",
-                "|_|",
-                "|_|"));
-        assertEquals(8, result);
-
+    @Before
+    public void setup() {
+        decodeString = new DecodeString();
     }
 
     /**
@@ -29,12 +24,11 @@ public class DecodeStringTest {
      */
     @Test
     public void testParseAccountMethod() {
-        DecodeString decodeString = new DecodeString(String.format("%s%s%s",
+        final String result = decodeString.parseAccount(String.format("%s%s%s",
                 "    _  _     _  _  _  _  _ \n",
                 "  | _| _||_||_ |_   ||_||_|\n",
                 "  ||_  _|  | _||_|  ||_| _|"));
 
-        String result = decodeString.parseAccount();
         assertEquals("123456789", result);
     }
 
@@ -43,12 +37,10 @@ public class DecodeStringTest {
      */
     @Test
     public void testIsValidCheckSumMethodIsFalse() {
-        DecodeString decodeString = new DecodeString(String.format("%s%s%s",
-                "    _  _     _  _  _  _  _ \n",
-                "  | _| _||_||_ |_   ||_||_|\n",
-                "  ||_  _|  | _||_|  ||_| _|"));
-
-        boolean result = decodeString.isValidCheckSum();
+        final boolean result = decodeString.isValidCheckSum(decodeString.parseAccount(String.format("%s%s%s",
+                " _  _  _  _  _  _  _  _    \n",
+                "|_|| || || || || || || |  |\n",
+                " _||_||_||_||_||_||_||_|  |")));
         assertEquals(false, result);
     }
 
@@ -57,13 +49,11 @@ public class DecodeStringTest {
      */
     @Test
     public void testIsValidCheckSumMethodIsTrue() {
-        DecodeString decodeString = new DecodeString(String.format("%s%s%s",
+        boolean result = decodeString.isValidCheckSum(decodeString.parseAccount(String.format("%s%s%s",
                 " _  _  _  _  _  _  _  _  _ \n",
                 "|_|| || || || || || || |  |\n",
-                " _||_||_||_||_||_||_||_|  |"));
-        decodeString.parseAccount();
+                " _||_||_||_||_||_||_||_|  |")));
 
-        boolean result = decodeString.isValidCheckSum();
         assertEquals(true, result);
     }
 
@@ -72,13 +62,10 @@ public class DecodeStringTest {
      */
     @Test
     public void testStatusMethodIsOK() {
-        DecodeString decodeString = new DecodeString(String.format("%s%s%s",
+        String result = decodeString.status(decodeString.parseAccount(String.format("%s%s%s",
                 " _  _  _  _  _  _  _  _  _ \n",
                 "|_|| || || || || || || |  |\n",
-                " _||_||_||_||_||_||_||_|  |"));
-
-        decodeString.parseAccount();
-        String result = decodeString.status();
+                " _||_||_||_||_||_||_||_|  |")));
         assertEquals("900000007", result);
     }
 
@@ -87,14 +74,11 @@ public class DecodeStringTest {
      */
     @Test
     public void testStatusMethodIsERR() {
-        DecodeString decodeString = new DecodeString(String.format("%s%s%s",
-                " _     _  _  _  _  _  _  _ \n",
-                "|_|  || || || || || || |  |\n",
-                " _|  ||_||_||_||_||_||_|  |"));
-
-        decodeString.parseAccount();
-        String result = decodeString.status();
-        assertEquals("910000007 ERR", result);
+        String result = decodeString.status(decodeString.parseAccount(String.format("%s%s%s",
+                " _  _  _  _  _  _  _  _    \n",
+                "|_|| || || || || || || |  |\n",
+                " _||_||_||_||_||_||_||_|  |")));
+        assertEquals("900000001 ERR", result);
     }
 
     /**
@@ -102,13 +86,10 @@ public class DecodeStringTest {
      */
     @Test
     public void testStatusMethodIsILL() {
-        DecodeString decodeString = new DecodeString(String.format("%s%s%s",
+        String result = decodeString.status(decodeString.parseAccount(String.format("%s%s%s",
                 " _  _  _  _  _  _  _  _  _ \n",
                 "|_|  || || || || || || |  |\n",
-                " _||_||_||_||_||_||_||_|  |"));
-
-        decodeString.parseAccount();
-        String result = decodeString.status();
+                " _||_||_||_||_||_||_||_|  |")));
         assertEquals("9?0000007 ILL", result);
     }
 }

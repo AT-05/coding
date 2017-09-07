@@ -3,163 +3,109 @@ package org.fundacionjala.coding.german;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.String.format;
+
+
 /**
  * Created by German on 25/8/2017.
  */
 public class DecodeString {
-    private String stringOCR;
-    private StringBuilder stringOCROut;
-    private List<Integer> listOCR;
     private static final String QUESTION_MARK = "?";
-    private static final List<String> STRING_LIST = new ArrayList<>();
+    private static final int OFFSET = 3;
+    private static final List<String> NUMBERS = new ArrayList<>();
 
     static {
 
-        STRING_LIST.add(String.format("%s%s%s", " _ ",
+        NUMBERS.add(format("%s%s%s", " _ ",
                 "| |",
                 "|_|"));
 
 
-        STRING_LIST.add(String.format("%s%s%s", "   ",
+        NUMBERS.add(format("%s%s%s", "   ",
                 "  |",
                 "  |"));
 
-        STRING_LIST.add(String.format("%s%s%s", " _ ",
+        NUMBERS.add(format("%s%s%s", " _ ",
                 " _|",
                 "|_ "));
 
-        STRING_LIST.add(String.format("%s%s%s", " _ ",
+        NUMBERS.add(format("%s%s%s", " _ ",
                 " _|",
                 " _|"));
 
-        STRING_LIST.add(String.format("%s%s%s", "   ",
+        NUMBERS.add(format("%s%s%s", "   ",
                 "|_|",
                 "  |"));
 
-        STRING_LIST.add(String.format("%s%s%s", " _ ",
+        NUMBERS.add(format("%s%s%s", " _ ",
                 "|_ ",
                 " _|"));
 
-        STRING_LIST.add(String.format("%s%s%s", " _ ",
+        NUMBERS.add(format("%s%s%s", " _ ",
                 "|_ ",
                 "|_|"));
 
-        STRING_LIST.add(String.format("%s%s%s", " _ ",
+        NUMBERS.add(format("%s%s%s", " _ ",
                 "  |",
                 "  |"));
 
-        STRING_LIST.add(String.format("%s%s%s", " _ ",
+        NUMBERS.add(format("%s%s%s", " _ ",
                 "|_|",
                 "|_|"));
 
-        STRING_LIST.add(String.format("%s%s%s", " _ ",
+        NUMBERS.add(format("%s%s%s", " _ ",
                 "|_|",
                 " _|"));
 
     }
 
-
     /**
-     * this is comment of function.
+     * This method return a String numbers.
      *
-     * @param stringOCR **this is string for decode**
-     */
-    public DecodeString(String stringOCR) {
-        this.stringOCR = stringOCR;
-        listOCR = new ArrayList<>();
-    }
-
-    /**
-     * this method return a String to number.
-     *
-     * @param number **this is string for decode**
-     * @return int number
-     */
-    public int number(String number) {
-        for (int i = 0; i < STRING_LIST.size(); i++) {
-            if (STRING_LIST.get(i).equals(number)) {
-                return i;
-            }
-
-        }
-        return -1;
-    }
-
-    /**
-     * parseAccount method.
-     *
+     * @param stringOCR for decode
      * @return String
      */
-    public String parseAccount() {
-        this.stringOCROut = new StringBuilder();
-        String[] divede = stringOCR.split("\n");
+    public String parseAccount(String stringOCR) {
+        StringBuilder stringOCROut = new StringBuilder();
+        String[] split = stringOCR.split("\n");
         int decode;
-        for (int i = 0; i < divede[0].length(); i += 3) {
-            decode = number(String.format("%s%s%s", divede[0].substring(i, i + 3),
-                    divede[1].substring(i, i + 3),
-                    divede[2].substring(i, i + 3)));
-            listOCR.add(decode);
-            if (decode >= 0) {
-                stringOCROut.append(decode);
-
-            } else {
-                stringOCROut.append(QUESTION_MARK);
-            }
-
-
+        for (int i = 0; i < split[0].length(); i += OFFSET) {
+            decode = NUMBERS.indexOf(format("%s%s%s", split[0].substring(i, i + OFFSET),
+                    split[1].substring(i, i + OFFSET),
+                    split[2].substring(i, i + OFFSET)));
+            stringOCROut.append((decode < 0) ? QUESTION_MARK : decode);
         }
         return stringOCROut.toString();
     }
-
 
     /**
      * isValidCheckSum method.
-     * Verity Check sum is correct
+     * Verity stringOCR Check sum is correct
      *
+     * @param stringOCR for decode
      * @return boolean
      */
 
-    public boolean isValidCheckSum() {
-        boolean res = false;
+    public boolean isValidCheckSum(String stringOCR) {
         int mod11 = 0;
-        if (!listOCR.isEmpty() && listOCR.size() == 9) {
-            for (int i = 0; i < 9; i++) {
-                if (listOCR.get(i) < 0) {
-                    return false;
-                }
-                mod11 = mod11 + listOCR.get(i) * (9 - i);
-
-            }
-            res = mod11 % 11 == 0;
+        for (int i = 0; i < 9; i++) {
+            mod11 += Character.getNumericValue(stringOCR.charAt(i)) * (9 - i);
         }
-        return res;
-    }
-
-    /**
-     * is ILL method.
-     *
-     * @return boolean
-     */
-    private boolean isIll() {
-
-        return stringOCROut.indexOf(QUESTION_MARK) >= 0;
+        return mod11 % 11 == 0;
 
     }
 
     /**
-     * status method.
+     * status method .
+     * add ILL unreadable
+     * or ERR if checkSum is false to stringOCR
      *
+     * @param stringOCR for decode
      * @return String
      */
-    public String status() {
-
-        if (!this.isValidCheckSum()) {
-            if (this.isIll()) {
-                stringOCROut.append(" ILL");
-            } else {
-                stringOCROut.append(" ERR");
-            }
-        }
-        return stringOCROut.toString();
+    public String status(String stringOCR) {
+        return ((isValidCheckSum(stringOCR))
+                ? format("%s", stringOCR) : (stringOCR.indexOf("?") == -1)
+                ? format("%s ERR", stringOCR) : format("%s ILL", stringOCR));
     }
 }
