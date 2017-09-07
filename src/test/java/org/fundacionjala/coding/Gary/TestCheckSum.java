@@ -30,7 +30,7 @@ public class TestCheckSum {
      */
     @Test
     public void testCheckSumFirst() {
-        String chain = "4003301018398";
+        final String chain = "4003301018398";
         assertTrue(checkSum.checkSum1(chain));
 
     }
@@ -40,7 +40,7 @@ public class TestCheckSum {
      */
     @Test
     public void testCheckSumSecond() {
-        String chain = "4003301018392";
+        final String chain = "4003301018392";
         assertFalse(checkSum.checkSum1(chain));
 
     }
@@ -51,7 +51,7 @@ public class TestCheckSum {
      */
     @Test
     public void testCheckSumThird() {
-        String chain = "978382731700";
+        final String chain = "9783827317000";
         assertFalse(checkSum.checkSum1(chain));
 
     }

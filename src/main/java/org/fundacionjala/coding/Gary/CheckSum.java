@@ -20,9 +20,9 @@ public class CheckSum {
         int result1 = 0;
         int[] numbers = Stream.of(chain1.split("")).mapToInt(Integer::parseInt).toArray();
         for (int position = 0; position < numbers.length - NUMBER_SIZE; position++) {
-            result1 = position + NUMBER_SIZE % 2 == 0
-                    ? result1 + numbers[position] * NUMBER_EVEN
-                    : result1 + numbers[position];
+            result1 += position + NUMBER_SIZE % 2 == 0
+                    ? numbers[position] * NUMBER_EVEN
+                    : numbers[position];
         }
         int checksum = result1 % NUMBER_MODULE == 0 ? 0 : NUMBER_MODULE - (result1) % NUMBER_MODULE;
         return checksum == numbers[numbers.length - NUMBER_SIZE];
