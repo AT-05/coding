@@ -51,7 +51,7 @@ public class TestCheckSum {
      */
     @Test
     public void testCheckSumThird() {
-        String chain = "400330101839";
+        String chain = "978382731700";
         assertFalse(checkSum.checkSum1(chain));
 
     }

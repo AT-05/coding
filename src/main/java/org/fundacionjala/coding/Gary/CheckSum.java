@@ -9,6 +9,7 @@ public class CheckSum {
     private static final int NUMBER_SIZE = 1;
     private static final int NUMBER_EVEN = 3;
     private static final int NUMBER_MODULE = 10;
+
     /**
      * checkSum compare the numbers.
      *
@@ -19,14 +20,11 @@ public class CheckSum {
         int result1 = 0;
         int[] numbers = Stream.of(chain1.split("")).mapToInt(Integer::parseInt).toArray();
         for (int position = 0; position < numbers.length - NUMBER_SIZE; position++) {
-
-            if (position + NUMBER_SIZE % 2 == 0) {
-                result1 += numbers[position] * NUMBER_EVEN;
-            } else {
-                result1 += numbers[position];
-            }
+            result1 = position + NUMBER_SIZE % 2 == 0
+                    ? result1 + numbers[position] * NUMBER_EVEN
+                    : result1 + numbers[position];
         }
-        int checksum = (result1 % NUMBER_MODULE == 0) ? 0 : NUMBER_MODULE - (result1) % NUMBER_MODULE;
+        int checksum = result1 % NUMBER_MODULE == 0 ? 0 : NUMBER_MODULE - (result1) % NUMBER_MODULE;
         return checksum == numbers[numbers.length - NUMBER_SIZE];
     }
 }
