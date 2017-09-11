@@ -1,4 +1,4 @@
-package org.fundacionjala.coding.Abner;
+package org.fundacionjala.coding.abner;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +10,6 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * This class test the numbers.
- * Created by Samuel on 24/08/2017.
  */
 public class NumberMapTest {
     /**
