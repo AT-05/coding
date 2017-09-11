@@ -1,12 +1,11 @@
-package org.fundacionjala.coding.Franco;
+package org.fundacionjala.coding.franco;
 
 /**
  * Created by Administrator on 8/29/2017.
  */
 public class SpinWords {
+
     private static final int MAX_LETTERS = 5;
-    private static final int CONS_ONE = 1;
-    public static final int CONS_ZERO = 0;
 
     /**
      * This method reverses words of a sentence which are larger than 5 letters.
