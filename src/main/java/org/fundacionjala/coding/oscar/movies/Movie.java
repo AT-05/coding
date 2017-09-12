@@ -1,26 +1,46 @@
-package movies;
+package org.fundacionjala.coding.oscar.movies;
 
-public class Movie {
-    public static final int CHILDRENS = 2;
-    public static final int REGULAR = 0;
-    public static final int NEW_RELEASE = 1;
-    private String _title;
-    private int _priceCode;
+/**
+ * The class for represent a movie.
+ */
+public abstract class Movie {
+    private String title;
+    private int priceCode;
 
+    /**
+     * This is a constructor.
+     *
+     * @param title     of the movie.
+     * @param priceCode the price code of the movie.
+     */
     public Movie(String title, int priceCode) {
-        _title = title;
-        _priceCode = priceCode;
+        this.title = title;
+        this.priceCode = priceCode;
     }
 
+    /**
+     * This method return the price code of the movie.
+     *
+     * @return a price code as an integer.
+     */
     public int getPriceCode() {
-        return _priceCode;
+        return priceCode;
     }
 
-    public void setPriceCode(int arg) {
-        _priceCode = arg;
-    }
-
+    /**
+     * This method return the title of the movie.
+     *
+     * @return the title as a string.
+     */
     public String getTitle() {
-        return _title;
+        return title;
     }
+
+    /**
+     * This is a abstract method for get amount.
+     *
+     * @param daysRented the days for rented a movie.
+     * @return the amount as a double.
+     */
+    public abstract double getAmount(int daysRented);
 }
