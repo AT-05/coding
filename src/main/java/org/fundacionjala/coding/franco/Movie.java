@@ -22,4 +22,6 @@ public abstract class Movie {
      * @return the total amount depending on the Movie type.
      */
     abstract double calculateAmount(int daysRented);
+
+    abstract int calculateFrequentRenterPoints(int daysRented);
 }

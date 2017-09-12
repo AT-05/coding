@@ -28,7 +28,7 @@ public class CustomerTest {
         customer.addRental(new Rental(new NewReleaseMovie("Avengers 3: Infinity War I"), 2));
         customer.addRental(new Rental(new RegularMovie("Spider-man"), 1));
 
-        double actualResult = customer.calculateTotalAmount(customer.getRentalList());
+        double actualResult = customer.calculateTotalAmount();
         double expectedResult = 9.5;
 
         assertEquals(expectedResult, actualResult, 0);
@@ -43,7 +43,7 @@ public class CustomerTest {
         customer.addRental(new Rental(new NewReleaseMovie("Avengers 3: Infinity War I"), 2));
         customer.addRental(new Rental(new RegularMovie("Spider-man"), 1));
 
-        double actualResult = customer.calculateFrequentPoints(customer.getRentalList());
+        double actualResult = customer.calculateTotalFrequentPoints();
         double expectedResult = 4;
 
         assertEquals(expectedResult, actualResult, 0);
@@ -58,7 +58,7 @@ public class CustomerTest {
         customer.addRental(new Rental(new NewReleaseMovie("Avengers 3: Infinity War I"), 1));
         customer.addRental(new Rental(new RegularMovie("Spider-man"), 1));
 
-        double actualResult = customer.calculateFrequentPoints(customer.getRentalList());
+        double actualResult = customer.calculateTotalFrequentPoints();
         double expectedResult = 3;
 
         assertEquals(expectedResult, actualResult, 0);

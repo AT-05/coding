@@ -24,4 +24,9 @@ public class NewReleaseMovie extends Movie {
     double calculateAmount(int daysRented) {
         return daysRented * 3;
     }
+
+    @Override
+    int calculateFrequentRenterPoints(int daysRented) {
+        return daysRented > 1 ? 2 : 1;
+    }
 }

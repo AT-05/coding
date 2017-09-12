@@ -41,20 +41,16 @@ public class Customer {
     /**
      * This method calculates total amount of a list of rentals.
      *
-     * @param rentals is a list of rental objects.
      * @return the total amount of the movies rented treating each
      * one depending on their type.
      */
-    public double calculateTotalAmount(List<Rental> rentals) {
+    public double calculateTotalAmount() {
         double totalAmount = 0;
 
-        int i = 0;
-        while (i < rentals.size()) {
+        for (Rental rental : rentals) {
             //determine amounts for each line
-            double thisAmount = rentals.get(i).getMovie().calculateAmount(rentals.get(i).getDaysRented());
             //show figures for this rental
-            totalAmount += thisAmount;
-            i++;
+            totalAmount += rental.calculateAmount();
         }
         return totalAmount;
     }
@@ -62,22 +58,18 @@ public class Customer {
     /**
      * This method calculates frequent points of a list of Rentals.
      *
-     * @param rentals is a list of rental objects.
      * @return the total frequent points earned for the
      * total of rentals.
      */
-    public int calculateFrequentPoints(List<Rental> rentals) {
-        int frequentRenterPoints = 0;
-
-        int i = 0;
-        while (i < rentals.size()) {
-            // add frequent renter points
-            frequentRenterPoints += 1;
-            // add bonus for a two day new release rental
-            frequentRenterPoints += rentals.get(i).getMovie() instanceof NewReleaseMovie
-                    && rentals.get(i).getDaysRented() > 1 ? 1 : 0;
-            i++;
+    public int calculateTotalFrequentPoints() {
+        int totalFrequentRenterPoints = 0;
+        for(Rental rental: rentals){
+            totalFrequentRenterPoints += rental.calculateFrequentRenterPoints();
         }
-        return frequentRenterPoints;
+        return totalFrequentRenterPoints;
+    }
+
+    public String statement(){
+        return "";
     }
 }
