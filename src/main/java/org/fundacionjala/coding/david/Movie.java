@@ -1,26 +1,35 @@
-package movies;
+package org.fundacionjala.coding.david;
 
-public class Movie {
-    public static final int CHILDRENS = 2;
-    public static final int REGULAR = 0;
-    public static final int NEW_RELEASE = 1;
-    private String _title;
-    private int _priceCode;
+/**
+ * This class is abstract.
+ */
+public abstract class Movie {
 
+    private String title;
+    private int priceCode;
+
+    /**
+     * This constructor initialize.
+     * @param title .
+     * @param priceCode and title.
+     */
     public Movie(String title, int priceCode) {
-        _title = title;
-        _priceCode = priceCode;
+        this.title = title;
+        this.priceCode = priceCode;
     }
 
-    public int getPriceCode() {
-        return _priceCode;
-    }
-
-    public void setPriceCode(int arg) {
-        _priceCode = arg;
-    }
-
+    /**
+     * this method return title.
+     * @return string.
+     */
     public String getTitle() {
-        return _title;
+        return title;
     }
+
+    /**
+     * this method declare.
+     * @param rental value integer.
+     * @return .
+     */
+    public abstract double  getAmount(int rental);
 }

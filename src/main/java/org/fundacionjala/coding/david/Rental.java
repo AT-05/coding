@@ -1,19 +1,35 @@
-package movies;
+package org.fundacionjala.coding.david;
 
+/**
+ * This class rental.
+ */
 class Rental {
-    private Movie _movie;
-    private int _daysRented;
+    private Movie movie;
+    private int daysRented;
 
+    /**
+     * This constructor initialize.
+     * @param movie are values.
+     * @param daysRented .
+     */
     public Rental(Movie movie, int daysRented) {
-        _movie = movie;
-        _daysRented = daysRented;
+        movie = movie;
+        daysRented = daysRented;
     }
 
+    /**
+     * This method return daysRented.
+     * @return .
+     */
     public int getDaysRented() {
-        return _daysRented;
+        return daysRented;
     }
 
+    /**
+     * this method return movie.
+     * @return.
+     */
     public Movie getMovie() {
-        return _movie;
+        return movie;
     }
 }
