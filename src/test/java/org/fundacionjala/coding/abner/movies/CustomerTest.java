@@ -73,13 +73,17 @@ public class CustomerTest {
         customer.addRental(new Rental(new MovieRegular("Terminator II"), 1));
 
         String actualResult = customer.statement();
-        String expectedResult = "Rental Record for Abner \n" +
-                "\tThe Rental\t3.0\n" +
-                "\tTerminator I\t3.0\n" +
-                "\tTerminator II\t2.0\n" +
-                "Amount owed is 8.0\n" +
-                "You earned 3 frequent renter points";
 
-        assertEquals(expectedResult, actualResult);
+        StringBuilder expectedResult = new StringBuilder("");
+        expectedResult.append(String.format("%s %s", "Rental Record for Abner", "\n"));
+
+        expectedResult.append(String.format("%s%s", "\tThe Rental\t3.0", "\n"));
+        expectedResult.append(String.format("%s%s", "\tTerminator I\t3.0", "\n"));
+        expectedResult.append(String.format("%s%s", "\tTerminator II\t2.0", "\n"));
+        expectedResult.append(String.format("%s%s", "Amount owed is 8.0", "\n"));
+        expectedResult.append(String.format("%s", "You earned 3 frequent renter points"));
+
+
+        assertEquals(expectedResult.toString(), actualResult);
     }
 }
