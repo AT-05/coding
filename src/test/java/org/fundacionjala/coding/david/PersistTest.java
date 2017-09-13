@@ -1,22 +1,81 @@
+package org.fundacionjala.coding.david;
+
+import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
- * Created by Maizman on 12/09/2017.
+ * This class realize test to Persist.
  */
 public class PersistTest {
-    @Test
-    public void persistence() throws Exception {
+
+
+    private Persist persist;
+
+    /**
+     * This method initialize variable.
+     *
+     * @throws Exception
+     */
+    @Before
+    public void setUp() {
+        persist = new Persist();
     }
 
+    /**
+     * This method realize test case one.
+     */
     @Test
-    public void BasicTests() {
-        System.out.println("****** Basic Tests ******");
-        assertEquals(3, Persist.persistence(39));
-        assertEquals(0, Persist.persistence(4));
-        assertEquals(2, Persist.persistence(25));
-        assertEquals(4, Persist.persistence(999));
-        assertEquals(3, Persist.persistence(444));
+    public void testBasicTestsCaseOne() {
+        final int actualResult = persist.persistence(39);
+        final int expectedResult = 3;
+
+        assertEquals(expectedResult, actualResult);
     }
+
+    /**
+     * This method realize test case two.
+     */
+    @Test
+    public void testBasicTestsCaseTwo() {
+        final int actualResult = persist.persistence(4);
+        final int expectedResult = 0;
+
+        assertEquals(expectedResult, actualResult);
+
+    }
+
+    /**
+     * This method realize test case three.
+     */
+    @Test
+    public void testBasicTestsCaseThree() {
+        final int actualResult = persist.persistence(25);
+        final int expectedResult = 2;
+
+        assertEquals(expectedResult, actualResult);
+    }
+
+    /**
+     * This method realize test case four.
+     */
+    @Test
+    public void testBasicTestsCaseFour() {
+        final int actualResult = persist.persistence(999);
+        final int expectedResult = 4;
+        assertEquals(expectedResult, actualResult);
+    }
+
+    /**
+     * This method realize test case five.
+     */
+    @Test
+    public void testBasicTestsCaseFive() {
+        final int actualResult = persist.persistence(444);
+        final int expectedResult = 3;
+
+        assertEquals(expectedResult, actualResult);
+    }
+
 }

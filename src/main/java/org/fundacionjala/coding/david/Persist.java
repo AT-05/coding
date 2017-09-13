@@ -1,28 +1,33 @@
+package org.fundacionjala.coding.david;
+
 /**
  * Created by Maizman on 12/09/2017.
  */
 public class Persist {
 
 
-    public static int persistence(Integer number) {
-        String[] list = number.toString().split("");
-        int count = 0;
-        boolean band = true;
-        while (band) {
-            Integer result = 1;
-            if (list.length > 1) {
-                for (String item : list) {
-                    result = result * Integer.parseInt(item);
-                }
-                count++;
-                list = result.toString().split("");
-                band = (result < 10) ? false : true;
+    private static final int CONSTANT_NUMBER_TEN = 10;
+    private static final int CONSTANT_NUMBER_ONE = 1;
 
-            } else {
-                band = false;
-            }
+    /**
+     * This method find persistence.
+     *
+     * @param number is value longer.
+     * @return value int.
+     */
+    public int persistence(long number) {
+
+        if (number < CONSTANT_NUMBER_TEN) {
+            return 0;
         }
 
-        return count;
+        long n2 = CONSTANT_NUMBER_ONE;
+        while (number != 0) {
+            n2 *= number % CONSTANT_NUMBER_TEN;
+            number /= CONSTANT_NUMBER_TEN;
+        }
+        return CONSTANT_NUMBER_ONE + persistence(n2);
+
+
     }
 }
