@@ -73,7 +73,7 @@ public class DecodeString {
             decode = NUMBERS.indexOf(format("%s%s%s", split[0].substring(i, i + OFFSET),
                     split[1].substring(i, i + OFFSET),
                     split[2].substring(i, i + OFFSET)));
-            stringOCROut.append((decode < 0) ? QUESTION_MARK : decode);
+            stringOCROut.append(decode < 0 ? QUESTION_MARK : decode);
         }
         return stringOCROut.toString();
     }
@@ -104,8 +104,8 @@ public class DecodeString {
      * @return String
      */
     public String status(String stringOCR) {
-        return ((isValidCheckSum(stringOCR))
-                ? format("%s", stringOCR) : (stringOCR.indexOf("?") == -1)
-                ? format("%s ERR", stringOCR) : format("%s ILL", stringOCR));
+        return isValidCheckSum(stringOCR)
+                ? format("%s", stringOCR) : stringOCR.indexOf("?") == -1
+                ? format("%s ERR", stringOCR) : format("%s ILL", stringOCR);
     }
 }

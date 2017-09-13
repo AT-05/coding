@@ -4,6 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by seus on 25/8/2017.
@@ -24,12 +26,13 @@ public class DecodeStringTest {
      */
     @Test
     public void testParseAccountMethod() {
-        final String result = decodeString.parseAccount(String.format("%s%s%s",
+        final String actualResult = decodeString.parseAccount(String.format("%s%s%s",
                 "    _  _     _  _  _  _  _ \n",
                 "  | _| _||_||_ |_   ||_||_|\n",
                 "  ||_  _|  | _||_|  ||_| _|"));
+        final String expectedResult = "123456789";
 
-        assertEquals("123456789", result);
+        assertEquals(expectedResult, actualResult);
     }
 
     /**
@@ -37,11 +40,11 @@ public class DecodeStringTest {
      */
     @Test
     public void testIsValidCheckSumMethodIsFalse() {
-        final boolean result = decodeString.isValidCheckSum(decodeString.parseAccount(String.format("%s%s%s",
+        final boolean actualResult = decodeString.isValidCheckSum(decodeString.parseAccount(String.format("%s%s%s",
                 " _  _  _  _  _  _  _  _    \n",
                 "|_|| || || || || || || |  |\n",
                 " _||_||_||_||_||_||_||_|  |")));
-        assertEquals(false, result);
+        assertFalse("expected result False", actualResult);
     }
 
     /**
@@ -54,7 +57,7 @@ public class DecodeStringTest {
                 "|_|| || || || || || || |  |\n",
                 " _||_||_||_||_||_||_||_|  |")));
 
-        assertEquals(true, result);
+        assertTrue("expected result True", result);
     }
 
     /**
@@ -62,11 +65,12 @@ public class DecodeStringTest {
      */
     @Test
     public void testStatusMethodIsOK() {
-        String result = decodeString.status(decodeString.parseAccount(String.format("%s%s%s",
+        final String actualResult = decodeString.status(decodeString.parseAccount(String.format("%s%s%s",
                 " _  _  _  _  _  _  _  _  _ \n",
                 "|_|| || || || || || || |  |\n",
                 " _||_||_||_||_||_||_||_|  |")));
-        assertEquals("900000007", result);
+        final String expectedResult = "900000007";
+        assertEquals(expectedResult, actualResult);
     }
 
     /**
@@ -74,11 +78,12 @@ public class DecodeStringTest {
      */
     @Test
     public void testStatusMethodIsERR() {
-        String result = decodeString.status(decodeString.parseAccount(String.format("%s%s%s",
+        final String actualResult = decodeString.status(decodeString.parseAccount(String.format("%s%s%s",
                 " _  _  _  _  _  _  _  _    \n",
                 "|_|| || || || || || || |  |\n",
                 " _||_||_||_||_||_||_||_|  |")));
-        assertEquals("900000001 ERR", result);
+        final String expectedResult = "900000001 ERR";
+        assertEquals(expectedResult, actualResult);
     }
 
     /**
@@ -86,11 +91,12 @@ public class DecodeStringTest {
      */
     @Test
     public void testStatusMethodIsILL() {
-        String result = decodeString.status(decodeString.parseAccount(String.format("%s%s%s",
+        final String actualResult = decodeString.status(decodeString.parseAccount(String.format("%s%s%s",
                 " _  _  _  _  _  _  _  _  _ \n",
                 "|_|  || || || || || || |  |\n",
                 " _||_||_||_||_||_||_||_|  |")));
-        assertEquals("9?0000007 ILL", result);
+        final String expectedResult = "9?0000007 ILL";
+        assertEquals(expectedResult, actualResult);
     }
 }
 
