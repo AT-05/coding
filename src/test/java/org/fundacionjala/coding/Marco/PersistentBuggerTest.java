@@ -26,7 +26,6 @@ public class PersistentBuggerTest {
         final int expectResult = 3;
         final int actualResult = 39;
         assertEquals(expectResult, persistence.persistence(actualResult));
-
     }
 
     /**
