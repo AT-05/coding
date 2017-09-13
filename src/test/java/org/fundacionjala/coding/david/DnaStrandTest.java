@@ -1,60 +1,93 @@
+package org.fundacionjala.coding.david;
+
+import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Class test Dna.
  */
 public class DnaStrandTest {
 
+    private DnaStrand dnaStrand;
+    /**
+     * This method initialize dnaStrand.
+     */
+    @Before
+    public void setUp() {
+        dnaStrand = new DnaStrand();
+    }
+
     /**
      * This method realize test change word.
      */
     @Test
     public void test01() {
-        assertEquals("TTTT", DnaStrand.makeComplement("AAAA"));
+        final String actualResult = dnaStrand.makeComplement("AAAA");
+        final String expectedResult = "TTTT";
+        assertEquals(expectedResult, actualResult);
     }
+
     /**
      * This method realize test change word.
      */
     @Test
     public void test02() {
-        assertEquals("TAACG", DnaStrand.makeComplement("ATTGC"));
+        final String actualResult = dnaStrand.makeComplement("ATTGC");
+        final String expectedResult = "TAACG";
+        assertEquals(expectedResult, actualResult);
     }
+
     /**
      * This method realize test change word.
      */
     @Test
     public void test03() {
-        assertEquals("CATA", DnaStrand.makeComplement("GTAT"));
+        final String actualResult = dnaStrand.makeComplement("GTAT");
+        final String expectedResult = "CATA";
+        assertEquals(expectedResult, actualResult);
     }
+
     /**
      * This method realize test change word.
      */
     @Test
     public void test04() {
-        assertEquals("TTCC", DnaStrand.makeComplement("AAGG"));
+        final String actualResult = dnaStrand.makeComplement("AAGG");
+        final String expectedResult = "TTCC";
+        assertEquals(expectedResult, actualResult);
     }
+
     /**
      * This method realize test change word.
      */
     @Test
     public void test05() {
-        assertEquals("GCGC", DnaStrand.makeComplement("CGCG"));
+        final String actualResult = dnaStrand.makeComplement("CGCG");
+        final String expectedResult = "GCGC";
+        assertEquals(expectedResult, actualResult);
     }
+
     /**
      * This method realize test change word.
      */
     @Test
     public void test06() {
-        assertEquals("TAACG", DnaStrand.makeComplement("ATTGC"));
+        final String actualResult = dnaStrand.makeComplement("ATTGC");
+        final String expectedResult = "TAACG";
+        assertEquals(expectedResult, actualResult);
     }
+
     /**
      * This method realize test change word.
      */
     @Test
     public void test07() {
-        assertEquals("CATAGCTAGCTAGCTAGCTAATATAAAAGCTGCTCTAAATTTATATATATATATGCTCTCTTATGTCTATCTGTCTAAT", DnaStrand.makeComplement("GTATCGATCGATCGATCGATTATATTTTCGACGAGATTTAAATATATATATATACGAGAGAATACAGATAGACAGATTA"));
+        final String actualResult = dnaStrand.makeComplement(
+                "GTATCGATCGATCGATCGATTATATTTTCGACGAGATTTAAATATATATATATACGAGAGAATACAGATAGACAGATTA");
+        final String expectedResult = "CATAGCTAGCTAGCTAGCTAATATAAAAGCTGCTCTAAATTTATATATATATATGCTCTCTTATGTCTATCTGTCTAAT";
+        assertEquals(expectedResult, actualResult);
     }
 
 }
