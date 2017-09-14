@@ -30,15 +30,6 @@ public class Customer {
     }
 
     /**
-     * This method returns the rentals of the customer.
-     *
-     * @return a list of rental objects.
-     */
-    public List getRentalList() {
-        return rentals;
-    }
-
-    /**
      * This method calculates total amount of a list of rentals.
      *
      * @return the total amount of the movies rented treating each

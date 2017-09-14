@@ -19,24 +19,6 @@ public class Rental {
     }
 
     /**
-     * This method returns a Movie object.
-     *
-     * @return the Movie of this rental.
-     */
-    public Movie getMovie() {
-        return movie;
-    }
-
-    /**
-     * This method returns the quantity of days rented.
-     *
-     * @return number of days.
-     */
-    public int getDaysRented() {
-        return daysRented;
-    }
-
-    /**
      * This method calculates the amount of the Movie.
      *
      * @return amount based on days rented.
