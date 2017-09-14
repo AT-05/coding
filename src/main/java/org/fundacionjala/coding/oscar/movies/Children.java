@@ -3,8 +3,7 @@ package org.fundacionjala.coding.oscar.movies;
 /**
  * Created by Oz64 on 09/09/2017.
  */
-public class Childrens extends Movie {
-    public static final int CHILDRENS = 2;
+public class Children extends Movie {
 
     /**
      * This is the constructor, invoke the super class movie
@@ -12,13 +11,24 @@ public class Childrens extends Movie {
      *
      * @param title of the movie.
      */
-    public Childrens(String title) {
-        super(title, CHILDRENS);
+    public Children(String title) {
+        super(title);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public double getAmount(int daysRented) {
         double thisAmount = 1.5;
-        return (daysRented > 3) ? thisAmount + (daysRented - 3) * 1.5 : thisAmount;
+        return daysRented > 3 ? thisAmount + (daysRented - 3) * 1.5 : thisAmount;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int calculateFrequentRenterPoints(int daysRented) {
+        return 1;
     }
 }

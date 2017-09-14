@@ -19,20 +19,29 @@ public class Rental {
     }
 
     /**
-     * This method return the days for rented.
-     *
-     * @return a integer of days.
-     */
-    public int getDaysRented() {
-        return daysRented;
-    }
-
-    /**
      * This method return the name of the movie.
      *
      * @return a string with the name.
      */
     public Movie getMovie() {
         return movie;
+    }
+
+    /**
+     * This method calculate the amount for the movie.
+     *
+     * @return the amount as a double.
+     */
+    public double calculateAmount() {
+        return movie.getAmount(daysRented);
+    }
+
+    /**
+     * This method calculate frequent renter points for the movie.
+     *
+     * @return the points as a integer.
+     */
+    public int calculateFrequentRenterPoints() {
+        return movie.calculateFrequentRenterPoints(daysRented);
     }
 }

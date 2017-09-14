@@ -1,14 +1,14 @@
 package org.fundacionjala.coding.oscar.movies;
 
-import java.util.Enumeration;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class is for the customers.
  */
 class Customer {
     private String name;
-    private Vector rentals = new Vector();
+    private List<Rental> rentals;
 
     /**
      * This is the construct for customer.
@@ -17,15 +17,16 @@ class Customer {
      */
     Customer(String name) {
         this.name = name;
+        rentals = new ArrayList<>();
     }
 
     /**
-     * tihs method add a rental to the vector.
+     * This method add a rental to list.
      *
-     * @param arg contained the movie with the days for rent.
+     * @param listMovies contained movies.
      */
-    public void addRental(Rental arg) {
-        rentals.addElement(arg);
+    public void addRental(Rental listMovies) {
+        rentals.add(listMovies);
     }
 
     /**
@@ -38,35 +39,52 @@ class Customer {
     }
 
     /**
-     * This method has the logic for calculated the amount owed and the points earned.
+     * This method build a string with all data of rents.
      *
-     * @return a string with all the datas.
+     * @return a string with all the data.
      */
     public String statement() {
-        double totalAmount = 0;
-        int frequentRenterPoints = 0;
-        Enumeration rentals = this.rentals.elements();
-        String result = String.format("Rental Record for %s%n", getName());
-        while (rentals.hasMoreElements()) {
-            Rental each = (Rental) rentals.nextElement();
-            double thisAmount = each.getMovie().getAmount(each.getDaysRented());
-            // add frequent renter points
-            frequentRenterPoints++;
-            // add bonus for a two day new release rental
-            if ((each.getMovie().getPriceCode() == NewRelease.NEW_RELEASE) && each.getDaysRented() > 1) {
-                frequentRenterPoints++;
-            }
-            //show figures for this rental
-            result = result.concat(String.format("\t%s \t %s%n",
-                    each.getMovie().getTitle(),
-                    String.valueOf(thisAmount)));
-            totalAmount += thisAmount;
+        StringBuilder sb = new StringBuilder("Rental Record for ").append(getName()).append("\n");
+        for (Rental rental : rentals) {
+            sb.append("\t")
+                    .append(rental.getMovie().getTitle())
+                    .append("\t")
+                    .append(rental.calculateAmount())
+                    .append("\n");
         }
         //add footer lines
-        result = result.concat(String.format("Amount owed is %s%n",
-                String.valueOf(totalAmount)));
-        result = result.concat(String.format("You earned %s frequent renter points",
-                String.valueOf(frequentRenterPoints)));
-        return result;
+        sb.append("Amount owed is ")
+                .append(calculateTotalAmount())
+                .append("\n");
+        sb.append("You earned ")
+                .append(calculateTotalFrequentPoints())
+                .append(" frequent renter points");
+        return sb.toString();
+    }
+
+    /**
+     * This method calculate total amount of all movies of rent.
+     *
+     * @return total amount as double.
+     */
+    public double calculateTotalAmount() {
+        double totalAmount = 0;
+        for (Rental rental : rentals) {
+            totalAmount += rental.calculateAmount();
+        }
+        return totalAmount;
+    }
+
+    /**
+     * This method calculate total frequent points.
+     *
+     * @return total frequent renter points as integer.
+     */
+    public int calculateTotalFrequentPoints() {
+        int totalFrequentRenterPoints = 0;
+        for (Rental rental : rentals) {
+            totalFrequentRenterPoints += rental.calculateFrequentRenterPoints();
+        }
+        return totalFrequentRenterPoints;
     }
 }
