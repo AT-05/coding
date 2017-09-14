@@ -40,4 +40,14 @@ public class ChildrensMovieTest {
         final double expectedResult = 3;
         assertEquals(expectedResult, actualResult, 0);
     }
+
+    /**
+     * This method tests output of ChildrensMovie rental figure.
+     */
+    @Test
+    public void rentalFigure() {
+        final String actualResult = movie.rentalFigure(4);
+        final String expectedResult = "\tBugs\t1.5";
+        assertEquals(expectedResult, actualResult);
+    }
 }

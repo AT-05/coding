@@ -63,13 +63,31 @@ public class Customer {
      */
     public int calculateTotalFrequentPoints() {
         int totalFrequentRenterPoints = 0;
-        for(Rental rental: rentals){
+        for (Rental rental : rentals) {
             totalFrequentRenterPoints += rental.calculateFrequentRenterPoints();
         }
         return totalFrequentRenterPoints;
     }
 
-    public String statement(){
-        return "";
+    /**
+     * This method shows the summary of the rentals of a customer.
+     *
+     * @return a statement with the summary of rentals.
+     */
+    public String statement() {
+        StringBuilder result = new StringBuilder("Rental Record for ");
+        result.append(customerName)
+                .append("\n");
+        for (Rental rental : rentals) {
+            result.append(rental.rentalStatement())
+                    .append("\n");
+        }
+        result.append("Amount owed is ")
+                .append(calculateTotalAmount())
+                .append("\n")
+                .append("You earned ")
+                .append(calculateTotalFrequentPoints())
+                .append(" frequent renter points");
+        return result.toString();
     }
 }

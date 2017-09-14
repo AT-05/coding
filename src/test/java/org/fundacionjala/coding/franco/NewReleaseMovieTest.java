@@ -28,4 +28,14 @@ public class NewReleaseMovieTest {
         final double expectedResult = 9;
         assertEquals(expectedResult, actualResult, 0);
     }
+
+    /**
+     * This method tests output of NewReleaseMovie rental figure.
+     */
+    @Test
+    public void rentalFigure() {
+        final String actualResult = movie.rentalFigure(2);
+        final String expectedResult = "\tThe Day After Tomorrow\t6.0";
+        assertEquals(expectedResult, actualResult);
+    }
 }

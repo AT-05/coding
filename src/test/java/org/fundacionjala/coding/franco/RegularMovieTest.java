@@ -40,4 +40,14 @@ public class RegularMovieTest {
         final double expectedResult = 3;
         assertEquals(expectedResult, actualResult, 0);
     }
+
+    /**
+     * This method tests output of RegularMovie rental figure.
+     */
+    @Test
+    public void rentalFigure() {
+        final String actualResult = movie.rentalFigure(4);
+        final String expectedResult = "\tFast and Furious 7\t3.0";
+        assertEquals(expectedResult, actualResult);
+    }
 }

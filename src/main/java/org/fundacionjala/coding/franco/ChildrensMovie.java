@@ -15,16 +15,16 @@ public class ChildrensMovie extends Movie {
     }
 
     /**
-     * This method calculates amount for this type of movie.
-     *
-     * @param daysRented is the quantity of rental days.
-     * @return amount depending on the quantity of days rented.
+     * {@inheritDoc}
      */
     @Override
     double calculateAmount(int daysRented) {
         return daysRented > 3 ? (daysRented - 3) * 1.5 : 1.5;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     int calculateFrequentRenterPoints(int daysRented) {
         return 1;

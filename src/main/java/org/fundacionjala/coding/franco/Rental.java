@@ -10,7 +10,7 @@ public class Rental {
     /**
      * This is the constructor of Rental Class.
      *
-     * @param movie is an Movie object type.
+     * @param movie      is an Movie object type.
      * @param daysRented is the quantityof rented days.
      */
     public Rental(Movie movie, int daysRented) {
@@ -41,7 +41,7 @@ public class Rental {
      *
      * @return amount based on days rented.
      */
-    public double calculateAmount(){
+    public double calculateAmount() {
         return movie.calculateAmount(daysRented);
     }
 
@@ -50,7 +50,16 @@ public class Rental {
      *
      * @return requent renter points based on days rented.
      */
-    public int calculateFrequentRenterPoints(){
+    public int calculateFrequentRenterPoints() {
         return movie.calculateFrequentRenterPoints(daysRented);
+    }
+
+    /**
+     * This method shows the rental summary.
+     *
+     * @return statement of rental summary.
+     */
+    public String rentalStatement() {
+        return movie.rentalFigure(daysRented);
     }
 }
