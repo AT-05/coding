@@ -12,7 +12,7 @@ public class SortInnerContent {
      * @param cad this string not sort inner content.
      * @return this string is Sort Inner Content.
      */
-    public String sortInnert(String cad) {
+    public String sortInnerContent(String cad) {
 
         String[] vector = cad.split(" ");
         for (int i = 0; i < vector.length; i++) {

@@ -9,14 +9,14 @@ import static org.junit.Assert.assertEquals;
  * Created by Oz64 on 30/08/2017.
  */
 public class SortInnerContentTest {
-    private SortInnerContent kata5;
+    private SortInnerContent sortInnerContent;
 
     /**
      * This method execute before any unit test.
      */
     @Before
     public void setup() {
-        kata5 = new SortInnerContent();
+        sortInnerContent = new SortInnerContent();
     }
 
     /**
@@ -24,7 +24,7 @@ public class SortInnerContentTest {
      */
     @Test
     public void testSortInnerContentOfFiveWords() {
-        String actualResult = kata5.sortInnerContent("sort the inner content in descending order");
+        String actualResult = sortInnerContent.sortInnerContent("sort the inner content in descending order");
         String expectedResult = "srot the inner ctonnet in dsnnieedcg oredr";
         assertEquals(expectedResult, actualResult);
     }
@@ -34,7 +34,7 @@ public class SortInnerContentTest {
      */
     @Test
     public void testSortInnerContentOfOneWord() {
-        String actualResult = kata5.sortInnerContent("wait for me");
+        String actualResult = sortInnerContent.sortInnerContent("wait for me");
         String expectedResult = "wiat for me";
         assertEquals(expectedResult, actualResult);
     }
@@ -44,7 +44,7 @@ public class SortInnerContentTest {
      */
     @Test
     public void testSortInnerContentOfThreeWords() {
-        String actualResult = kata5.sortInnerContent("this kata is easy");
+        String actualResult = sortInnerContent.sortInnerContent("this kata is easy");
         String expectResult = "tihs ktaa is esay";
         assertEquals(expectResult, actualResult);
     }
@@ -54,8 +54,8 @@ public class SortInnerContentTest {
      */
     @Test
     public void testSortInnerContentOfNoneWords() {
-        String actualResult = kata5.sortInnerContent("I am");
-        String expedtedResult = "I am";
-        assertEquals(expedtedResult, actualResult);
+        String actualResult = sortInnerContent.sortInnerContent("I am");
+        String expectResult = "I am";
+        assertEquals(expectResult, actualResult);
     }
 }
