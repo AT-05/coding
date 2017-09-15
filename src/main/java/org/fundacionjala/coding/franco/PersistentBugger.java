@@ -20,7 +20,7 @@ public class PersistentBugger {
                 .toArray();
 
         int result = 1;
-        while (number > 9 || numbers.length > 1) {
+        while (numbers.length > 1) {
             counter++;
             for (int i = 0; i < numbers.length; i++) {
                 result *= numbers[i];
