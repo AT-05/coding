@@ -21,7 +21,7 @@ public class Persist {
                 resp *= Integer.parseInt(numbers[index]);
                 total = resp;
             }
+            return persistence(total) + 1;
         }
-        return persistence(total) + 1;
     }
 }
