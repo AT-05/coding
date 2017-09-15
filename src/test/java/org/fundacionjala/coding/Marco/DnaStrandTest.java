@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * These are Test for DnaStrand.
+ * These are Test for DnaStrand september 15, 2017.
  */
 public class DnaStrandTest {
     private  DnaStrand dna;
@@ -48,7 +48,7 @@ public class DnaStrandTest {
     }
 
     /**
-     * Scenario 5.
+     * Scenario5.
      */
     @Test
     public void test05() {
@@ -56,7 +56,7 @@ public class DnaStrandTest {
     }
 
     /**
-     * Scenario 6.
+     * Scenario6.
      */
     @Test
     public void test06() {

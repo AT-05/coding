@@ -1,7 +1,7 @@
 package org.fundacionjala.coding.Marco;
 
 /**
- * This was made by Marco Mendez September 12, 2017.
+ *These are Test for DnaStrand september 15, 2017. 
  */
 public class DnaStrand {
 
