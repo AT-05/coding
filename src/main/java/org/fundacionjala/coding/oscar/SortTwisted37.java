@@ -9,20 +9,21 @@ public class SortTwisted37 {
 
     /**
      * This method sort the array of numbers and call the method for change the numbers.
+     *
      * @param array of the numbers.
      * @return array numbers sort and twisted.
      */
     public Integer[] sortTwisted(Integer[] array) {
         Integer[] arrayNumbers = array.clone();
+        arrayNumbers = iterateArray(arrayNumbers);
         Arrays.sort(arrayNumbers);
-        for (int index = 0; index < arrayNumbers.length; index++) {
-            arrayNumbers[index] = change3and7(arrayNumbers[index]);
-        }
+        arrayNumbers = iterateArray(arrayNumbers);
         return arrayNumbers;
     }
 
     /**
      * This method change if are a 3 for 7 and 7 for 3.
+     *
      * @param number as a integer.
      * @return the number as a integer.
      */
@@ -42,5 +43,18 @@ public class SortTwisted37 {
             }
         }
         return Integer.parseInt(String.join("", list));
+    }
+
+    /**
+     * This method iterate over the array of numbers.
+     * @param numbers as a integer array.
+     * @return the numbers as a integer array.
+     */
+    public Integer[] iterateArray(Integer[] numbers) {
+        Integer[] arrayNumbers = numbers.clone();
+        for (int index = 0; index < arrayNumbers.length; index++) {
+            arrayNumbers[index] = change3and7(arrayNumbers[index]);
+        }
+        return arrayNumbers;
     }
 }

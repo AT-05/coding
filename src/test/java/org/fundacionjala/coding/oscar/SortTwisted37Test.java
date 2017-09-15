@@ -29,9 +29,9 @@ public class SortTwisted37Test {
         assertEquals(Arrays.toString(new Integer[]{1, 2, 7, 4, 5, 6, 3, 8, 9}),
                 Arrays.toString(sortTwisted37
                         .sortTwisted(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9})));
-        /*assertEquals(Arrays.toString(new Integer[]{12, 14, 13}),
+        assertEquals(Arrays.toString(new Integer[]{12, 14, 13}),
                 Arrays.toString(sortTwisted37
-                        .sortTwisted((new Integer[]{12, 13, 14}))));*/
+                        .sortTwisted((new Integer[]{12, 13, 14}))));
         assertEquals(Arrays.toString(new Integer[]{2, 7, 4, 3, 9}),
                 Arrays.toString(sortTwisted37
                         .sortTwisted(new Integer[]{9, 2, 4, 7, 3})));
