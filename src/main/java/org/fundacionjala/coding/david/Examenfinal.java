@@ -3,15 +3,18 @@ package org.fundacionjala.coding.david;
 import java.util.stream.Stream;
 
 /**
- * Created by Administrator on 9/15/2017.
+ * This class is is exam final.
  */
-public class Examen_final {
+public class Examenfinal {
 
-
+    /**
+     * This method realize sum od digits.
+     * @param number is value string.
+     * @return a number.
+     */
     public int sunOfDigits(String number) {
         int[] listNumber = Stream.of(number.split("")).mapToInt(Integer::parseInt).toArray();
         int sumResult = 0;
-
         while (listNumber.length > 1) {
             sumResult = 0;
             for (int item : listNumber) {
