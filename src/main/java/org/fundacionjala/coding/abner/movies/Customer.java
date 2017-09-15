@@ -93,7 +93,7 @@ public class Customer {
 
         result.append(String.format("%s %d%s", "You earned",
                 calculateFrequentPointsTotal(),
-                " frequent renter points"));
+                " frequent renter points "));
 
         return result.toString();
     }
