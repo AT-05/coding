@@ -14,14 +14,13 @@ public class Persist {
         int total = 0;
         if (number < 10) {
             return 0;
-        } else {
-            String[] numbers = String.valueOf(number).split("");
-            int resp = Integer.parseInt(numbers[0]);
-            for (int index = 1; index < numbers.length; index++) {
-                resp *= Integer.parseInt(numbers[index]);
-                total = resp;
-            }
-            return persistence(total) + 1;
         }
+        String[] numbers = String.valueOf(number).split("");
+        int resp = Integer.parseInt(numbers[0]);
+        for (int index = 1; index < numbers.length; index++) {
+            resp *= Integer.parseInt(numbers[index]);
+            total = resp;
+        }
+        return persistence(total) + 1;
     }
 }
