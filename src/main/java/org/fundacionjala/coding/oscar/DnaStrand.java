@@ -17,25 +17,11 @@ public final class DnaStrand {
      * @return the new string.
      */
     public static String makeComplement(String stringDNA) {
-        String[] list = stringDNA.split("");
-        for (int index = 0; index < list.length; index++) {
-            switch (list[index]) {
-                case "A":
-                    list[index] = "T";
-                    break;
-                case "T":
-                    list[index] = "A";
-                    break;
-                case "C":
-                    list[index] = "G";
-                    break;
-                case "G":
-                    list[index] = "C";
-                    break;
-                default:
-                    break;
-            }
-        }
-        return String.join("", list);
+        return stringDNA.replace("A", "x")
+                .replace("T", "A")
+                .replace("x","T")
+                .replace("C", "y")
+                .replace("G","C")
+                .replace("y","G");
     }
 }
