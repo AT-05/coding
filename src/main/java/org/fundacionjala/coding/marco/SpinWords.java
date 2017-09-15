@@ -21,6 +21,6 @@ public class SpinWords {
                 world[i] = new StringBuilder(world[i]).reverse().toString();
             }
         }
-        return string.join(" ", world);
+        return String.join(" ", world);
     }
 }

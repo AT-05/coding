@@ -8,11 +8,11 @@ import java.util.Arrays;
 public class SortInnerContent {
 
     /**
-     * This function Sort Inner Content.
+     * This function HighAndLow Inner Content.
      * @param cad this string not sort inner content.
-     * @return this string is Sort Inner Content.
+     * @return this string is HighAndLow Inner Content.
      */
-    public String sortInnert(String cad) {
+    public String sortInnerContent(String cad) {
 
         String[] vector = cad.split(" ");
         for (int i = 0; i < vector.length; i++) {

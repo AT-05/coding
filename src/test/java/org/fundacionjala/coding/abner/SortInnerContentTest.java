@@ -10,19 +10,19 @@ import static junit.framework.TestCase.assertEquals;
 public class SortInnerContentTest {
 
 
-    private SortInnerContent spinWord;
+    private SortInnerContent sortInnerContent;
 
     /**
-     * This test check Sort Inner Content.
+     * This test check HighAndLow Inner Content.
      */
     @Test
-    public void sortInnert() {
-        spinWord = new SortInnerContent();
+    public void testSortInnerContent() {
+        sortInnerContent = new SortInnerContent();
         String stard = "sort the inner content in descending order";
-        assertEquals("srot the inner ctonnet in dsnnieedcg oredr", spinWord.sortInnert(stard));
-        assertEquals("wiat for me", spinWord.sortInnert("wait for me"));
-        assertEquals("tihs ktaa is esay", spinWord.sortInnert("this kata is easy"));
-        assertEquals("I am", spinWord.sortInnert("I am"));
+        assertEquals("srot the inner ctonnet in dsnnieedcg oredr", sortInnerContent.sortInnerContent(stard));
+        assertEquals("wiat for me", sortInnerContent.sortInnerContent("wait for me"));
+        assertEquals("tihs ktaa is esay", sortInnerContent.sortInnerContent("this kata is easy"));
+        assertEquals("I am", sortInnerContent.sortInnerContent("I am"));
 
     }
 }
