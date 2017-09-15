@@ -1,4 +1,4 @@
-package org.fundacionjala.coding.franco;
+package org.fundacionjala.coding.franco.movies;
 
 import java.util.List;
 import java.util.ArrayList;
