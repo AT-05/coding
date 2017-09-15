@@ -13,7 +13,7 @@ public class SortInnerContentTest {
     private SortInnerContent sortInnerContent;
 
     /**
-     * This test check HighAndLow Inner Content.
+     * This test check Sort Inner Content.
      */
     @Test
     public void testSortInnerContent() {

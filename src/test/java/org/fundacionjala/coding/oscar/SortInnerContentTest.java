@@ -20,7 +20,7 @@ public class SortInnerContentTest {
     }
 
     /**
-     * HighAndLow inner content with five words for changing.
+     * Sort inner content with five words for changing.
      */
     @Test
     public void testSortInnerContentOfFiveWords() {
@@ -30,7 +30,7 @@ public class SortInnerContentTest {
     }
 
     /**
-     * HighAndLow inner content with one word for changing.
+     * Sort inner content with one word for changing.
      */
     @Test
     public void testSortInnerContentOfOneWord() {
@@ -40,7 +40,7 @@ public class SortInnerContentTest {
     }
 
     /**
-     * HighAndLow inner content with three words for changing.
+     * Sort inner content with three words for changing.
      */
     @Test
     public void testSortInnerContentOfThreeWords() {
@@ -50,12 +50,12 @@ public class SortInnerContentTest {
     }
 
     /**
-     * HighAndLow inner content with none words for changing.
+     * Sort inner content with none words for changing.
      */
     @Test
     public void testSortInnerContentOfNoneWords() {
         String actualResult = sortInnerContent.sortInnerContent("I am");
-        String expedtedResult = "I am";
-        assertEquals(expedtedResult, actualResult);
+        String expectResult = "I am";
+        assertEquals(expectResult, actualResult);
     }
 }

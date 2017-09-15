@@ -8,9 +8,9 @@ import java.util.Arrays;
 public class SortInnerContent {
 
     /**
-     * This function HighAndLow Inner Content.
+     * This function Sort Inner Content.
      * @param cad this string not sort inner content.
-     * @return this string is HighAndLow Inner Content.
+     * @return this string is Sort Inner Content.
      */
     public String sortInnerContent(String cad) {
 
