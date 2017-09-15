@@ -21,7 +21,7 @@ public class DnaStrandTest {
     }
 
     /**
-     * Verify makeComplement Method (TTTT)->(AAAA).
+     * Verify makeComplement Method.
      */
     @Test
     public void testmakeComplementMethodTAndAComplement() {
