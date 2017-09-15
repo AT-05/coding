@@ -86,15 +86,4 @@ public class DNAStrandTest {
 
         assertEquals(expectedResult, actualResult);
     }
-
-    /**
-     * This method tests output complement of CGRG DNAStrand.
-     */
-    @Test
-    public void makeComplementOfCGRG() {
-        final String actualResult = dnaStrand.makeComplement("CGRG");
-        final String expectedResult = "GCC";
-
-        assertEquals(expectedResult, actualResult);
-    }
 }
