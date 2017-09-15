@@ -19,13 +19,39 @@ public class PlanetTwisted {
      */
     public Integer[] sort(Integer[] chainOfNumbers) {
         final int[] numbers = Arrays.stream(chainOfNumbers).mapToInt(Integer::intValue).toArray();
+        equivalent(numbers);
         Arrays.sort(numbers);
-
-        for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = numbers[i] % 10 == CONS_THREE ? CONS_SEVEN
-                    : numbers[i] % 10 == CONS_SEVEN ? CONS_THREE : numbers[i];
-        }
+        equivalent(numbers);
         Integer[] result = IntStream.of(numbers).boxed().toArray(Integer[]::new);
         return result;
+    }
+
+    /**
+     * This method replaces number 3 for 7 and vice versa.
+     *
+     * @param number to work with.
+     * @return the equivalent of the number if applies.
+     */
+    public int replace(int number) {
+        String numbers = String.valueOf(number);
+
+        String result = numbers.replace("7", "B")
+                .replace("3", "A")
+                .replace("B", "3")
+                .replace("A", "7");
+        return Integer.parseInt(result);
+    }
+
+    /**
+     * This method replaces equivalents of numbers if apply.
+     *
+     * @param numbers is a set to work with.
+     * @return the set of numbers with its updated equivalents.
+     */
+    public int[] equivalent(int[] numbers) {
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = replace(numbers[i]);
+        }
+        return numbers;
     }
 }

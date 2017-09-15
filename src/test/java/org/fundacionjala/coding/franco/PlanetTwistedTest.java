@@ -31,11 +31,15 @@ public class PlanetTwistedTest {
         assertEquals(expectedResult, actualResult);
     }
 
-    /*@Test
+    /**
+     * This method test output of sorting numbers 12, 13, 14.
+     */
+    @Test
     public void sortNumbersBasicCase2() {
-        assertEquals(Arrays.toString(new Integer[]{12, 13, 14})
-        ,Arrays.toString(planetTwisted.sort(new Integer[]{12, 13, 14})));
-    }*/
+        final String actualResult = Arrays.toString(planetTwisted.sort(new Integer[]{12, 13, 14}));
+        final String expectedResult = Arrays.toString(new Integer[]{12, 14, 13});
+        assertEquals(expectedResult, actualResult);
+    }
 
     /**
      * This method test output of sorting numbers 9, 2, 4, 7, 3.
