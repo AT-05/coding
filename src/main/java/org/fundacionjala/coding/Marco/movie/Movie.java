@@ -1,4 +1,4 @@
-package org.fundacionjala.coding.franco;
+package org.fundacionjala.coding.Marco.movie;
 
 /**
  * Created by Administrator on 9/8/2017.
@@ -21,7 +21,7 @@ public abstract class Movie {
      * @param daysRented is the quantity of rental days.
      * @return the total amount depending on the Movie type.
      */
-    abstract double calculateAmount(int daysRented);
+    public abstract double calculateAmount(int daysRented);
 
     abstract int calculateFrequentRenterPoints(int daysRented);
 }

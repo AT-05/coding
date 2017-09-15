@@ -1,4 +1,4 @@
-package org.fundacionjala.coding.franco;
+package org.fundacionjala.coding.Marco.movie;
 
 /**
  * Created by Administrator on 9/8/2017.
@@ -18,7 +18,7 @@ public class RegularMovie extends Movie {
      * {@inheritDoc}
      */
     @Override
-    double calculateAmount(int daysRented) {
+    public double calculateAmount(int daysRented) {
         return daysRented > 2 ? (daysRented - 2) * 1.5 : 2;
     }
 

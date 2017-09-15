@@ -1,5 +1,7 @@
-package org.fundacionjala.coding.franco;
+package org.fundacionjala.coding.Marco.movieTest;
 
+import org.fundacionjala.coding.Marco.movie.Movie;
+import org.fundacionjala.coding.Marco.movie.RegularMovie;
 import org.junit.Before;
 import org.junit.Test;
 
