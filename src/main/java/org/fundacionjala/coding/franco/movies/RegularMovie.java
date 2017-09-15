@@ -1,4 +1,4 @@
-package org.fundacionjala.coding.franco;
+package org.fundacionjala.coding.franco.movies;
 
 /**
  * Created by Administrator on 9/8/2017.
