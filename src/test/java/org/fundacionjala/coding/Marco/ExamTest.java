@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * This is my finish exam, this was made by marco mendez september 15, 2017
  */
-public class _ExamTest {
+public class ExamTest {
     private Exam digital;
 
     /**
@@ -37,8 +37,6 @@ public class _ExamTest {
         final int expectedResult = 6;
         final int actualResult = 942;
         assertEquals(expectedResult, digital.root(actualResult));
-
-
     }
 
     /**
