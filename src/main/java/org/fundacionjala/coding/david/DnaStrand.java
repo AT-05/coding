@@ -1,23 +1,19 @@
 package org.fundacionjala.coding.david;
+
 /**
  * This class DNA.
  */
 public class DnaStrand {
-
-
     /**
      * This method change words.
+     *
      * @param word is a word.
      * @return word.
      */
-    public  String makeComplement(String word) {
-        String[] listWord = word.split("");
-        StringBuilder newWord = new StringBuilder();
-        for (String item : listWord) {
-            newWord.append((item.equals("A")) ? "T" : ((item.equals("T")) ? "A" : ((item.equals("C")) ? "G" : "C")));
+    public String makeComplement(String word) {
 
-        }
-        return newWord.toString();
-
+        String at = word.replace('T', 'X').replace('A', 'T').replace('X', 'A');
+        at = at.replace('G', 'X').replace('C', 'G').replace('X', 'C');
+        return at;
     }
 }
