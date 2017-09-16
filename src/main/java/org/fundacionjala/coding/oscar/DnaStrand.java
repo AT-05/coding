@@ -18,10 +18,10 @@ public final class DnaStrand {
      */
     public static String makeComplement(String stringDNA) {
         return stringDNA.replace("A", "x")
-                .replace("T", "A")
-                .replace("x","T")
                 .replace("C", "y")
-                .replace("G","C")
-                .replace("y","G");
+                .replace("T", "A")
+                .replace("G", "C")
+                .replace("x", "T")
+                .replace("y", "G");
     }
 }

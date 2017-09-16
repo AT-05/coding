@@ -11,7 +11,7 @@ public class DnaStrandTest {
     /**
      * Test 01.
      */
-   @Test
+    @Test
     public void test01() {
         assertEquals("TTTT", DnaStrand.makeComplement("AAAA"));
     }
