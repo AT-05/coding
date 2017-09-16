@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by Administrator on 15/09/17.
  */
-final class Kata5Test {
+public class Kata5Test {
     /**
      * Kata 5 tests.
      */

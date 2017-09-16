@@ -5,6 +5,12 @@ package org.fundacionjala.coding.daniel;
  */
 public class Kata4 {
 
+    /**
+     * @param sentence
+     * A string.
+     * @return
+     * Spin words of sentence.
+     */
     public String spinWords(String sentence) {
         String[] words = sentence.split("[\\s]");
         StringBuilder spinnedSentence = new StringBuilder();
@@ -17,6 +23,12 @@ public class Kata4 {
         return spinnedSentence.toString();
     }
 
+    /**
+     * @param word
+     * A String.
+     * @return
+     * A reverse of this string.
+     */
     private String spin(String word) {
         return new StringBuilder(word).reverse().toString();
 
