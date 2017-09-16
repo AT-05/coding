@@ -1,5 +1,6 @@
 package org.fundacionjala.coding.oscar;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -8,12 +9,22 @@ import static org.junit.Assert.assertEquals;
  * Created by Oz64 on 14/09/2017.
  */
 public class DnaStrandTest {
+    private DnaStrand dnaStrand;
+
+    /**
+     * This method executed before any test.
+     */
+    @Before
+    public void setUp() {
+        dnaStrand = new DnaStrand();
+    }
+
     /**
      * Test 01.
      */
     @Test
     public void test01() {
-        assertEquals("TTTT", DnaStrand.makeComplement("AAAA"));
+        assertEquals("TTTT", dnaStrand.makeComplement("AAAA"));
     }
 
     /**
@@ -21,7 +32,7 @@ public class DnaStrandTest {
      */
     @Test
     public void test02() {
-        assertEquals("TAACG", DnaStrand.makeComplement("ATTGC"));
+        assertEquals("TAACG", dnaStrand.makeComplement("ATTGC"));
     }
 
     /**
@@ -29,7 +40,7 @@ public class DnaStrandTest {
      */
     @Test
     public void test03() {
-        assertEquals("CATA", DnaStrand.makeComplement("GTAT"));
+        assertEquals("CATA", dnaStrand.makeComplement("GTAT"));
     }
 
     /**
@@ -37,7 +48,7 @@ public class DnaStrandTest {
      */
     @Test
     public void test04() {
-        assertEquals("TTCC", DnaStrand.makeComplement("AAGG"));
+        assertEquals("TTCC", dnaStrand.makeComplement("AAGG"));
     }
 
     /**
@@ -45,7 +56,7 @@ public class DnaStrandTest {
      */
     @Test
     public void test05() {
-        assertEquals("GCGC", DnaStrand.makeComplement("CGCG"));
+        assertEquals("GCGC", dnaStrand.makeComplement("CGCG"));
     }
 
     /**
@@ -53,7 +64,7 @@ public class DnaStrandTest {
      */
     @Test
     public void test06() {
-        assertEquals("TAACG", DnaStrand.makeComplement("ATTGC"));
+        assertEquals("TAACG", dnaStrand.makeComplement("ATTGC"));
     }
 
     /**
@@ -63,7 +74,7 @@ public class DnaStrandTest {
     public void test07() {
         String expectedResult = "CATAGCTAGCTAGCTAGCTAATATAAAAGCTGCTCTAAATTTATATATATATATGCTCTCTTATGTCTATCTGTCTAAT";
         String actualResult = "GTATCGATCGATCGATCGATTATATTTTCGACGAGATTTAAATATATATATATACGAGAGAATACAGATAGACAGATTA";
-        assertEquals(expectedResult, DnaStrand.makeComplement(actualResult));
+        assertEquals(expectedResult, dnaStrand.makeComplement(actualResult));
     }
 
 }
