@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 /**
  * This class is is exam final.
  */
-public class Examenfinal {
+public class DigitalRoot {
 
     /**
      * This method realize sum od digits.

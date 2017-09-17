@@ -1,4 +1,4 @@
-package org.fundacionjala.coding.abner.persist;
+package org.fundacionjala.coding.abner;
 
 import org.junit.Test;
 
@@ -6,9 +6,8 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * this class persist.
- * Created by Administrator on 9/15/2017.
  */
-public class TestPersist {
+public class PersistTest {
 
     /**
      * this is the test.
