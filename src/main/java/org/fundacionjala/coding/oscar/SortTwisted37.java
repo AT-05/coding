@@ -15,9 +15,9 @@ public class SortTwisted37 {
      */
     public Integer[] sortTwisted(Integer[] array) {
         Integer[] arrayNumbers = array.clone();
-        arrayNumbers = iterateArray(arrayNumbers);
+        iterateArray(arrayNumbers);
         Arrays.sort(arrayNumbers);
-        arrayNumbers = iterateArray(arrayNumbers);
+        iterateArray(arrayNumbers);
         return arrayNumbers;
     }
 
@@ -29,32 +29,25 @@ public class SortTwisted37 {
      */
     public int change3and7(int number) {
         String num = String.valueOf(number);
-        String[] list = num.split("");
-        for (int index = 0; index < list.length; index++) {
-            switch (list[index]) {
-                case "3":
-                    list[index] = "7";
-                    break;
-                case "7":
-                    list[index] = "3";
-                    break;
-                default:
-                    break;
-            }
+        String[] numString = num.split("");
+        for (int x = 0; x < numString.length; x++) {
+            numString[x] = numString[x].replace("7", "x")
+                    .replace("3", "y")
+                    .replace("x", "3")
+                    .replace("y", "7");
         }
-        return Integer.parseInt(String.join("", list));
+        num = String.join("", numString); // Integer.valueOf(String.join("", numString));
+        return Integer.parseInt(num);
     }
 
     /**
      * This method iterate over the array of numbers.
-     * @param numbers as a integer array.
-     * @return the numbers as a integer array.
+     *
+     * @param numbers numbers as a integer array.
      */
-    public Integer[] iterateArray(Integer[] numbers) {
-        Integer[] arrayNumbers = numbers.clone();
-        for (int index = 0; index < arrayNumbers.length; index++) {
-            arrayNumbers[index] = change3and7(arrayNumbers[index]);
+    public void iterateArray(Integer[] numbers) {
+        for (int index = 0; index < numbers.length; index++) {
+            numbers[index] = change3and7(numbers[index]);
         }
-        return arrayNumbers;
     }
 }
