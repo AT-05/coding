@@ -6,18 +6,18 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Tthis Class realize test.
+ * This Class realize test.
  */
-public class ExamenfinalTest {
+public class DigitalRootTest {
 
-    private Examenfinal examenFinal;
+    private DigitalRoot examenFinal;
 
     /**
      * This method initializa.
      */
     @Before
     public void setUp() {
-        examenFinal = new Examenfinal();
+        examenFinal = new DigitalRoot();
     }
 
     /**
@@ -26,8 +26,8 @@ public class ExamenfinalTest {
     @Test
     public void sunOfDigitsCaseOne() {
         final int actualResult = examenFinal.sunOfDigits("16");
-        final int expectedresult = 7;
-        assertEquals(expectedresult, actualResult);
+        final int expectedResult = 7;
+        assertEquals(expectedResult, actualResult);
     }
 
     /**
@@ -36,8 +36,8 @@ public class ExamenfinalTest {
     @Test
     public void sunOfDigitsCaseTwo() {
         final int actualResult = examenFinal.sunOfDigits("942");
-        final int expectedresult = 6;
-        assertEquals(expectedresult, actualResult);
+        final int expectedResult = 6;
+        assertEquals(expectedResult, actualResult);
     }
 
     /**
@@ -46,8 +46,8 @@ public class ExamenfinalTest {
     @Test
     public void sunOfDigitsCaseThree() {
         final int actualResult = examenFinal.sunOfDigits("132189");
-        final int expectedresult = 6;
-        assertEquals(expectedresult, actualResult);
+        final int expectedResult = 6;
+        assertEquals(expectedResult, actualResult);
     }
 
     /**
@@ -56,8 +56,8 @@ public class ExamenfinalTest {
     @Test
     public void sunOfDigitsCaseFour() {
         final int actualResult = examenFinal.sunOfDigits("493193");
-        final int expectedresult = 2;
-        assertEquals(expectedresult, actualResult);
+        final int expectedResult = 2;
+        assertEquals(expectedResult, actualResult);
     }
 
 }

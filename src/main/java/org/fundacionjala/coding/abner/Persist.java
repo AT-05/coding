@@ -1,4 +1,4 @@
-package org.fundacionjala.coding.abner.persist;
+package org.fundacionjala.coding.abner;
 
 /**
  * This class Persist.
