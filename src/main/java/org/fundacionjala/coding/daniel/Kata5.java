@@ -10,22 +10,15 @@ import java.util.stream.Collectors;
 class Kata5 {
 
     /**
-     * Constructor kata 5.
-     */
-
-    protected Kata5() {
-
-    }
-
-    /**
      * @param words a sentence or words.
      * @return A sorted inner content of every word
      * of the string in descending order.
      */
-    public static String sortTheInnerContent(String words) {
+    public String sortTheInnerContent(String words) {
         return Arrays.asList(words.split(" ")).stream()
-                .map(word -> word.length() < 3 ? word : word.charAt(0)
-                        + sortChars(word) + word.charAt(word.length() - 1))
+                .map(word -> word.length() < 3 ? word : new StringBuilder()
+                        .append(word.charAt(0)).append(sortChars(word))
+                        .append(word.charAt(word.length() - 1)).toString())
                 .collect(Collectors.joining(" "));
     }
 
