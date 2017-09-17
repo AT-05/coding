@@ -12,6 +12,10 @@ public class Kata2Test {
 
     private Kata2 kata;
 
+    /**
+     * @throws Exception
+     * create new Kata2.
+     */
     @Before
     public void setUp() throws Exception {
         kata = new Kata2();
