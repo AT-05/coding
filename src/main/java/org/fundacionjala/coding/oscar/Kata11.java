@@ -13,10 +13,8 @@ public class Kata11 {
     public int digitalRoot(int number) {
         int total = 0;
         String[] numbers = String.valueOf(number).split("");
-        int resp = Integer.parseInt(numbers[0]);
-        for (int index = 1; index < numbers.length; index++) {
-            resp += Integer.parseInt(numbers[index]);
-            total = resp;
+        for (String num : numbers) {
+            total += Integer.parseInt(num);
         }
         if (total > 10) {
             return digitalRoot(total);
