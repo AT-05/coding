@@ -1,5 +1,6 @@
 package org.fundacionjala.coding.daniel;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -9,7 +10,12 @@ import static org.junit.Assert.assertEquals;
  */
 public class Kata2Test {
 
-    private Kata2 kata = new Kata2();
+    private Kata2 kata;
+
+    @Before
+    public void setUp() throws Exception {
+        kata = new Kata2();
+    }
 
     /**
      * Tests for Kata2.
