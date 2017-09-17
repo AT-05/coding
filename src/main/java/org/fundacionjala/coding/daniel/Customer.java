@@ -6,7 +6,7 @@ import java.util.Vector;
 /**
  * Class Customer.
  */
-public class Customer {
+class Customer {
     private String name;
     private Vector rentals = new Vector();
 
@@ -14,32 +14,32 @@ public class Customer {
     /**
      * @param name Constructor for class Customer.
      */
-    public Customer(String name) {
+    Customer(String name) {
         this.name = name;
     }
 
     /**
      * @param arg Add rental for Customer.
      */
-    public void addRental(Rental arg) {
+    void addRental(Rental arg) {
         rentals.addElement(arg);
     }
 
     /**
      * @return Returns the customer's name.
      */
-    public String getName() {
+    private String getName() {
         return name;
     }
 
     /**
      * @return Returns the statement of this customer.
      */
-    public String statement() {
+    String statement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
         Enumeration rentals = this.rentals.elements();
-        String result = "Rental Record for " + getName() + "\n";
+        String result = "Rental Record for " + getName() + "%n";
         while (rentals.hasMoreElements()) {
 
             Rental each = (Rental) rentals.nextElement();
