@@ -19,11 +19,10 @@ public class PersistentBugger {
                 .mapToInt(Integer::parseInt)
                 .toArray();
 
-
         if (numbers.length > 1) {
             int result = 1;
-            for (int i = 0; i < numbers.length; i++) {
-                result *= numbers[i];
+            for (int value : numbers) {
+                result *= value;
             }
             counter++;
             return persistence(result);
