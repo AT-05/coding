@@ -12,8 +12,11 @@ public class DnaStrand {
      */
     public String makeComplement(String word) {
 
-        String at = word.replace('T', 'X').replace('A', 'T').replace('X', 'A');
-        at = at.replace('G', 'X').replace('C', 'G').replace('X', 'C');
-        return at;
+        return word.replace('T', 'X')
+                .replace('A', 'T')
+                .replace('X', 'A')
+                .replace('G', 'X')
+                .replace('C', 'G')
+                .replace('X', 'C');
     }
 }
