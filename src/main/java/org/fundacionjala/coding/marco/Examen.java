@@ -11,6 +11,7 @@ public class Examen {
      * @return test.
      */
     public int root(int value) {
-        return (value != 0 && value % 9 == 0) ? 9 : value % 9;
+        int module = value % 9;
+        return module == 0 ? 9 : module;
     }
 }
