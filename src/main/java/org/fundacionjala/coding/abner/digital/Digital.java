@@ -16,7 +16,7 @@ public class Digital {
         int result = Integer.parseInt(digits);
 
         while (result > 10) {
-            result = digitalSum((String.valueOf(result)));
+            result = digitalSum(String.valueOf(result));
 
         }
 
