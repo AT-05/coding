@@ -19,12 +19,12 @@ dependencies {
 
 // Checkstyle configuration
 checkstyle {
-    toolVersion = '7.8'
+    toolVersion = '8.2'
 }
 
 // FindBugs configuration
 findbugs {
-    toolVersion = "3.0.1"
+    toolVersion = '3.0.1'
 }
 tasks.withType(FindBugs) {
     reports {
@@ -35,7 +35,7 @@ tasks.withType(FindBugs) {
 
 // PMD configuration
 pmd {
-    toolVersion = '5.7.0'
+    toolVersion = '5.8.1'
 }
 tasks.withType(Pmd) {
     reports {
@@ -55,6 +55,6 @@ check.dependsOn jacocoTestReport
 
 test {
     testLogging {
-        events "PASSED", "STARTED", "FAILED", "SKIPPED"
+        events 'PASSED', 'STARTED', 'FAILED', 'SKIPPED'
     }
 }
