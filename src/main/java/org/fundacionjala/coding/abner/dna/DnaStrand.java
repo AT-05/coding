@@ -14,8 +14,12 @@ public class DnaStrand {
      */
     public String makeComplement(String dna) {
         String aux;
-        dna = dna.replace("T", "W").replace("A", "T").replace("W", "A");
-        dna = dna.replace("C", "W").replace("G", "C").replace("W", "G");
+        dna = dna.replace("T", "W")
+                .replace("A", "T")
+                .replace("W", "A")
+                .replace("C", "W")
+                .replace("G", "C")
+                .replace("W", "G");
         return dna;
     }
 }
