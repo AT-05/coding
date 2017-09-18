@@ -17,9 +17,9 @@ public class Twisted {
      */
     public  Integer[] sortTwisted(Integer[] integers) {
         return Arrays.stream(integers)
-                .map(new Twisted()::remplaseThreeSeven)
+                .map(new Twisted()::replaceThreeSeven)
                 .sorted(Integer::compare)
-                .map(new Twisted()::remplaseThreeSeven)
+                .map(new Twisted()::replaceThreeSeven)
                 .toArray(Integer[]::new);
 
     }
@@ -30,7 +30,7 @@ public class Twisted {
      * @param integer old integer.
      * @return new array.
      */
-    private  Integer remplaseThreeSeven(Integer integer) {
+    private  Integer replaceThreeSeven(Integer integer) {
         return Integer.valueOf(integer.toString()
                 .replace("7", "_")
                 .replace("3", "7")
