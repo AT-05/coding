@@ -1,7 +1,7 @@
 package org.fundacionjala.coding.german;
 
 /**
- * Created by Administrator on 9/15/2017.
+ * Created by German on 9/15/2017.
  */
 public class DigitalRoot {
     /**
@@ -12,12 +12,7 @@ public class DigitalRoot {
      */
 
     public int digitalRoot(int number) {
-        int res = number;
-        if (res > 10) {
-
-            res = digitalRoot(sumDig(res));
-        }
-        return res;
+        return number >= 10 ? digitalRoot(sumDig(number)) : number;
     }
 
     /**
@@ -28,13 +23,11 @@ public class DigitalRoot {
      */
     private int sumDig(int dig) {
         int res = 0;
-        Integer interge = dig;
-        String s = interge.toString();
+        String s = Integer.toString(dig);
         for (int i = 0; i < s.length(); i++) {
             res += Character.getNumericValue(s.charAt(i));
         }
         return res;
-
-
     }
 }
+
