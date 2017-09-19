@@ -1,25 +1,23 @@
-package org.fundacionjala.coding.abner.twisted;
+package org.fundacionjala.coding.abner;
 
 import java.util.Arrays;
 
 /**
  * This class twisted.
- * Created by Administrator on 9/15/2017.
  */
-public class Twisted {
-
+public class PlanetTwisted {
 
     /**
      * This function sort twisted.
      *
      * @param integers old value;
-     * @return new twsted value;
+     * @return new twisted value;
      */
     public  Integer[] sortTwisted(Integer[] integers) {
         return Arrays.stream(integers)
-                .map(new Twisted()::replaceThreeSeven)
+                .map(new PlanetTwisted()::replaceThreeSeven)
                 .sorted(Integer::compare)
-                .map(new Twisted()::replaceThreeSeven)
+                .map(new PlanetTwisted()::replaceThreeSeven)
                 .toArray(Integer[]::new);
 
     }

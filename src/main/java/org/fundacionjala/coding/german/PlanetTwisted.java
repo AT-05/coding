@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Created by Administrator on 9/15/2017.
  */
-public class SortedOnTwisted {
+public class PlanetTwisted {
     /**
      * This method swap three seven.
      *
@@ -21,16 +21,16 @@ public class SortedOnTwisted {
     }
 
     /**
-     * This method sorted on Twisted-3-7.
+     * This method sorted on PlanetTwisted-3-7.
      *
      * @param array sorted
      * @return Interger array
      */
     public Integer[] sortTwistedThreeSeven(Integer[] array) {
         return Arrays.stream(array)
-                .map(new SortedOnTwisted()::swapThreeSeven)
+                .map(new PlanetTwisted()::swapThreeSeven)
                 .sorted(Integer::compare)
-                .map(new SortedOnTwisted()::swapThreeSeven)
+                .map(new PlanetTwisted()::swapThreeSeven)
                 .toArray(Integer[]::new);
     }
 

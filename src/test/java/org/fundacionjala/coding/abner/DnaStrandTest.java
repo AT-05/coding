@@ -1,4 +1,4 @@
-package org.fundacionjala.coding.abner.dna;
+package org.fundacionjala.coding.abner;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -7,7 +7,6 @@ import static junit.framework.TestCase.assertEquals;
 
 /**
  * This class test DNA.
- * Created by Administrator on 9/15/2017.
  */
 public class DnaStrandTest {
     private DnaStrand dnaStrand;

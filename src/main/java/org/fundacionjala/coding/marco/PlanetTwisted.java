@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * This was made by Marco Mendez September 18, 2017.
  */
-public class SortTwisted37 {
+public class PlanetTwisted {
 
     /**
      * This is the method main.

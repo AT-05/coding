@@ -4,18 +4,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+
 /**
  * This was made by Marco Mendez September 15, 2017.
  */
-public class ExamenTest {
+public class DigitalRootTest {
 
-    private Examen digital;
+    private DigitalRoot digital;
     /**
      * This start the object.
      */
     @Before
     public void ini() {
-        digital = new Examen();
+        digital = new DigitalRoot();
     }
 
     /**

@@ -6,11 +6,11 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 /**
- * Class Kata1Test.
+ * Class HighAndLowTest.
  */
-public class Kata1Test {
+public class HighAndLowTest {
 
-    private Kata1 kata = new Kata1();
+    private HighAndLow kata = new HighAndLow();
 
     /**
      * Test1.

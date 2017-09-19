@@ -3,7 +3,7 @@ package org.fundacionjala.coding.oscar;
 /**
  * Created by Administrator on 9/15/2017.
  */
-public class Kata11 {
+public class DigitalRoot {
     /**
      * This method sum all numbers of the integer.
      *

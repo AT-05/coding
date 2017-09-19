@@ -3,7 +3,8 @@ package org.fundacionjala.coding.marco;
 /**
  * This was made by Marco Mendez September 15, 2017.
  */
-public class Examen {
+public class DigitalRoot {
+
     /**
      * This method calculate digital root.
      *
