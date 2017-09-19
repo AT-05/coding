@@ -1,10 +1,9 @@
-package org.fundacionjala.coding.abner.digital;
+package org.fundacionjala.coding.abner;
 
 /**
- * This class calculate Digital root.
- * Created by Administrator on 9/15/2017.
+ * This class calculate DigitalRoot root.
  */
-public class Digital {
+public class DigitalRoot {
     /**
      * This function constructor.
      *
@@ -25,7 +24,7 @@ public class Digital {
     }
 
     /**
-     * Function Digital sum.
+     * Function DigitalRoot sum.
      *
      * @param s this is the code.
      * @return the new int.

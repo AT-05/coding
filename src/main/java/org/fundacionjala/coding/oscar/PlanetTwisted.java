@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Created by Oz64 on 14/09/2017.
  */
-public class SortTwisted37 {
+public class PlanetTwisted {
 
     /**
      * This method sort the array of numbers and call the method for change the numbers.

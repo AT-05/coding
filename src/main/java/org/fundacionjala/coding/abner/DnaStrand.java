@@ -1,8 +1,7 @@
-package org.fundacionjala.coding.abner.dna;
+package org.fundacionjala.coding.abner;
 
 /**
  * This class DNA.
- * Created by Abner on 9/15/2017.
  */
 public class DnaStrand {
 
@@ -13,13 +12,11 @@ public class DnaStrand {
      * @return the new dna.
      */
     public String makeComplement(String dna) {
-        String aux;
-        dna = dna.replace("T", "W")
+        return dna.replace("T", "W")
                 .replace("A", "T")
                 .replace("W", "A")
                 .replace("C", "W")
                 .replace("G", "C")
                 .replace("W", "G");
-        return dna;
     }
 }

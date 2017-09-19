@@ -8,15 +8,16 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by Administrator on 9/15/2017.
  */
-public class Kata11Test {
-    private Kata11 kata11;
+public class DigitalRootTest {
+
+    private DigitalRoot digitalRoot;
 
     /**
      * This method execute before all test.
      */
     @Before
     public void setUp() {
-        kata11 = new Kata11();
+        digitalRoot = new DigitalRoot();
     }
 
     /**
@@ -24,9 +25,9 @@ public class Kata11Test {
      */
     @Test
     public void test() {
-        assertEquals(7, kata11.digitalRoot(16));
-        assertEquals(6, kata11.digitalRoot(942));
-        assertEquals(6, kata11.digitalRoot(132189));
-        assertEquals(2, kata11.digitalRoot(493193));
+        assertEquals(7, digitalRoot.digitalRoot(16));
+        assertEquals(6, digitalRoot.digitalRoot(942));
+        assertEquals(6, digitalRoot.digitalRoot(132189));
+        assertEquals(2, digitalRoot.digitalRoot(493193));
     }
 }
