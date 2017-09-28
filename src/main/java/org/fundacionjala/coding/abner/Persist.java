@@ -2,9 +2,10 @@ package org.fundacionjala.coding.abner;
 
 /**
  * This class Persist.
- * Created by Administrator on 9/15/2017.
  */
 public class Persist {
+
+    private static final int MAX_DIGITS = 10;
 
     /**
      * This function constructor.
@@ -15,7 +16,7 @@ public class Persist {
     public int persistence(String digits) {
         int result = Integer.parseInt(digits);
         int counter = 0;
-        while (result > 10) {
+        while (result > MAX_DIGITS) {
             result = digitalMultiply((String.valueOf(result)));
             counter++;
         }

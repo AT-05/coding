@@ -30,8 +30,9 @@ public class MovieTest {
      */
     @Test
     public void childrenMovieGetAmountTest() {
-        double expectedResult = 4.5;
-        double actualResult = children.getAmount(5);
+        final int daysRented = 5;
+        double actualResult = children.getAmount(daysRented);
+        final double expectedResult = 4.5;
         assertEquals(expectedResult, actualResult, 0);
     }
 
@@ -40,8 +41,9 @@ public class MovieTest {
      */
     @Test
     public void childrenMovieGetAmountTest2() {
-        double expectedResult = 1.5;
-        double actualResult = children.getAmount(2);
+        final int daysRented = 2;
+        double actualResult = children.getAmount(daysRented);
+        final double expectedResult = 1.5;
         assertEquals(expectedResult, actualResult, 0);
     }
 
@@ -50,8 +52,9 @@ public class MovieTest {
      */
     @Test
     public void childrenMovieGetFrequentRenterPointsTest() {
-        double expectedResult = 1;
-        double actualResult = children.calculateFrequentRenterPoints(2);
+        final int daysRented = 2;
+        double actualResult = children.calculateFrequentRenterPoints(daysRented);
+        final double expectedResult = 1;
         assertEquals(expectedResult, actualResult, 0);
     }
 
@@ -60,8 +63,9 @@ public class MovieTest {
      */
     @Test
     public void newReleaseMovieGetAmountTest() {
-        double expectedResult = 15;
-        double actualResult = newRelease.getAmount(5);
+        final int daysRented = 5;
+        final double actualResult = newRelease.getAmount(daysRented);
+        final double expectedResult = 15;
         assertEquals(expectedResult, actualResult, 0);
     }
 
@@ -70,8 +74,9 @@ public class MovieTest {
      */
     @Test
     public void newReleaseMovieGetPointsTest() {
-        double expectedResult = 2;
-        double actualResult = newRelease.calculateFrequentRenterPoints(2);
+        final int daysRented = 2;
+        final double actualResult = newRelease.calculateFrequentRenterPoints(daysRented);
+        final double expectedResult = 2;
         assertEquals(expectedResult, actualResult, 0);
     }
 
@@ -80,8 +85,9 @@ public class MovieTest {
      */
     @Test
     public void newReleaseMovieGetPointsTest2() {
-        double expectedResult = 1;
-        double actualResult = newRelease.calculateFrequentRenterPoints(1);
+        final int daysRented = 1;
+        final double actualResult = newRelease.calculateFrequentRenterPoints(daysRented);
+        final double expectedResult = 1;
         assertEquals(expectedResult, actualResult, 0);
     }
 
@@ -90,8 +96,9 @@ public class MovieTest {
      */
     @Test
     public void regularMovieGetAmountTest() {
-        double expectedResult = 5;
-        double actualResult = regular.getAmount(4);
+        final int daysRented = 4;
+        final double actualResult = regular.getAmount(daysRented);
+        final double expectedResult = 5;
         assertEquals(expectedResult, actualResult, 0);
     }
 
@@ -100,8 +107,9 @@ public class MovieTest {
      */
     @Test
     public void regularMovieGetAmountTest2() {
-        double expectedResult = 5;
-        double actualResult = regular.getAmount(4);
+        final int daysRented = 4;
+        final double actualResult = regular.getAmount(daysRented);
+        final double expectedResult = 5;
         assertEquals(expectedResult, actualResult, 0);
     }
 
@@ -110,8 +118,9 @@ public class MovieTest {
      */
     @Test
     public void regularMovieGetFrequentRenterPointsTest() {
-        double expectedResult = 1;
-        double actualResult = regular.calculateFrequentRenterPoints(2);
+        final int daysRented = 2;
+        final double actualResult = regular.calculateFrequentRenterPoints(daysRented);
+        final double expectedResult = 1;
         assertEquals(expectedResult, actualResult, 0);
     }
 
@@ -120,16 +129,18 @@ public class MovieTest {
      */
     @Test
     public void customerStatementTest() {
-        customer.addRental(new Rental(new Children("Lion King"), 5));
-        customer.addRental(new Rental(new NewRelease("The Revenant"), 2));
-        customer.addRental(new Rental(new Regular("Terminator"), 2));
-        String expedtedResult = String.format("Rental Record for Test%n"
+        final int daysRented = 5;
+        customer.addRental(new Rental(new Children("Lion King"), daysRented));
+        final int daysRented1 = 2;
+        customer.addRental(new Rental(new NewRelease("The Revenant"), daysRented1));
+        customer.addRental(new Rental(new Regular("Terminator"), daysRented1));
+        String expectedResult = String.format("Rental Record for Test%n"
                 + "\tLion King\t4.5%n"
                 + "\tThe Revenant\t6.0%n"
                 + "\tTerminator\t2.0%n"
                 + "Amount owed is 12.5%n"
                 + "You earned 4 frequent renter points");
-        expedtedResult.equals(customer.statement());
+        assertEquals(expectedResult, customer.statement());
     }
 
     /**
@@ -137,11 +148,13 @@ public class MovieTest {
      */
     @Test
     public void customerTotalAmount() {
-        customer.addRental(new Rental(new Children("Lion King"), 5));
-        customer.addRental(new Rental(new NewRelease("The Revenant"), 2));
-        customer.addRental(new Rental(new Regular("Terminator"), 2));
-        double expectedResult = 12.5;
-        double actualResult = customer.calculateTotalAmount();
+        final int daysRented = 5;
+        customer.addRental(new Rental(new Children("Lion King"), daysRented));
+        final int daysRented1 = 2;
+        customer.addRental(new Rental(new NewRelease("The Revenant"), daysRented1));
+        customer.addRental(new Rental(new Regular("Terminator"), daysRented1));
+        final double expectedResult = 12.5;
+        final double actualResult = customer.calculateTotalAmount();
         assertEquals(expectedResult, actualResult, 0);
     }
 
@@ -150,11 +163,13 @@ public class MovieTest {
      */
     @Test
     public void customerTotalFrequentPoints() {
-        customer.addRental(new Rental(new Children("Lion King"), 5));
-        customer.addRental(new Rental(new NewRelease("The Revenant"), 2));
-        customer.addRental(new Rental(new Regular("Terminator"), 2));
-        double expectedResult = 4;
-        double actualResult = customer.calculateTotalFrequentPoints();
+        final int daysRented = 5;
+        customer.addRental(new Rental(new Children("Lion King"), daysRented));
+        final int daysRented1 = 2;
+        customer.addRental(new Rental(new NewRelease("The Revenant"), daysRented1));
+        customer.addRental(new Rental(new Regular("Terminator"), daysRented1));
+        final double expectedResult = 4;
+        final double actualResult = customer.calculateTotalFrequentPoints();
         assertEquals(expectedResult, actualResult, 0);
     }
 }

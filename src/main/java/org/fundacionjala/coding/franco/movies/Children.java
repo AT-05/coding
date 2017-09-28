@@ -3,14 +3,18 @@ package org.fundacionjala.coding.franco.movies;
 /**
  * Created by Administrator on 9/8/2017.
  */
-public class RegularMovie extends Movie {
+public class Children extends Movie {
+
+    private static final int MAX_DAYS = 3;
+
+    private static final double AMOUNT_FACTOR = 1.5;
 
     /**
-     * RegularMovie Class constructor.
+     * Children Class constructor.
      *
      * @param title is the Movie title.
      */
-    public RegularMovie(String title) {
+    public Children(String title) {
         super(title);
     }
 
@@ -19,7 +23,7 @@ public class RegularMovie extends Movie {
      */
     @Override
     double calculateAmount(int daysRented) {
-        return daysRented > 2 ? (daysRented - 2) * 1.5 : 2;
+        return daysRented > MAX_DAYS ? (daysRented - MAX_DAYS) * AMOUNT_FACTOR : AMOUNT_FACTOR;
     }
 
     /**

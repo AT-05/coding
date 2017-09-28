@@ -12,7 +12,7 @@ public class PlanetTwisted {
      * @param array test.
      * @return test.
      */
-    public Integer[] sortTwisted(Integer[] array) {
+    public Integer[] sort(Integer[] array) {
         Integer[] arrayNumbers = array.clone();
         iterateArray(arrayNumbers);
         Arrays.sort(arrayNumbers);

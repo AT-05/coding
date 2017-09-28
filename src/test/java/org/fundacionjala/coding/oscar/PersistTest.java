@@ -9,10 +9,11 @@ import static org.junit.Assert.assertEquals;
  * Created by Oz64 on 15/09/2017.
  */
 public class PersistTest {
+
     private Persist persist;
 
     /**
-     * This executed before any test.
+     * Setup.
      */
     @Before
     public void setUp() {
@@ -20,14 +21,43 @@ public class PersistTest {
     }
 
     /**
-     * Basic test.
+     * this is the test.
      */
     @Test
-    public void basicTests() {
-        assertEquals(3, persist.persistence(39));
-        assertEquals(0, persist.persistence(4));
-        assertEquals(2, persist.persistence(25));
-        assertEquals(4, persist.persistence(999));
-        assertEquals(3, persist.persistence(444));
+    public void testPersistenceScenario1() {
+        final int number = 4;
+        final int expectedResult = 0;
+        assertEquals(expectedResult, persist.persistence(number));
     }
+
+    /**
+     * this is the test.
+     */
+    @Test
+    public void testPersistenceScenario2() {
+        final int number = 39;
+        final int expectedResult = 3;
+        assertEquals(expectedResult, persist.persistence(number));
+    }
+
+    /**
+     * this is the test.
+     */
+    @Test
+    public void testPersistenceScenario3() {
+        final int number = 444;
+        final int expectedResult = 3;
+        assertEquals(expectedResult, persist.persistence(number));
+    }
+
+    /**
+     * this is the test.
+     */
+    @Test
+    public void testPersistenceScenario4() {
+        final int number = 999;
+        final int expectedResult = 4;
+        assertEquals(expectedResult, persist.persistence(number));
+    }
+
 }

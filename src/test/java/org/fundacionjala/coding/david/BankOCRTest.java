@@ -23,8 +23,9 @@ public class BankOCRTest {
     public void setUp() {
         bankOCR = new BankOCR();
     }
+
     /**
-     * Realice test for number bank.
+     * Test for number bank.
      */
     @Test
     public void mapToNumber() {
@@ -32,9 +33,9 @@ public class BankOCRTest {
         listLine.add("    _  _     _  _  _  _  _ ");
         listLine.add("  | _| _||_||_ |_   ||_||_|");
         listLine.add("  ||_  _|  | _||_|  ||_| _|");
-        final String actualResul1 = bankOCR.mapToNumber(listLine);
+        final String actualResult = bankOCR.mapToNumber(listLine);
         String expectedResult = "123456789";
-        assertEquals(expectedResult, actualResul1);
+        assertEquals(expectedResult, actualResult);
     }
 
     /**
@@ -48,8 +49,8 @@ public class BankOCRTest {
         listLine.add("  | _|  | _||_||_||_||_||_|");
 
         final String numberConverter = bankOCR.mapToNumber(listLine);
-        boolean actualResul = bankOCR.checkNumber(numberConverter);
-        assertTrue(actualResul);
+        boolean actualResult = bankOCR.checkNumber(numberConverter);
+        assertTrue(actualResult);
     }
     /**
      * This method check number.
@@ -62,52 +63,52 @@ public class BankOCRTest {
         listLine.add("  | _|  | _||_||_||_||_|  |");
 
         final String numberConverter = bankOCR.mapToNumber(listLine);
-        boolean actualResul = bankOCR.checkNumber(numberConverter);
-        assertFalse(actualResul);
+        boolean actualResult = bankOCR.checkNumber(numberConverter);
+        assertFalse(actualResult);
     }
     /**
      * This method check number 457508000.
      */
     @Test
-    public void scannNumber1() {
+    public void scanNumber1() {
         List<String> listLine = new ArrayList<>();
         listLine.add("    _  _  _  _  _  _  _  _ ");
         listLine.add("|_||_   ||_ | ||_|| || || |");
         listLine.add("  | _|  | _||_||_||_||_||_|");
         final String numberConverter = bankOCR.mapToNumber(listLine);
-        String actualResul = bankOCR.scannNumber(numberConverter);
+        String actualResult = bankOCR.scanNumber(numberConverter);
         String expectedResult = "457508000";
-        assertEquals(expectedResult, actualResul);
+        assertEquals(expectedResult, actualResult);
     }
 
     /**
      * This method check number 664371495.
      */
     @Test
-    public void scannNumber2() {
+    public void scanNumber2() {
         List<String> listLine = new ArrayList<>();
         listLine.add(" _  _     _  _        _  _ ");
         listLine.add("|_ |_ |_| _|  |  ||_||_||_ ");
         listLine.add("|_||_|  | _|  |  |  | _| _|");
         final String numberConverter = bankOCR.mapToNumber(listLine);
-        String actualResul = bankOCR.scannNumber(numberConverter);
+        String actualResult = bankOCR.scanNumber(numberConverter);
         String expectedResult = "664371495 ERR";
-        assertEquals(expectedResult, actualResul);
+        assertEquals(expectedResult, actualResult);
     }
 
     /**
      * This method check number 86110-1-136.
      */
     @Test
-    public void scannNumber3() {
+    public void scanNumber3() {
         List<String> listLine = new ArrayList<>();
         listLine.add(" _  _        _  _     _  _ ");
         listLine.add("|_||_   |  || |    _| _||_ ");
         listLine.add("|_||_|  |  ||_|  |  | _||_|");
         final String numberConverter = bankOCR.mapToNumber(listLine);
-        String actualResul = bankOCR.scannNumber(numberConverter);
+        String actualResult = bankOCR.scanNumber(numberConverter);
         String expectedResult = "86110??36 ILL";
-        assertEquals(expectedResult, actualResul);
+        assertEquals(expectedResult, actualResult);
     }
 
 }

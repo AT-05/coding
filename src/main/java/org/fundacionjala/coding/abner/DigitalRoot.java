@@ -4,6 +4,9 @@ package org.fundacionjala.coding.abner;
  * This class calculate DigitalRoot root.
  */
 public class DigitalRoot {
+
+    private static final int MAX_DIGITS = 10;
+
     /**
      * This function constructor.
      *
@@ -11,15 +14,10 @@ public class DigitalRoot {
      * @return the new int.
      */
     public int digitalRoot(String digits) {
-
         int result = Integer.parseInt(digits);
-
-        while (result > 10) {
+        while (result > MAX_DIGITS) {
             result = digitalSum(String.valueOf(result));
-
         }
-
-
         return result;
     }
 
@@ -37,6 +35,5 @@ public class DigitalRoot {
         }
         return sum;
     }
-
 
 }

@@ -5,6 +5,8 @@ package org.fundacionjala.coding.marco;
  */
 public class DigitalRoot {
 
+    private static final int MOD_NINE = 9;
+
     /**
      * This method calculate digital root.
      *
@@ -12,7 +14,7 @@ public class DigitalRoot {
      * @return test.
      */
     public int root(int value) {
-        int module = value % 9;
-        return module == 0 ? 9 : module;
+        int module = value % MOD_NINE;
+        return module == 0 ? MOD_NINE : module;
     }
 }

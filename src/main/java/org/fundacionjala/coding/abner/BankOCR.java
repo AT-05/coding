@@ -5,54 +5,70 @@ import java.util.Map;
 
 /**
  * This class maps the number.
- * Created by Samuel on 24/08/2017.
  */
 public class BankOCR {
 
     private static final int NUMBER_SIZE = 3;
-    private static final Map<String, Integer> MAP_NUMBER = new HashMap<>();
 
+    private static final int ENTRY_SIZE = 9;
+
+    private static final int MODULE_TEN = 10;
+
+    private static final int MODULE_ELEVEN = 11;
+
+    private static final String QUESTION_MARK = "?";
+
+    private static final Map<String, String> MAP_NUMBER = new HashMap<>();
     static {
-
-        MAP_NUMBER.put(String.format("%s%s%s", "   ",
-                "  |",
-                "  |"), 1);
-
-        MAP_NUMBER.put(String.format("%s%s%s", " _ ",
-                " _|",
-                "|_ "), 2);
-
-        MAP_NUMBER.put(String.format("%s%s%s", " _ ",
-                " _|",
-                " _|"), 3);
-
-        MAP_NUMBER.put(String.format("%s%s%s", "   ",
-                "|_|",
-                "  |"), 4);
-
-        MAP_NUMBER.put(String.format("%s%s%s", " _ ",
-                "|_ ",
-                " _|"), 5);
-
-        MAP_NUMBER.put(String.format("%s%s%s", " _ ",
-                "|_ ",
-                "|_|"), 6);
-
-        MAP_NUMBER.put(String.format("%s%s%s", " _ ",
-                "  |",
-                "  |"), 7);
-
-        MAP_NUMBER.put(String.format("%s%s%s", " _ ",
-                "|_|",
-                "|_|"), 8);
-
-        MAP_NUMBER.put(String.format("%s%s%s", " _ ",
-                "|_|",
-                " _|"), 9);
-
-        MAP_NUMBER.put(String.format("%s%s%s", " _ ",
+        MAP_NUMBER.put(String.format("%s%s%s",
+                " _ ",
                 "| |",
-                "|_|"), 0);
+                "|_|"), "0");
+
+        MAP_NUMBER.put(String.format("%s%s%s",
+                "   ",
+                "  |",
+                "  |"), "1");
+
+        MAP_NUMBER.put(String.format("%s%s%s",
+                " _ ",
+                " _|",
+                "|_ "), "2");
+
+        MAP_NUMBER.put(String.format("%s%s%s",
+                " _ ",
+                " _|",
+                " _|"), "3");
+
+        MAP_NUMBER.put(String.format("%s%s%s",
+                "   ",
+                "|_|",
+                "  |"), "4");
+
+        MAP_NUMBER.put(String.format("%s%s%s",
+                " _ ",
+                "|_ ",
+                " _|"), "5");
+
+        MAP_NUMBER.put(String.format("%s%s%s",
+                " _ ",
+                "|_ ",
+                "|_|"), "6");
+
+        MAP_NUMBER.put(String.format("%s%s%s",
+                " _ ",
+                "  |",
+                "  |"), "7");
+
+        MAP_NUMBER.put(String.format("%s%s%s",
+                " _ ",
+                "|_|",
+                "|_|"), "8");
+
+        MAP_NUMBER.put(String.format("%s%s%s",
+                " _ ",
+                "|_|",
+                " _|"), "9");
     }
 
     /**
@@ -85,25 +101,21 @@ public class BankOCR {
      */
     public boolean checkSumCalculation(int number) {
         int sum = 0;
-        int modNumber;
-        for (int i = 1; i <= 9; i++) {
-            modNumber = number % 10;
-            number = number / 10;
-            sum += modNumber * i;
+        for (int i = 1; i <= ENTRY_SIZE; i++) {
+            sum += number % MODULE_TEN * i;
+            number = number / MODULE_TEN;
         }
-
-        return sum % 11 == 0;
+        return sum % MODULE_ELEVEN == 0;
     }
 
     /**
-     * The function check tipe of number.
+     * The function check type of number.
      *
      * @param number code number.
      * @return if check true.
      */
     public String checkFile(String number) {
-        String question = "?";
-        int intIndex = number.indexOf(question);
+        int intIndex = number.indexOf(QUESTION_MARK);
         if (intIndex == -1) {
             if (checkSumCalculation(Integer.parseInt(number))) {
                 return number;

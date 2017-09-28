@@ -4,6 +4,9 @@ package org.fundacionjala.coding.oscar;
  * Created by Oz64 on 15/09/2017.
  */
 public class Persist {
+
+    private static final int MAX_DIGITS = 10;
+
     /**
      * This method return the number of times that multiply.
      *
@@ -12,7 +15,7 @@ public class Persist {
      */
     public int persistence(int number) {
         int total = 0;
-        if (number < 10) {
+        if (number < MAX_DIGITS) {
             return 0;
         }
         String[] numbers = String.valueOf(number).split("");

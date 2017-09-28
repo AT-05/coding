@@ -3,14 +3,16 @@ package org.fundacionjala.coding.franco.movies;
 /**
  * Created by Administrator on 9/8/2017.
  */
-public class NewReleaseMovie extends Movie {
+public class NewRelease extends Movie {
+
+    private static final int AMOUNT_FACTOR = 3;
 
     /**
-     * NewReleaseMovie Class constructor.
+     * NewRelease Class constructor.
      *
      * @param title is the Movie title.
      */
-    public NewReleaseMovie(String title) {
+    public NewRelease(String title) {
         super(title);
     }
 
@@ -19,7 +21,7 @@ public class NewReleaseMovie extends Movie {
      */
     @Override
     double calculateAmount(int daysRented) {
-        return daysRented * 3;
+        return daysRented * AMOUNT_FACTOR;
     }
 
     /**

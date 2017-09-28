@@ -6,15 +6,18 @@ import java.util.List;
 /**
  * The BankOCR class is utilize for Bank.
  */
-
 public class BankOCR {
 
     private static final int NUMBER_SIZE = 3;
-    private static final List<String> NUMBER_LIST = new ArrayList<>();
+
+    private static final int ENTRY_SIZE = 9;
+
     private static final int NUMBER_ELEVEN = 11;
 
-    static {
+    private static final String QUESTION_MARK = "?";
 
+    private static final List<String> NUMBER_LIST = new ArrayList<>();
+    static {
         NUMBER_LIST.add(" _ ".concat("| |").concat("|_|"));
         NUMBER_LIST.add("   ".concat("  |").concat("  |"));
         NUMBER_LIST.add(" _ ".concat(" _|").concat("|_ "));
@@ -25,8 +28,6 @@ public class BankOCR {
         NUMBER_LIST.add(" _ ".concat("  |").concat("  |"));
         NUMBER_LIST.add(" _ ".concat("|_|").concat("|_|"));
         NUMBER_LIST.add(" _ ".concat("|_|").concat(" _|"));
-
-
     }
 
     /**
@@ -50,17 +51,17 @@ public class BankOCR {
     /**
      * this method realize compare with number one.
      *
-     * @param numero string.
+     * @param number string.
      * @return one number comparative.
      */
-    public String compare(String numero) {
+    public String compare(String number) {
         StringBuilder variable = new StringBuilder();
         for (int i = 0; i < NUMBER_LIST.size(); i++) {
-            if (NUMBER_LIST.get(i).equals(numero)) {
+            if (NUMBER_LIST.get(i).equals(number)) {
                 return variable.append(i).toString();
             }
         }
-        return "?";
+        return QUESTION_MARK;
     }
 
     /**
@@ -72,24 +73,21 @@ public class BankOCR {
     public boolean checkNumber(String number) {
         int numberPosition = 1;
         int sum = 0;
-        int posInitial = 8;
-        int posEnd = 9;
-        for (int i = 9; i > 0; i--, posInitial--, posEnd--, numberPosition++) {
-            int numberAux = Integer.parseInt(number.substring(posInitial, posEnd));
-            sum = sum + (numberAux * numberPosition);
+        for (int i = ENTRY_SIZE; i > 0; i--, numberPosition++) {
+            sum += Integer.parseInt(number.substring(i - 1, i)) * numberPosition;
         }
         return sum % NUMBER_ELEVEN == 0;
     }
 
     /**
-     * This method realize Scann number.
+     * This method realize Scan number.
      *
      * @param number is one number.
      * @return one value.
      */
-    public String scannNumber(String number) {
-        return number.contains("?") ? number.concat(" ILL") : !checkNumber(number) ? number.concat(" ERR") : number;
-
+    public String scanNumber(String number) {
+        return number.contains("?") ? number.concat(" ILL")
+                : !checkNumber(number) ? number.concat(" ERR") : number;
     }
 
 }

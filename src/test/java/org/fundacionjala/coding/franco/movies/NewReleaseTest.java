@@ -8,19 +8,20 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by Administrator on 9/12/2017.
  */
-public class NewReleaseMovieTest {
+public class NewReleaseTest {
+
     private Movie movie;
 
     /**
-     * This method tests instancing of NewReleaseMovie Class.
+     * This method tests instancing of NewRelease Class.
      */
     @Before
     public void setUp() {
-        movie = new NewReleaseMovie("The Day After Tomorrow");
+        movie = new NewRelease("The Day After Tomorrow");
     }
 
     /**
-     * This method tests calculus of amount of a NewReleaseMovie type.
+     * This method tests calculus of amount of a NewRelease type.
      */
     @Test
     public void calculateAmount() {
@@ -30,7 +31,7 @@ public class NewReleaseMovieTest {
     }
 
     /**
-     * This method tests output of NewReleaseMovie rental figure.
+     * This method tests output of NewRelease rental figure.
      */
     @Test
     public void rentalFigure() {

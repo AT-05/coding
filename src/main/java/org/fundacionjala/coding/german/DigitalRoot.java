@@ -4,6 +4,9 @@ package org.fundacionjala.coding.german;
  * Created by German on 9/15/2017.
  */
 public class DigitalRoot {
+
+    private static final int MAX_DIGITS = 10;
+
     /**
      * This method calculates root is the recursive sum of all the digits in a number.
      *
@@ -12,7 +15,7 @@ public class DigitalRoot {
      */
 
     public int digitalRoot(int number) {
-        return number >= 10 ? digitalRoot(sumDig(number)) : number;
+        return number >= MAX_DIGITS ? digitalRoot(sumDig(number)) : number;
     }
 
     /**

@@ -4,7 +4,10 @@ package org.fundacionjala.coding.oscar;
  * Created by Administrator on 8/29/2017.
  */
 public class EANValidation {
-    private static final int MULT = 3;
+
+    private static final int MULTIPLE_THREE = 3;
+
+    private static final int NUMBER_TEN = 10;
 
     /**
      * This method validate the number.
@@ -16,7 +19,7 @@ public class EANValidation {
         int sum = 0;
         for (int index = 0; index < stringNumber.length() - 1; index++) {
             int number = Integer.parseInt(stringNumber.substring(index, index + 1));
-            sum += index % 2 == 0 ? number : number * MULT;
+            sum += index % 2 == 0 ? number : number * MULTIPLE_THREE;
         }
         return (stringNumber.substring(stringNumber.length() - 1, stringNumber.length()).equals(validateChecksum(sum)));
     }
@@ -28,6 +31,6 @@ public class EANValidation {
      * @return zero if is correct otherwise follow the formula.
      */
     public String validateChecksum(int sum) {
-        return (sum % 10 == 0) ? "0" : Integer.toString(10 - (sum % 10));
+        return sum % NUMBER_TEN == 0 ? "0" : Integer.toString(NUMBER_TEN - (sum % NUMBER_TEN));
     }
 }

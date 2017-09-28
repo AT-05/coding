@@ -10,13 +10,10 @@ import static org.junit.Assert.assertEquals;
  */
 public class PersistTest {
 
-
     private Persist persist;
 
     /**
-     * This method initialize variable.
-     *
-     * @throws Exception
+     * Setup.
      */
     @Before
     public void setUp() {
@@ -24,58 +21,43 @@ public class PersistTest {
     }
 
     /**
-     * This method realize test case one.
+     * this is the test.
      */
     @Test
-    public void testBasicTestsCaseOne() {
-        final int actualResult = persist.persistence(39);
-        final int expectedResult = 3;
-
-        assertEquals(expectedResult, actualResult);
-    }
-
-    /**
-     * This method realize test case two.
-     */
-    @Test
-    public void testBasicTestsCaseTwo() {
-        final int actualResult = persist.persistence(4);
+    public void testPersistenceScenario1() {
+        final int number = 4;
         final int expectedResult = 0;
-
-        assertEquals(expectedResult, actualResult);
-
+        assertEquals(expectedResult, persist.persistence(number));
     }
 
     /**
-     * This method realize test case three.
+     * this is the test.
      */
     @Test
-    public void testBasicTestsCaseThree() {
-        final int actualResult = persist.persistence(25);
-        final int expectedResult = 2;
-
-        assertEquals(expectedResult, actualResult);
-    }
-
-    /**
-     * This method realize test case four.
-     */
-    @Test
-    public void testBasicTestsCaseFour() {
-        final int actualResult = persist.persistence(999);
-        final int expectedResult = 4;
-        assertEquals(expectedResult, actualResult);
-    }
-
-    /**
-     * This method realize test case five.
-     */
-    @Test
-    public void testBasicTestsCaseFive() {
-        final int actualResult = persist.persistence(444);
+    public void testPersistenceScenario2() {
+        final int number = 39;
         final int expectedResult = 3;
+        assertEquals(expectedResult, persist.persistence(number));
+    }
 
-        assertEquals(expectedResult, actualResult);
+    /**
+     * this is the test.
+     */
+    @Test
+    public void testPersistenceScenario3() {
+        final int number = 444;
+        final int expectedResult = 3;
+        assertEquals(expectedResult, persist.persistence(number));
+    }
+
+    /**
+     * this is the test.
+     */
+    @Test
+    public void testPersistenceScenario4() {
+        final int number = 999;
+        final int expectedResult = 4;
+        assertEquals(expectedResult, persist.persistence(number));
     }
 
 }

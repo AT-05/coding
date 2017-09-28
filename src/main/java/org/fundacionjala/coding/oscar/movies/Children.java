@@ -5,9 +5,13 @@ package org.fundacionjala.coding.oscar.movies;
  */
 public class Children extends Movie {
 
+    private static final double AMOUNT_FACTOR = 1.5;
+
+    private static final int MAX_DAYS = 3;
+
     /**
      * This is the constructor, invoke the super class movie
-     * with the title ant the type of movie, 2 for this case of childrens.
+     * with the title ant the type of movie, 2 for this case of children.
      *
      * @param title of the movie.
      */
@@ -20,8 +24,7 @@ public class Children extends Movie {
      */
     @Override
     public double getAmount(int daysRented) {
-        double thisAmount = 1.5;
-        return daysRented > 3 ? thisAmount + (daysRented - 3) * 1.5 : thisAmount;
+        return daysRented > MAX_DAYS ? AMOUNT_FACTOR + (daysRented - MAX_DAYS) * AMOUNT_FACTOR : AMOUNT_FACTOR;
     }
 
     /**

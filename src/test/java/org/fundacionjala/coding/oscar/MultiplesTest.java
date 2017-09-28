@@ -1,5 +1,6 @@
 package org.fundacionjala.coding.oscar;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -9,14 +10,44 @@ import static org.junit.Assert.assertEquals;
  */
 public class MultiplesTest {
 
+    private Multiples multiples;
+
     /**
-     * for test the function multiplyOf3and5.
+     * Setup.
+     */
+    @Before
+    public void setUp() {
+        multiples = new Multiples();
+    }
+
+    /**
+     * Testing test For Three Numbers.
      */
     @Test
-    public void sumOfMultiplesOf3and5() {
-        Multiples kata = new Multiples();
-        assertEquals(23, kata.multiplyOf3and5(10));
-        assertEquals(78, kata.multiplyOf3and5(20));
-        assertEquals(9168, kata.multiplyOf3and5(200));
+    public void testMultiplesScenario1() {
+        final int number = 10;
+        final int expectedResult = 23;
+        assertEquals(expectedResult, multiples.multiplyOf3and5(number));
     }
+
+    /**
+     * Testing test For Three Numbers.
+     */
+    @Test
+    public void testMultiplesScenario2() {
+        final int number = 20;
+        final int expectedResult = 78;
+        assertEquals(expectedResult, multiples.multiplyOf3and5(number));
+    }
+
+    /**
+     * Testing test For Three Numbers.
+     */
+    @Test
+    public void testMultiplesScenario3() {
+        final int number = 200;
+        final int expectedResult = 9168;
+        assertEquals(expectedResult, multiples.multiplyOf3and5(number));
+    }
+
 }

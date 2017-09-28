@@ -1,5 +1,6 @@
 package org.fundacionjala.coding.david;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -9,15 +10,44 @@ import static org.junit.Assert.assertEquals;
  */
 public class MultiplesTest {
 
+    private Multiples multiples;
+
     /**
-     * This method realize test to method of class Multiples.
+     * Setup.
+     */
+    @Before
+    public void setUp() {
+        multiples = new Multiples();
+    }
+
+    /**
+     * Testing.
      */
     @Test
-    public void multipleThreeAndFive() {
-        Multiples multiple = new Multiples();
-        assertEquals(23, multiple.multipleThreeAndFive(10));
-        assertEquals(78, multiple.multipleThreeAndFive(20));
-        assertEquals(9168, multiple.multipleThreeAndFive(200));
+    public void testMultiplesScenario1() {
+        final int number = 10;
+        final int expectedResult = 23;
+        assertEquals(expectedResult, multiples.multipleThreeAndFive(number));
+    }
+
+    /**
+     * Testing.
+     */
+    @Test
+    public void testMultiplesScenario2() {
+        final int number = 20;
+        final int expectedResult = 78;
+        assertEquals(expectedResult, multiples.multipleThreeAndFive(number));
+    }
+
+    /**
+     * Testing.
+     */
+    @Test
+    public void testMultiplesScenario3() {
+        final int number = 200;
+        final int expectedResult = 9168;
+        assertEquals(expectedResult, multiples.multipleThreeAndFive(number));
     }
 
 }

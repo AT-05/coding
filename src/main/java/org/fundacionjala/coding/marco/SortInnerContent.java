@@ -9,9 +9,9 @@ import java.util.StringJoiner;
 public class SortInnerContent {
 
     private static final int ZERO = 0;
-    private static final int ONE = 1;
     private static final String QUOTE_SPACE = " ";
     private static final String REGEX = "";
+    private static final int WORD_SIZE = 3;
 
     /**
      * This method do the convect of a string.
@@ -23,12 +23,12 @@ public class SortInnerContent {
         String[] words = string.split(QUOTE_SPACE);
         StringJoiner result = new StringJoiner(QUOTE_SPACE);
         for (String value : words) {
-            if (value.length() >= 3) {
-                String[] aux = value.substring(1, value.length() - ONE).split(REGEX);
+            if (value.length() >= WORD_SIZE) {
+                String[] aux = value.substring(1, value.length() - 1).split(REGEX);
                 Arrays.sort(aux);
-                String word = value.substring(ZERO, ONE)
+                String word = value.substring(ZERO, 1)
                         .concat(new StringBuilder(String.join(REGEX, aux)).reverse().toString())
-                        .concat(value.substring(value.length() - ONE, value.length()));
+                        .concat(value.substring(value.length() - 1, value.length()));
                 result.add(word);
 
             } else {
