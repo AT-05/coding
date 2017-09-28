@@ -5,58 +5,70 @@ import java.util.List;
 
 import static java.lang.String.format;
 
-
 /**
  * Created by German on 25/8/2017.
  */
 public class BankOCR {
+
     private static final String QUESTION_MARK = "?";
+
     private static final int OFFSET = 3;
+
+    private static final int ENTRY_SIZE = 9;
+
+    private static final int NUMBER_ELEVEN = 11;
+
     private static final List<String> NUMBERS = new ArrayList<>();
-
     static {
-
-        NUMBERS.add(format("%s%s%s", " _ ",
+        NUMBERS.add(format("%s%s%s",
+                " _ ",
                 "| |",
                 "|_|"));
 
-
-        NUMBERS.add(format("%s%s%s", "   ",
+        NUMBERS.add(format("%s%s%s",
+                "   ",
                 "  |",
                 "  |"));
 
-        NUMBERS.add(format("%s%s%s", " _ ",
+        NUMBERS.add(format("%s%s%s",
+                " _ ",
                 " _|",
                 "|_ "));
 
-        NUMBERS.add(format("%s%s%s", " _ ",
+        NUMBERS.add(format("%s%s%s",
+                " _ ",
                 " _|",
                 " _|"));
 
-        NUMBERS.add(format("%s%s%s", "   ",
+        NUMBERS.add(format("%s%s%s",
+                "   ",
                 "|_|",
                 "  |"));
 
-        NUMBERS.add(format("%s%s%s", " _ ",
+        NUMBERS.add(format("%s%s%s",
+                " _ ",
                 "|_ ",
                 " _|"));
 
-        NUMBERS.add(format("%s%s%s", " _ ",
+        NUMBERS.add(format("%s%s%s",
+                " _ ",
                 "|_ ",
                 "|_|"));
 
-        NUMBERS.add(format("%s%s%s", " _ ",
+        NUMBERS.add(format("%s%s%s",
+                " _ ",
                 "  |",
                 "  |"));
 
-        NUMBERS.add(format("%s%s%s", " _ ",
+        NUMBERS.add(format("%s%s%s",
+                " _ ",
                 "|_|",
                 "|_|"));
 
-        NUMBERS.add(format("%s%s%s", " _ ",
+        NUMBERS.add(format("%s%s%s",
+                " _ ",
                 "|_|",
                 " _|"));
-
     }
 
     /**
@@ -87,11 +99,11 @@ public class BankOCR {
      */
 
     public boolean isValidCheckSum(String stringOCR) {
-        int mod11 = 0;
-        for (int i = 0; i < 9; i++) {
-            mod11 += Character.getNumericValue(stringOCR.charAt(i)) * (9 - i);
+        int sum = 0;
+        for (int i = 0; i < ENTRY_SIZE; i++) {
+            sum += Character.getNumericValue(stringOCR.charAt(i)) * (ENTRY_SIZE - i);
         }
-        return mod11 % 11 == 0;
+        return sum % NUMBER_ELEVEN == 0;
 
     }
 
@@ -105,7 +117,7 @@ public class BankOCR {
      */
     public String status(String stringOCR) {
         return isValidCheckSum(stringOCR)
-                ? format("%s", stringOCR) : stringOCR.indexOf("?") == -1
+                ? format("%s", stringOCR) : !stringOCR.contains("?")
                 ? format("%s ERR", stringOCR) : format("%s ILL", stringOCR);
     }
 }

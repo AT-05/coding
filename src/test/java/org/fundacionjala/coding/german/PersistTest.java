@@ -9,10 +9,11 @@ import static org.junit.Assert.assertEquals;
  * Created by German on 16/09/2017.
  */
 public class PersistTest {
+
     private Persist persist;
 
     /**
-     * This method executed before any test.
+     * Setup.
      */
     @Before
     public void setUp() {
@@ -20,53 +21,43 @@ public class PersistTest {
     }
 
     /**
-     * Verify persistence Method.
+     * this is the test.
      */
     @Test
-    public void testPersistenceMethodWithThirtyNine() {
-        final int actualResult = persist.persistence(39);
-        final int expectedResult = 3;
-        assertEquals(expectedResult, actualResult);
-    }
-
-    /**
-     * Verify persistence Method.
-     */
-    @Test
-    public void testPersistenceMethodWithFour() {
-        final int actualResult = persist.persistence(4);
+    public void testPersistenceScenario1() {
+        final int number = 4;
         final int expectedResult = 0;
-        assertEquals(expectedResult, actualResult);
+        assertEquals(expectedResult, persist.persistence(number));
     }
 
     /**
-     * Verify persistence Method.
+     * this is the test.
      */
     @Test
-    public void testPersistenceMethodWithTwentyFive() {
-        final int actualResult = persist.persistence(25);
-        final int expectedResult = 2;
-        assertEquals(expectedResult, actualResult);
-    }
-
-    /**
-     * Verify persistence Method.
-     */
-    @Test
-    public void testPersistenceMethodWithNineHundredNinetyNine() {
-        final int actualResult = persist.persistence(999);
-        final int expectedResult = 4;
-        assertEquals(expectedResult, actualResult);
-    }
-
-    /**
-     * Verify persistence Method.
-     */
-    @Test
-    public void testPersistenceMethodWithFourHundredFortyFour() {
-        final int actualResult = persist.persistence(444);
+    public void testPersistenceScenario2() {
+        final int number = 39;
         final int expectedResult = 3;
-        assertEquals(expectedResult, actualResult);
+        assertEquals(expectedResult, persist.persistence(number));
+    }
+
+    /**
+     * this is the test.
+     */
+    @Test
+    public void testPersistenceScenario3() {
+        final int number = 444;
+        final int expectedResult = 3;
+        assertEquals(expectedResult, persist.persistence(number));
+    }
+
+    /**
+     * this is the test.
+     */
+    @Test
+    public void testPersistenceScenario4() {
+        final int number = 999;
+        final int expectedResult = 4;
+        assertEquals(expectedResult, persist.persistence(number));
     }
 
 }

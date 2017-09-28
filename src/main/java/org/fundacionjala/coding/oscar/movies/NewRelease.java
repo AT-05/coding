@@ -5,6 +5,8 @@ package org.fundacionjala.coding.oscar.movies;
  */
 public class NewRelease extends Movie {
 
+    private static final int AMOUNT_FACTOR = 3;
+
     /**
      * This is the constructor, invoke the super class movie with
      * the title ant the type of movie, 1 for this case of NewRelease.
@@ -20,7 +22,7 @@ public class NewRelease extends Movie {
      */
     @Override
     public double getAmount(int daysRented) {
-        return daysRented * 3;
+        return daysRented * AMOUNT_FACTOR;
     }
 
     /**

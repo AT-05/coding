@@ -11,17 +11,18 @@ import static org.junit.Assert.assertTrue;
  * This class test the numbers.
  */
 public class BankOCRTest {
+
     /**
      * This bar set for all class.
      */
-    private BankOCR map;
+    private BankOCR bankOCR;
 
     /**
      * this function setup de var for all class.
      */
     @Before
     public void setup() {
-        map = new BankOCR();
+        bankOCR = new BankOCR();
     }
 
     /**
@@ -29,28 +30,12 @@ public class BankOCRTest {
      */
     @Test
     public void testMapNumberCheckValue() {
-        String stringCodeOne = "    _  _     _  _  _  _  _ ";
-        String stringCodeTwo = "  | _| _||_||_ |_   ||_||_|";
-        String stringCodeThree = "  ||_  _|  | _||_|  ||_| _|";
+        final String stringLine1 = "    _  _     _  _  _  _  _ ";
+        final String stringLine2 = "  | _| _||_||_ |_   ||_||_|";
+        final String stringLine3 = "  ||_  _|  | _||_|  ||_| _|";
         final String expectedResult = "123456789";
 
-        assertEquals(expectedResult, map.checkValue(stringCodeOne, stringCodeTwo, stringCodeThree));
-    }
-
-    /**
-     * This test check whit seven value.
-     */
-
-    @Test
-    public void testMapNumberCheckValueWithSeven() {
-
-        String stringCodeOne = "    _  _     _  _  _ ";
-        String stringCodeTwo = "  | _| _||_||_ |_   |";
-        String stringCodeThree = "  ||_  _|  | _||_|  |";
-        final String expectedResult = "1234567";
-
-        assertEquals(expectedResult, map.checkValue(stringCodeOne, stringCodeTwo, stringCodeThree));
-
+        assertEquals(expectedResult, bankOCR.checkValue(stringLine1, stringLine2, stringLine3));
     }
 
     /**
@@ -58,12 +43,11 @@ public class BankOCRTest {
      */
     @Test
     public void testMapNumberWithThree() {
-        String stringLine1 = " _  _  _  _  _  _  _  _  _ ";
-        String stringLine2 = " _| _| _| _| _| _| _| _| _|";
-        String stringLine3 = " _| _| _| _| _| _| _| _| _|";
+        final String stringLine1 = " _  _  _  _  _  _  _  _  _ ";
+        final String stringLine2 = " _| _| _| _| _| _| _| _| _|";
+        final String stringLine3 = " _| _| _| _| _| _| _| _| _|";
         final String expectedResult = "333333333";
-        assertEquals(expectedResult, map.checkValue(stringLine1, stringLine2, stringLine3));
-
+        assertEquals(expectedResult, bankOCR.checkValue(stringLine1, stringLine2, stringLine3));
     }
 
     /**
@@ -71,12 +55,11 @@ public class BankOCRTest {
      */
     @Test
     public void testMapNumberWithOneValue() {
-        String stringCodeOne = "   ";
-        String stringCodeTwo = "  |";
-        String stringCodeThree = "  |";
+        final String stringLine1 = "   ";
+        final String stringLine2 = "  |";
+        final String stringLine3 = "  |";
         final String expectedResult = "1";
-        assertEquals(expectedResult, map.checkValue(stringCodeOne, stringCodeTwo, stringCodeThree));
-
+        assertEquals(expectedResult, bankOCR.checkValue(stringLine1, stringLine2, stringLine3));
     }
 
     /**
@@ -84,8 +67,9 @@ public class BankOCRTest {
      */
     @Test
     public void testCheckSumCalculation() {
-        assertTrue(map.checkSumCalculation(900000007));
-        assertTrue(map.checkSumCalculation(345882865));
+        final int entryNumber = 345882865;
+        final boolean actualResult = bankOCR.checkSumCalculation(entryNumber);
+        assertTrue(actualResult);
     }
 
     /**
@@ -93,7 +77,8 @@ public class BankOCRTest {
      */
     @Test
     public void testCheckSumCalculationFalse() {
-        boolean actualResult = map.checkSumCalculation(900000000);
+        final int entryNumber = 900000000;
+        final boolean actualResult = bankOCR.checkSumCalculation(entryNumber);
         assertFalse(actualResult);
     }
 
@@ -103,7 +88,7 @@ public class BankOCRTest {
     @Test
     public void testCheckFileAssertResult() {
         final String expectedResult = "457508000";
-        assertEquals(expectedResult, map.checkFile("457508000"));
+        assertEquals(expectedResult, bankOCR.checkFile("457508000"));
     }
 
     /**
@@ -112,7 +97,7 @@ public class BankOCRTest {
     @Test
     public void testCheckFileErrorResult() {
         final String expectedResult = "664371495 ERR";
-        assertEquals(expectedResult, map.checkFile("664371495"));
+        assertEquals(expectedResult, bankOCR.checkFile("664371495"));
     }
 
     /**
@@ -121,6 +106,6 @@ public class BankOCRTest {
     @Test
     public void testCheckFileUnreadableResult() {
         final String expectedResult = "86110??36 ILL";
-        assertEquals(expectedResult, map.checkFile("86110??36"));
+        assertEquals(expectedResult, bankOCR.checkFile("86110??36"));
     }
 }

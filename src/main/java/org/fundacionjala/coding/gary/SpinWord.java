@@ -7,6 +7,8 @@ public class SpinWord {
 
     private static final String DELIMITER = " ";
 
+    private static final int WORD_SIZE = 5;
+
     /**
      * the method that converts.
      * @param chain to convert.
@@ -15,7 +17,7 @@ public class SpinWord {
     public String spinWords(String chain) {
         String[] separateWords = chain.split(DELIMITER);
         for (int position = 0; position < separateWords.length; position++) {
-            if (separateWords[position].length() >= 5) {
+            if (separateWords[position].length() >= WORD_SIZE) {
                 separateWords[position] = new StringBuilder(separateWords[position])
                         .reverse()
                         .toString();

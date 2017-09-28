@@ -1,9 +1,9 @@
 package org.fundacionjala.coding.franco;
 
+import java.util.Arrays;
+
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,6 +11,7 @@ import static org.junit.Assert.assertEquals;
  * Created by Administrator on 9/14/2017.
  */
 public class PlanetTwistedTest {
+
     private PlanetTwisted planetTwisted;
 
     /**
@@ -56,8 +57,8 @@ public class PlanetTwistedTest {
      */
     @Test
     public void unChangedArrayTest() {
-        Integer[] array = new Integer[]{9, 2, 4, 7, 3};
-        Integer[] arrayCpy = new Integer[]{9, 2, 4, 7, 3};
+        final Integer[] array = new Integer[]{9, 2, 4, 7, 3};
+        final Integer[] arrayCpy = new Integer[]{9, 2, 4, 7, 3};
 
         final String actualResult1 = Arrays.toString(planetTwisted.sort(array));
         final String expectedResult1 = Arrays.toString(new Integer[]{2, 7, 4, 3, 9});

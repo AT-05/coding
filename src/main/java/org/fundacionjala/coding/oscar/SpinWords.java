@@ -5,7 +5,9 @@ package org.fundacionjala.coding.oscar;
  */
 public class SpinWords {
 
-    public static final String DELIMITER = " ";
+    private static final String DELIMITER = " ";
+
+    private static final int WORD_SIZE = 5;
 
     /**
      * This method checks when the length is greater or equal to 5 in a word, that word is reversed.
@@ -16,7 +18,7 @@ public class SpinWords {
     public String spinWord(String stringWords) {
         String[] words = stringWords.split(DELIMITER);
         for (int index = 0; index < words.length; index++) {
-            if (words[index].length() >= 5) {
+            if (words[index].length() >= WORD_SIZE) {
                 StringBuilder builder = new StringBuilder(words[index]);
                 words[index] = builder.reverse().toString();
             }

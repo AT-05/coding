@@ -9,53 +9,55 @@ import static org.junit.Assert.assertEquals;
  * Created by Administrator on 9/14/2017.
  */
 public class PersistentBuggerTest {
-    private PersistentBugger persistentBugger;
+
+    private PersistentBugger persist;
 
     /**
-     * This method tests instancing of Class PersistentBugger.
+     * Setup.
      */
     @Before
     public void setUp() {
-        persistentBugger = new PersistentBugger();
+        persist = new PersistentBugger();
     }
 
     /**
-     * This method tests result of  persistence of number 39.
+     * this is the test.
      */
     @Test
-    public void persistenceOf39() {
-        assertEquals(3, persistentBugger.persistence(39));
+    public void testPersistenceScenario1() {
+        final int number = 4;
+        final int expectedResult = 0;
+        assertEquals(expectedResult, persist.persistence(number));
     }
 
     /**
-     * This method tests result of  persistence of number 4.
+     * this is the test.
      */
     @Test
-    public void persistenceOf4() {
-        assertEquals(0, persistentBugger.persistence(4));
+    public void testPersistenceScenario2() {
+        final int number = 39;
+        final int expectedResult = 3;
+        assertEquals(expectedResult, persist.persistence(number));
     }
 
     /**
-     * This method tests result of  persistence of number 25.
+     * this is the test.
      */
     @Test
-    public void persistenceOf25() {
-        assertEquals(2, persistentBugger.persistence(25));
+    public void testPersistenceScenario3() {
+        final int number = 444;
+        final int expectedResult = 3;
+        assertEquals(expectedResult, persist.persistence(number));
     }
 
     /**
-     * This method tests result of  persistence of number 999.
+     * this is the test.
      */
     @Test
-    public void persistenceOf999() {
-        assertEquals(4, persistentBugger.persistence(999));
+    public void testPersistenceScenario4() {
+        final int number = 999;
+        final int expectedResult = 4;
+        assertEquals(expectedResult, persist.persistence(number));
     }
 
-    /**
-     * This method tests result of persistence of number 444.
-     */
-    @Test
-    public void persistenceOf444() {
-        assertEquals(3, persistentBugger.persistence(444));
-    }
 }

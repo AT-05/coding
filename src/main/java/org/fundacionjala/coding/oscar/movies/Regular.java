@@ -5,6 +5,12 @@ package org.fundacionjala.coding.oscar.movies;
  */
 public class Regular extends Movie {
 
+    private static final int AMOUNT_FACTOR = 2;
+
+    private static final int MAX_DAYS = 2;
+
+    private static final double AMOUNT = 1.5;
+
     /**
      * This is the constructor, invoke the super class movie with
      * the title ant the type of movie, 0 for this case of regular.
@@ -20,8 +26,7 @@ public class Regular extends Movie {
      */
     @Override
     public double getAmount(int daysRented) {
-        double thisAmount = 2;
-        return daysRented > 2 ? thisAmount + (daysRented - 2) * 1.5 : thisAmount;
+        return daysRented > MAX_DAYS ? AMOUNT_FACTOR + (daysRented - MAX_DAYS) * AMOUNT : AMOUNT_FACTOR;
     }
 
     /**

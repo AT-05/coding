@@ -56,7 +56,7 @@ public class BankOCRTest {
      */
     @Test
     public void testCheckSumAccountNumberIsFalse() {
-        String accountNumber = "664371495";
+        String accountNumber = "345882866";
 
         final boolean actualResult = this.bankOCR.checkSum(accountNumber);
         assertFalse(actualResult);

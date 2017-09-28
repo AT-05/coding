@@ -26,7 +26,7 @@ public class PlanetTwisted {
      * @param array sorted
      * @return Interger array
      */
-    public Integer[] sortTwistedThreeSeven(Integer[] array) {
+    public Integer[] sort(Integer[] array) {
         return Arrays.stream(array)
                 .map(new PlanetTwisted()::swapThreeSeven)
                 .sorted(Integer::compare)

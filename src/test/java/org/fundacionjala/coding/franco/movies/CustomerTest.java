@@ -9,6 +9,7 @@ import static org.junit.Assert.assertEquals;
  * Created by Administrator on 9/12/2017.
  */
 public class CustomerTest {
+
     private Customer customer;
 
     /**
@@ -24,9 +25,12 @@ public class CustomerTest {
      */
     @Test
     public void calculateTotalAmount() {
-        customer.addRental(new Rental(new ChildrensMovie("Goofy"), 4));
-        customer.addRental(new Rental(new NewReleaseMovie("Avengers 3: Infinity War I"), 2));
-        customer.addRental(new Rental(new RegularMovie("Spider-man"), 1));
+        final int daysRented = 4;
+        customer.addRental(new Rental(new Children("Goofy"), daysRented));
+        final int daysRented1 = 2;
+        customer.addRental(new Rental(new NewRelease("Avengers 3: Infinity War I"), daysRented1));
+        final int daysRented2 = 1;
+        customer.addRental(new Rental(new Regular("Spider-man"), daysRented2));
 
         final double actualResult = customer.calculateTotalAmount();
         final double expectedResult = 9.5;
@@ -39,9 +43,12 @@ public class CustomerTest {
      */
     @Test
     public void calculateFrequentPointsWhenThereIsANewReleaseMovie() {
-        customer.addRental(new Rental(new ChildrensMovie("Goofy"), 4));
-        customer.addRental(new Rental(new NewReleaseMovie("Avengers 3: Infinity War I"), 2));
-        customer.addRental(new Rental(new RegularMovie("Spider-man"), 1));
+        final int daysRented = 4;
+        customer.addRental(new Rental(new Children("Goofy"), daysRented));
+        final int daysRented1 = 2;
+        customer.addRental(new Rental(new NewRelease("Avengers 3: Infinity War I"), daysRented1));
+        final int daysRented2 = 1;
+        customer.addRental(new Rental(new Regular("Spider-man"), daysRented2));
 
         final double actualResult = customer.calculateTotalFrequentPoints();
         final double expectedResult = 4;
@@ -54,9 +61,11 @@ public class CustomerTest {
      */
     @Test
     public void calculateFrequentPointsWhenThereIsNotANewReleaseMovie() {
-        customer.addRental(new Rental(new ChildrensMovie("Goofy"), 4));
-        customer.addRental(new Rental(new NewReleaseMovie("Avengers 3: Infinity War I"), 1));
-        customer.addRental(new Rental(new RegularMovie("Spider-man"), 1));
+        final int daysRented = 4;
+        customer.addRental(new Rental(new Children("Goofy"), daysRented));
+        final int daysRented1 = 1;
+        customer.addRental(new Rental(new NewRelease("Avengers 3: Infinity War I"), daysRented1));
+        customer.addRental(new Rental(new Regular("Spider-man"), daysRented1));
 
         final double actualResult = customer.calculateTotalFrequentPoints();
         final double expectedResult = 3;
@@ -69,9 +78,11 @@ public class CustomerTest {
      */
     @Test
     public void statement() {
-        customer.addRental(new Rental(new ChildrensMovie("Goofy"), 4));
-        customer.addRental(new Rental(new NewReleaseMovie("Avengers 3: Infinity War I"), 1));
-        customer.addRental(new Rental(new RegularMovie("Spider-man"), 1));
+        final int daysRented = 4;
+        customer.addRental(new Rental(new Children("Goofy"), daysRented));
+        final int daysRented1 = 1;
+        customer.addRental(new Rental(new NewRelease("Avengers 3: Infinity War I"), daysRented1));
+        customer.addRental(new Rental(new Regular("Spider-man"), daysRented1));
 
         final String actualResult = customer.statement();
         final StringBuilder expectedResult = new StringBuilder("Rental Record for Cristiano Ronaldo\n");

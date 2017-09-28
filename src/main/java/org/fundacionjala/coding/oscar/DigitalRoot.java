@@ -4,6 +4,9 @@ package org.fundacionjala.coding.oscar;
  * Created by Administrator on 9/15/2017.
  */
 public class DigitalRoot {
+
+    private static final int MAX_DIGITS = 10;
+
     /**
      * This method sum all numbers of the integer.
      *
@@ -16,7 +19,7 @@ public class DigitalRoot {
         for (String num : numbers) {
             total += Integer.parseInt(num);
         }
-        if (total > 10) {
+        if (total > MAX_DIGITS) {
             return digitalRoot(total);
         }
         return total;

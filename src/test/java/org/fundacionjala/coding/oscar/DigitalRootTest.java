@@ -13,7 +13,7 @@ public class DigitalRootTest {
     private DigitalRoot digitalRoot;
 
     /**
-     * This method execute before all test.
+     * Setup.
      */
     @Before
     public void setUp() {
@@ -21,13 +21,32 @@ public class DigitalRootTest {
     }
 
     /**
-     * This test verify the digitalRoot method.
+     * this is the test.
      */
     @Test
-    public void test() {
-        assertEquals(7, digitalRoot.digitalRoot(16));
-        assertEquals(6, digitalRoot.digitalRoot(942));
-        assertEquals(6, digitalRoot.digitalRoot(132189));
-        assertEquals(2, digitalRoot.digitalRoot(493193));
+    public void testDigitalRootWithTwoDigits() {
+        final int number = 16;
+        final int expectedResult = 7;
+        assertEquals(expectedResult, digitalRoot.digitalRoot(number));
+    }
+
+    /**
+     * this is the test.
+     */
+    @Test
+    public void testDigitalRootWithThreeDigits() {
+        final int number = 942;
+        final int expectedResult = 6;
+        assertEquals(expectedResult, digitalRoot.digitalRoot(number));
+    }
+
+    /**
+     * this is the test.
+     */
+    @Test
+    public void testDigitalRootWithSixDigits() {
+        final int number = 493193;
+        final int expectedResult = 2;
+        assertEquals(expectedResult, digitalRoot.digitalRoot(number));
     }
 }

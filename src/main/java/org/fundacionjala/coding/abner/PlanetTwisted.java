@@ -13,7 +13,7 @@ public class PlanetTwisted {
      * @param integers old value;
      * @return new twisted value;
      */
-    public  Integer[] sortTwisted(Integer[] integers) {
+    public  Integer[] sort(Integer[] integers) {
         return Arrays.stream(integers)
                 .map(new PlanetTwisted()::replaceThreeSeven)
                 .sorted(Integer::compare)

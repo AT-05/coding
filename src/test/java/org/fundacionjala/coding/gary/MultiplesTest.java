@@ -1,4 +1,4 @@
-package org.fundacionjala.coding.franco;
+package org.fundacionjala.coding.gary;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Created by Administrator on 8/21/2017.
+ * Created by Gary on 17/8/2017.
  */
 public class MultiplesTest {
 
@@ -27,7 +27,7 @@ public class MultiplesTest {
     public void testMultiplesScenario1() {
         final int number = 10;
         final int expectedResult = 23;
-        assertEquals(expectedResult, multiples.multiplesOf3And5(number));
+        assertEquals(expectedResult, multiples.multiplesSum(number));
     }
 
     /**
@@ -37,7 +37,7 @@ public class MultiplesTest {
     public void testMultiplesScenario2() {
         final int number = 20;
         final int expectedResult = 78;
-        assertEquals(expectedResult, multiples.multiplesOf3And5(number));
+        assertEquals(expectedResult, multiples.multiplesSum(number));
     }
 
     /**
@@ -47,7 +47,7 @@ public class MultiplesTest {
     public void testMultiplesScenario3() {
         final int number = 200;
         final int expectedResult = 9168;
-        assertEquals(expectedResult, multiples.multiplesOf3And5(number));
+        assertEquals(expectedResult, multiples.multiplesSum(number));
     }
 
 }

@@ -8,19 +8,20 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by Administrator on 9/12/2017.
  */
-public class RegularMovieTest {
+public class RegularTest {
+
     private Movie movie;
 
     /**
-     * This method tests instancing of RegularMovie Class.
+     * This method tests instancing of Regular Class.
      */
     @Before
     public void setUp() {
-        movie = new RegularMovie("Fast and Furious 7");
+        movie = new Regular("Fast and Furious 7");
     }
 
     /**
-     * This method tests calculus of amount of a RegularMovie type when its quantity
+     * This method tests calculus of amount of a Regular type when its quantity
      * of days rented is less than two.
      */
     @Test
@@ -31,7 +32,7 @@ public class RegularMovieTest {
     }
 
     /**
-     * This method tests calculus of amount of a RegularMovie type when its quantity
+     * This method tests calculus of amount of a Regular type when its quantity
      * of days rented is greater than two.
      */
     @Test
@@ -42,7 +43,7 @@ public class RegularMovieTest {
     }
 
     /**
-     * This method tests output of RegularMovie rental figure.
+     * This method tests output of Regular rental figure.
      */
     @Test
     public void rentalFigure() {

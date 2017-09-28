@@ -11,6 +11,7 @@ import static org.junit.Assert.assertTrue;
  * Created by Administrator on 8/22/2017.
  */
 public class BankOCRTest {
+
     private BankOCR story;
 
     /**
@@ -48,7 +49,7 @@ public class BankOCRTest {
      */
     @Test
     public void testStoryTwoExampleFalse() {
-        final String number = "345882865";
+        final String number = "345882866";
         assertFalse(story.checkSum(number));
     }
 
@@ -85,9 +86,9 @@ public class BankOCRTest {
     public void testStoryThreeCodeError() {
         final String entryLineCode1 = " _     _  _  _  _  _  _  _ ";
         final String entryLineCode2 = " _||_||_ |_||_| _||_||_ |_ ";
-        final String entryLineCode3 = " _|  | _||_||_||_ |_||_| _|";
+        final String entryLineCode3 = " _|  | _||_||_||_ |_||_||_|";
         final String actualResult = story.finding(entryLineCode1, entryLineCode2, entryLineCode3);
-        final String expectedResult = "345882865 ERR";
+        final String expectedResult = "345882866 ERR";
         assertEquals(expectedResult, actualResult);
     }
 }

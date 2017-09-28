@@ -8,19 +8,20 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by Administrator on 9/12/2017.
  */
-public class ChildrensMovieTest {
+public class ChildrenTest {
+
     private Movie movie;
 
     /**
-     * This method tests instancing of ChildrensMovie Class.
+     * This method tests instancing of Children Class.
      */
     @Before
     public void setUp() {
-        movie = new ChildrensMovie("Bugs");
+        movie = new Children("Bugs");
     }
 
     /**
-     * This method tests calculus of amount of a ChildrensMovie type when its quantity
+     * This method tests calculus of amount of a Children type when its quantity
      * of days rented is less than three.
      */
     @Test
@@ -31,7 +32,7 @@ public class ChildrensMovieTest {
     }
 
     /**
-     * This method tests calculus of amount of a ChildrensMovie type when its quantity
+     * This method tests calculus of amount of a Children type when its quantity
      * of days rented is greater than three.
      */
     @Test
@@ -42,7 +43,7 @@ public class ChildrensMovieTest {
     }
 
     /**
-     * This method tests output of ChildrensMovie rental figure.
+     * This method tests output of Children rental figure.
      */
     @Test
     public void rentalFigure() {
