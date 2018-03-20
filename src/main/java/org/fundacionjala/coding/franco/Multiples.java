@@ -14,7 +14,8 @@ public class Multiples {
      * @return the total sum of the multiples of 3 and 5.
      */
     public int multiplesOf3And5(int maxNumber) {
-        int i = 0, totalSum = 0;
+        int i = 0;
+        int totalSum = 0;
         while (i < maxNumber) {
             totalSum = i % MULTIPLE_THREE == 0 || i % MULTIPLE_FIVE == 0 ? totalSum + i : totalSum;
             i++;

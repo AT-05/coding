@@ -73,7 +73,8 @@ public class BankOCR {
     public boolean checkSum(String accountNumber) {
         final String[] numberPosition = accountNumber.split("");
         int checksum = CONS_ZERO;
-        int i = CONS_ZERO, j = CONS_NINE;
+        int i = CONS_ZERO;
+        int j = CONS_NINE;
         final int numberPositionLength = numberPosition.length;
 
         while (i < numberPositionLength && j > CONS_ZERO) {
@@ -92,7 +93,9 @@ public class BankOCR {
      * complies checksum.
      */
     public String finding(String actNum) {
-        return actNum.contains(NOT_EXIST_CHAR) ? String.format("%s ILL", actNum)
-                : !checkSum(actNum) ? String.format("%s ERR", actNum) : actNum;
+        if (actNum.contains(NOT_EXIST_CHAR)) {
+            return String.format("%s ILL", actNum);
+        }
+        return !checkSum(actNum) ? String.format("%s ERR", actNum) : actNum;
     }
 }

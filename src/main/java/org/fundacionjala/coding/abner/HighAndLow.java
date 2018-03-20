@@ -5,11 +5,8 @@ import java.util.stream.Stream;
 
 /**
  * This class search.
- * Created by Abner on 17/08/2017.
  */
 public class HighAndLow {
-    // private int high, low;
-
 
     /**
      * This function search the high and low value.

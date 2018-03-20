@@ -7,6 +7,7 @@ import java.util.ArrayList;
  * Created by Administrator on 9/8/2017.
  */
 public class Customer {
+    private static final String BREAK_LINE = "\n";
     private final String customerName;
     private List<Rental> rentals;
 
@@ -66,16 +67,14 @@ public class Customer {
      * @return a statement with the summary of rentals.
      */
     public String statement() {
-        StringBuilder result = new StringBuilder("Rental Record for ");
-        result.append(customerName)
-                .append("\n");
+        StringBuilder result = new StringBuilder(String.format("Rental Record for %s", customerName));
         for (Rental rental : rentals) {
             result.append(rental.rentalStatement())
-                    .append("\n");
+                    .append(BREAK_LINE);
         }
         result.append("Amount owed is ")
                 .append(calculateTotalAmount())
-                .append("\n")
+                .append(BREAK_LINE)
                 .append("You earned ")
                 .append(calculateTotalFrequentPoints())
                 .append(" frequent renter points");

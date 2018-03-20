@@ -38,10 +38,6 @@ public abstract class Movie {
      * @return the rental figure depending on the Movie type.
      */
     public String rentalFigure(int daysRented) {
-        StringBuilder result = new StringBuilder("\t");
-        result.append(title)
-                .append("\t")
-                .append(calculateAmount(daysRented));
-        return result.toString();
+        return String.format("\t%s\t%s", title, calculateAmount(daysRented));
     }
 }

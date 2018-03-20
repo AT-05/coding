@@ -1,9 +1,7 @@
 package org.fundacionjala.coding.german;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-
-import static java.lang.String.format;
 
 /**
  * Created by German on 25/8/2017.
@@ -18,58 +16,50 @@ public class BankOCR {
 
     private static final int NUMBER_ELEVEN = 11;
 
-    private static final List<String> NUMBERS = new ArrayList<>();
-    static {
-        NUMBERS.add(format("%s%s%s",
-                " _ ",
-                "| |",
-                "|_|"));
+    private static final String OCR_NUMBER_FORMAT = "%s%s%s";
 
-        NUMBERS.add(format("%s%s%s",
-                "   ",
-                "  |",
-                "  |"));
-
-        NUMBERS.add(format("%s%s%s",
-                " _ ",
-                " _|",
-                "|_ "));
-
-        NUMBERS.add(format("%s%s%s",
-                " _ ",
-                " _|",
-                " _|"));
-
-        NUMBERS.add(format("%s%s%s",
-                "   ",
-                "|_|",
-                "  |"));
-
-        NUMBERS.add(format("%s%s%s",
-                " _ ",
-                "|_ ",
-                " _|"));
-
-        NUMBERS.add(format("%s%s%s",
-                " _ ",
-                "|_ ",
-                "|_|"));
-
-        NUMBERS.add(format("%s%s%s",
-                " _ ",
-                "  |",
-                "  |"));
-
-        NUMBERS.add(format("%s%s%s",
-                " _ ",
-                "|_|",
-                "|_|"));
-
-        NUMBERS.add(format("%s%s%s",
-                " _ ",
-                "|_|",
-                " _|"));
-    }
+    private static final List<String> NUMBERS = Arrays.asList(
+            String.format(OCR_NUMBER_FORMAT,
+                    " _ ",
+                    "| |",
+                    "|_|"),
+            String.format(OCR_NUMBER_FORMAT,
+                    "   ",
+                    "  |",
+                    "  |"),
+            String.format(OCR_NUMBER_FORMAT,
+                    " _ ",
+                    " _|",
+                    "|_ "),
+            String.format(OCR_NUMBER_FORMAT,
+                    " _ ",
+                    " _|",
+                    " _|"),
+            String.format(OCR_NUMBER_FORMAT,
+                    "   ",
+                    "|_|",
+                    "  |"),
+            String.format(OCR_NUMBER_FORMAT,
+                    " _ ",
+                    "|_ ",
+                    " _|"),
+            String.format(OCR_NUMBER_FORMAT,
+                    " _ ",
+                    "|_ ",
+                    "|_|"),
+            String.format(OCR_NUMBER_FORMAT,
+                    " _ ",
+                    "  |",
+                    "  |"),
+            String.format(OCR_NUMBER_FORMAT,
+                    " _ ",
+                    "|_|",
+                    "|_|"),
+            String.format(OCR_NUMBER_FORMAT,
+                    " _ ",
+                    "|_|",
+                    " _|")
+    );
 
     /**
      * This method return a String numbers.
@@ -82,7 +72,8 @@ public class BankOCR {
         String[] split = stringOCR.split("\n");
         int decode;
         for (int i = 0; i < split[0].length(); i += OFFSET) {
-            decode = NUMBERS.indexOf(format("%s%s%s", split[0].substring(i, i + OFFSET),
+            decode = NUMBERS.indexOf(String.format(OCR_NUMBER_FORMAT,
+                    split[0].substring(i, i + OFFSET),
                     split[1].substring(i, i + OFFSET),
                     split[2].substring(i, i + OFFSET)));
             stringOCROut.append(decode < 0 ? QUESTION_MARK : decode);
@@ -116,8 +107,9 @@ public class BankOCR {
      * @return String
      */
     public String status(String stringOCR) {
-        return isValidCheckSum(stringOCR)
-                ? format("%s", stringOCR) : !stringOCR.contains("?")
-                ? format("%s ERR", stringOCR) : format("%s ILL", stringOCR);
+        if (stringOCR.contains("?")) {
+            return String.format("%s ILL", stringOCR);
+        }
+        return !isValidCheckSum(stringOCR) ? String.format("%s ERR", stringOCR) : stringOCR;
     }
 }

@@ -36,7 +36,7 @@ public class PlanetTwisted {
                     .replace("x", "3")
                     .replace("y", "7");
         }
-        num = String.join("", numString); // Integer.valueOf(String.join("", numString));
+        num = String.join("", numString);
         return Integer.parseInt(num);
     }
 

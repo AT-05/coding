@@ -5,7 +5,7 @@ package org.fundacionjala.coding.franco.movies;
  */
 public class NewRelease extends Movie {
 
-    private static final int AMOUNT_FACTOR = 3;
+    private static final double AMOUNT_FACTOR = 3;
 
     /**
      * NewRelease Class constructor.

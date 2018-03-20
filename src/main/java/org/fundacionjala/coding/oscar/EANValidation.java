@@ -21,7 +21,7 @@ public class EANValidation {
             int number = Integer.parseInt(stringNumber.substring(index, index + 1));
             sum += index % 2 == 0 ? number : number * MULTIPLE_THREE;
         }
-        return (stringNumber.substring(stringNumber.length() - 1, stringNumber.length()).equals(validateChecksum(sum)));
+        return stringNumber.substring(stringNumber.length() - 1, stringNumber.length()).equals(validateChecksum(sum));
     }
 
     /**

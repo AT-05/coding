@@ -16,7 +16,7 @@ public class Multiples {
     public int multiplesSum(int number) {
         int sum = 0;
         for (int i = 1; i < number; i++) {
-            sum += (i % MULTIPLE_THREE == 0 || i % MULTIPLE_FIVE == 0) ? i : 0;
+            sum += i % MULTIPLE_THREE == 0 || i % MULTIPLE_FIVE == 0 ? i : 0;
         }
         return sum;
     }
