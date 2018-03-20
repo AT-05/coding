@@ -63,31 +63,11 @@ public class BankOCRTest {
     }
 
     /**
-     * This method test Finding result of a Legible account number.
-     */
-    @Test
-    public void testFindingLegibleAccountNumber() {
-        List<String> lines = new ArrayList<>();
-        lines.add("    _  _     _  _  _  _  _ ");
-        lines.add("  | _| _||_||_ |_   ||_||_|");
-        lines.add("  ||_  _|  | _||_|  ||_| _|");
-
-        final String actualResult = bankOCR.mapEntryOCRToNumber(lines);
-        final String expectedResult = "123456789";
-        assertEquals(expectedResult, actualResult);
-    }
-
-    /**
      * This method test Finding result of an false checksum account number.
      */
     @Test
     public void testFindingChecksumErrorAccountNumber() {
-        List<String> lines = new ArrayList<>();
-        lines.add("    _  _     _  _     _  _ ");
-        lines.add("  | _| _||_||_ |_   ||_||_|");
-        lines.add("  ||_  _|  | _||_|  ||_| _|");
-
-        final String actualResult = bankOCR.finding(bankOCR.mapEntryOCRToNumber(lines));
+        final String actualResult = bankOCR.finding("123456189");
         final String expectedResult = "123456189 ERR";
         assertEquals(expectedResult, actualResult);
     }
@@ -97,12 +77,7 @@ public class BankOCRTest {
      */
     @Test
     public void testFindingIllegibleAccountNumber() {
-        List<String> lines = new ArrayList<>();
-        lines.add("    _  _     _  _  _  _  _ ");
-        lines.add("  | _| _||_||_  _    |_||_|");
-        lines.add("  ||_  _|  | _||_|  ||_| _|");
-
-        final String actualResult = bankOCR.finding(bankOCR.mapEntryOCRToNumber(lines));
+        final String actualResult = bankOCR.finding("12345??89");
         final String expectedResult = "12345??89 ILL";
         assertEquals(expectedResult, actualResult);
     }

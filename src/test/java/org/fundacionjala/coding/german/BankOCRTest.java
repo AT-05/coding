@@ -11,6 +11,7 @@ import static org.junit.Assert.assertTrue;
  * Created by seus on 25/8/2017.
  */
 public class BankOCRTest {
+    private static final String OCR_NUMBER_FORMAT = "%s%s%s";
     private BankOCR bankOCR;
 
     /**
@@ -26,7 +27,7 @@ public class BankOCRTest {
      */
     @Test
     public void testParseAccountMethod() {
-        final String actualResult = bankOCR.parseAccount(String.format("%s%s%s",
+        final String actualResult = bankOCR.parseAccount(String.format(OCR_NUMBER_FORMAT,
                 "    _  _     _  _  _  _  _ \n",
                 "  | _| _||_||_ |_   ||_||_|\n",
                 "  ||_  _|  | _||_|  ||_| _|"));
@@ -40,7 +41,7 @@ public class BankOCRTest {
      */
     @Test
     public void testIsValidCheckSumMethodIsFalse() {
-        final boolean actualResult = bankOCR.isValidCheckSum(bankOCR.parseAccount(String.format("%s%s%s",
+        final boolean actualResult = bankOCR.isValidCheckSum(bankOCR.parseAccount(String.format(OCR_NUMBER_FORMAT,
                 " _  _  _  _  _  _  _  _    \n",
                 "|_|| || || || || || || |  |\n",
                 " _||_||_||_||_||_||_||_|  |")));
@@ -52,7 +53,7 @@ public class BankOCRTest {
      */
     @Test
     public void testIsValidCheckSumMethodIsTrue() {
-        boolean result = bankOCR.isValidCheckSum(bankOCR.parseAccount(String.format("%s%s%s",
+        boolean result = bankOCR.isValidCheckSum(bankOCR.parseAccount(String.format(OCR_NUMBER_FORMAT,
                 " _  _  _  _  _  _  _  _  _ \n",
                 "|_|| || || || || || || |  |\n",
                 " _||_||_||_||_||_||_||_|  |")));
@@ -65,7 +66,7 @@ public class BankOCRTest {
      */
     @Test
     public void testStatusMethodIsOK() {
-        final String actualResult = bankOCR.status(bankOCR.parseAccount(String.format("%s%s%s",
+        final String actualResult = bankOCR.status(bankOCR.parseAccount(String.format(OCR_NUMBER_FORMAT,
                 " _  _  _  _  _  _  _  _  _ \n",
                 "|_|| || || || || || || |  |\n",
                 " _||_||_||_||_||_||_||_|  |")));
@@ -78,7 +79,7 @@ public class BankOCRTest {
      */
     @Test
     public void testStatusMethodIsERR() {
-        final String actualResult = bankOCR.status(bankOCR.parseAccount(String.format("%s%s%s",
+        final String actualResult = bankOCR.status(bankOCR.parseAccount(String.format(OCR_NUMBER_FORMAT,
                 " _  _  _  _  _  _  _  _    \n",
                 "|_|| || || || || || || |  |\n",
                 " _||_||_||_||_||_||_||_|  |")));
@@ -91,7 +92,7 @@ public class BankOCRTest {
      */
     @Test
     public void testStatusMethodIsILL() {
-        final String actualResult = bankOCR.status(bankOCR.parseAccount(String.format("%s%s%s",
+        final String actualResult = bankOCR.status(bankOCR.parseAccount(String.format(OCR_NUMBER_FORMAT,
                 " _  _  _  _  _  _  _  _  _ \n",
                 "|_|  || || || || || || |  |\n",
                 " _||_||_||_||_||_||_||_|  |")));
