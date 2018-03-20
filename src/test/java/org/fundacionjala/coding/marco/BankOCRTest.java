@@ -58,10 +58,7 @@ public class BankOCRTest {
      */
     @Test
     public void testStoryThreeTrueCode() {
-        final String entryLineCode1 = "    _  _     _  _  _  _  _ ";
-        final String entryLineCode2 = "  | _| _||_||_ |_   ||_||_|";
-        final String entryLineCode3 = "  ||_  _|  | _||_|  ||_| _|";
-        final String actualResult = story.finding(entryLineCode1, entryLineCode2, entryLineCode3);
+        final String actualResult = story.finding("123456789");
         final String expectedResult = "123456789";
         assertEquals(expectedResult, actualResult);
     }
@@ -71,10 +68,7 @@ public class BankOCRTest {
      */
     @Test
     public void testStoryThreeCodeIll() {
-        final String entryLineCode1 = "    _  _     _  _  _  _  _ ";
-        final String entryLineCode2 = "  | _|  | _||_ |_   ||_||_|";
-        final String entryLineCode3 = "  ||_  _|  | _||_|  ||_| _|";
-        final String actualResult = story.finding(entryLineCode1, entryLineCode2, entryLineCode3);
+        final String actualResult = story.finding("12??56789");
         final String expectedResult = "12??56789 ILL";
         assertEquals(expectedResult, actualResult);
     }
@@ -84,10 +78,7 @@ public class BankOCRTest {
      */
     @Test
     public void testStoryThreeCodeError() {
-        final String entryLineCode1 = " _     _  _  _  _  _  _  _ ";
-        final String entryLineCode2 = " _||_||_ |_||_| _||_||_ |_ ";
-        final String entryLineCode3 = " _|  | _||_||_||_ |_||_||_|";
-        final String actualResult = story.finding(entryLineCode1, entryLineCode2, entryLineCode3);
+        final String actualResult = story.finding("345882866");
         final String expectedResult = "345882866 ERR";
         assertEquals(expectedResult, actualResult);
     }

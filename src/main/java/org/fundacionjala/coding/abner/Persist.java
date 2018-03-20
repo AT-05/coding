@@ -17,7 +17,7 @@ public class Persist {
         int result = Integer.parseInt(digits);
         int counter = 0;
         while (result > MAX_DIGITS) {
-            result = digitalMultiply((String.valueOf(result)));
+            result = digitalMultiply(String.valueOf(result));
             counter++;
         }
         return counter;

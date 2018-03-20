@@ -16,7 +16,7 @@ public class Multiples {
     public int multipleThreeAndFive(int number) {
         int result = 0;
         for (int i = 1; i < number; i++) {
-            result = (i % MULTIPLE_THREE == 0 || i % MULTIPLE_FIVE == 0) ? result + i : result;
+            result = i % MULTIPLE_THREE == 0 || i % MULTIPLE_FIVE == 0 ? result + i : result;
         }
         return result;
     }

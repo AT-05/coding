@@ -19,53 +19,56 @@ public class BankOCR {
     private static final String QUESTION_MARK = "?";
 
     private static final Map<String, String> MAP_NUMBER = new HashMap<>();
+
+    private static final String OCR_NUMBER_FORMAT = "%s%s%s";
+
     static {
-        MAP_NUMBER.put(String.format("%s%s%s",
+        MAP_NUMBER.put(String.format(OCR_NUMBER_FORMAT,
                 " _ ",
                 "| |",
                 "|_|"), "0");
 
-        MAP_NUMBER.put(String.format("%s%s%s",
+        MAP_NUMBER.put(String.format(OCR_NUMBER_FORMAT,
                 "   ",
                 "  |",
                 "  |"), "1");
 
-        MAP_NUMBER.put(String.format("%s%s%s",
+        MAP_NUMBER.put(String.format(OCR_NUMBER_FORMAT,
                 " _ ",
                 " _|",
                 "|_ "), "2");
 
-        MAP_NUMBER.put(String.format("%s%s%s",
+        MAP_NUMBER.put(String.format(OCR_NUMBER_FORMAT,
                 " _ ",
                 " _|",
                 " _|"), "3");
 
-        MAP_NUMBER.put(String.format("%s%s%s",
+        MAP_NUMBER.put(String.format(OCR_NUMBER_FORMAT,
                 "   ",
                 "|_|",
                 "  |"), "4");
 
-        MAP_NUMBER.put(String.format("%s%s%s",
+        MAP_NUMBER.put(String.format(OCR_NUMBER_FORMAT,
                 " _ ",
                 "|_ ",
                 " _|"), "5");
 
-        MAP_NUMBER.put(String.format("%s%s%s",
+        MAP_NUMBER.put(String.format(OCR_NUMBER_FORMAT,
                 " _ ",
                 "|_ ",
                 "|_|"), "6");
 
-        MAP_NUMBER.put(String.format("%s%s%s",
+        MAP_NUMBER.put(String.format(OCR_NUMBER_FORMAT,
                 " _ ",
                 "  |",
                 "  |"), "7");
 
-        MAP_NUMBER.put(String.format("%s%s%s",
+        MAP_NUMBER.put(String.format(OCR_NUMBER_FORMAT,
                 " _ ",
                 "|_|",
                 "|_|"), "8");
 
-        MAP_NUMBER.put(String.format("%s%s%s",
+        MAP_NUMBER.put(String.format(OCR_NUMBER_FORMAT,
                 " _ ",
                 "|_|",
                 " _|"), "9");
@@ -84,7 +87,7 @@ public class BankOCR {
         StringBuilder numberMaps = new StringBuilder();
 
         for (int i = 0; i < stringCodeOne.length(); i = i + NUMBER_SIZE) {
-            numberMaps.append(MAP_NUMBER.get(String.format("%s%s%s",
+            numberMaps.append(MAP_NUMBER.get(String.format(OCR_NUMBER_FORMAT,
                     stringCodeOne.substring(i, i + NUMBER_SIZE),
                     stringCodeTwo.substring(i, i + NUMBER_SIZE),
                     stringCodeThree.substring(i, i + NUMBER_SIZE))));
@@ -115,13 +118,10 @@ public class BankOCR {
      * @return if check true.
      */
     public String checkFile(String number) {
-        int intIndex = number.indexOf(QUESTION_MARK);
-        if (intIndex == -1) {
-            if (checkSumCalculation(Integer.parseInt(number))) {
-                return number;
-            }
-            return String.format("%s ERR", number);
+        if (number.contains(QUESTION_MARK)) {
+            return String.format("%s ILL", number);
         }
-        return String.format("%s ILL", number);
+        return !checkSumCalculation(Integer.parseInt(number)) ? String.format("%s ERR", number) : number;
+
     }
 }

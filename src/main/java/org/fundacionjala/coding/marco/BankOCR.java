@@ -69,15 +69,14 @@ public class BankOCR {
     /**
      * This is the story 3 of bank OCR.
      *
-     * @param stringCodeOne   test.
-     * @param stringCodeTwo   test.
-     * @param stringCodeThree test.
+     * @param number test.
      * @return test.
      */
-    public String finding(String stringCodeOne, String stringCodeTwo, String stringCodeThree) {
-        String code = mapStringToNumbers(stringCodeOne, stringCodeTwo, stringCodeThree);
-        return code.contains(QUESTION_MARK) ? code.concat(" ILL")
-                : !checkSum(code) ? code.concat(" ERR") : code;
+    public String finding(String number) {
+        if (number.contains(QUESTION_MARK)) {
+            return number.concat(" ILL");
+        }
+        return !checkSum(number) ? number.concat(" ERR") : number;
     }
 
 }

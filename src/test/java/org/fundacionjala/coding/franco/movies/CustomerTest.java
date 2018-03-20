@@ -85,7 +85,7 @@ public class CustomerTest {
         customer.addRental(new Rental(new Regular("Spider-man"), daysRented1));
 
         final String actualResult = customer.statement();
-        final StringBuilder expectedResult = new StringBuilder("Rental Record for Cristiano Ronaldo\n");
+        final StringBuilder expectedResult = new StringBuilder("Rental Record for Cristiano Ronaldo");
         expectedResult.append("\tGoofy\t1.5\n")
                 .append("\tAvengers 3: Infinity War I\t3.0\n")
                 .append("\tSpider-man\t2.0\n")

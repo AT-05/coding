@@ -7,6 +7,8 @@ import java.util.List;
  * This class is for the customers.
  */
 class Customer {
+    private static final String TABULATION = "\t";
+    private static final String BREAK_LINE = "\n";
     private String name;
     private List<Rental> rentals;
 
@@ -44,18 +46,18 @@ class Customer {
      * @return a string with all the data.
      */
     public String statement() {
-        StringBuilder sb = new StringBuilder("Rental Record for ").append(getName()).append("\n");
+        StringBuilder sb = new StringBuilder("Rental Record for ").append(getName()).append(BREAK_LINE);
         for (Rental rental : rentals) {
-            sb.append("\t")
+            sb.append(TABULATION)
                     .append(rental.getMovie().getTitle())
-                    .append("\t")
+                    .append(TABULATION)
                     .append(rental.calculateAmount())
-                    .append("\n");
+                    .append(BREAK_LINE);
         }
         //add footer lines
         sb.append("Amount owed is ")
                 .append(calculateTotalAmount())
-                .append("\n");
+                .append(BREAK_LINE);
         sb.append("You earned ")
                 .append(calculateTotalFrequentPoints())
                 .append(" frequent renter points");

@@ -125,25 +125,6 @@ public class MovieTest {
     }
 
     /**
-     * Customer Test.
-     */
-    @Test
-    public void customerStatementTest() {
-        final int daysRented = 5;
-        customer.addRental(new Rental(new Children("Lion King"), daysRented));
-        final int daysRented1 = 2;
-        customer.addRental(new Rental(new NewRelease("The Revenant"), daysRented1));
-        customer.addRental(new Rental(new Regular("Terminator"), daysRented1));
-        String expectedResult = String.format("Rental Record for Test%n"
-                + "\tLion King\t4.5%n"
-                + "\tThe Revenant\t6.0%n"
-                + "\tTerminator\t2.0%n"
-                + "Amount owed is 12.5%n"
-                + "You earned 4 frequent renter points");
-        assertEquals(expectedResult, customer.statement());
-    }
-
-    /**
      * Calculate the total amount.
      */
     @Test
