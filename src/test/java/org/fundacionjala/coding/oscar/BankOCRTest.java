@@ -65,13 +65,9 @@ public class BankOCRTest {
      */
     @Test
     public void testMapEntryOneIncorrectNumberInAccount() {
-        String accountNumber = "    _  _  _  _  _  _     _ "
-                + "|_||_|| || ||_   |  |  | _ "
-                + "  | _||_||_||_|  |  |  | _|";
-        String actualResult = ocr.scanString(accountNumber);
         String expectResult = "49006771? ILL";
 
-        assertEquals(ocr.accountIsInvalidOrIllegible(actualResult), expectResult);
+        assertEquals(ocr.accountIsInvalidOrIllegible("49006771?"), expectResult);
     }
 
     /**
@@ -79,12 +75,8 @@ public class BankOCRTest {
      */
     @Test
     public void testMapEntryTwoIncorrectNumbersInAccount() {
-        String accountNumber = "    _  _     _  _  _  _  _ "
-                + "  | _| _||_| _ |_   ||_||_|"
-                + "  ||_  _|  | _||_|  ||_| _ ";
-        String actualResult = ocr.scanString(accountNumber);
         String expectResult = "1234?678? ILL";
-        assertEquals(ocr.accountIsInvalidOrIllegible(actualResult), expectResult);
+        assertEquals(ocr.accountIsInvalidOrIllegible("1234?678?"), expectResult);
     }
     //endregion
 
